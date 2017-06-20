@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_umpayMapper">
+	 <!--根据客户号查找umId(联动)  -->
+  <select id="selectCustAccount" parameterType="String" resultType="String">
+  	select tca_pay_cust_no from t_cust_account where tca_cust_no = #{custNo}
+  </select>
+  <!-- 查询可余额、代收本息、冻结金额(联动) -->
+  <select id="getPropertyPandect" parameterType="String" resultType="java.util.HashMap">
+  	select sum(expectEarnPrincipal) expectEarnPrincipal,sum(expectEarnInterest) expectEarnInterest from t_bidearndetails where repaymentStatus = 0 and custNo=#{custNo}
+  </select>
+  <!--  查询用户冻结金额(联动) -->
+  <select id="getAccountFreeze" parameterType="String" resultType="BigDecimal">
+  	select SUM(br.bidAmount) bidAmount FROM t_bulkloanrecord br LEFT JOIN t_bulkloan bl ON  br.bulkLoanNumber = bl.bulkLoanNumber 
+			WHERE bl.bulkLoanStatus IN(1,2) AND br.bulkStatus = 0 AND br.custNo = #{custNo}
+  </select>
+  <!-- 查询用户交易记录(联动) -->
+  <select id="getTransactionRecordPage" parameterType="java.util.Map" resultType="java.util.HashMap">
+ 	 <if test="null==type || type ==1"><!-- 充值 -->
+  		select chargeFlowNo,chargeTime,chargeMoney,chargeStatus,1 remarks from 
+  		t_chargerecord cr WHERE cr.custNo=#{custNo}
+	  	<if test="null!=minTime and minTime!=''">
+			AND <![CDATA[date_format(cr.chargeTime,'%Y-%m-%d') >= #{minTime}]]>
+		</if>
+		<if test="null!=maxTime and maxTime!=''">
+			AND <![CDATA[date_format(cr.chargeTime,'%Y-%m-%d') <= #{maxTime}]]>
+		</if>
+		<if test="null!=status">
+			AND cr.chargeStatus=#{status}
+		</if>
+  	</if>
+  	<if test="null==type">
+  		UNION ALL
+  	</if>
+  	<if test="null==type || type ==2"><!-- 提现 -->
+  		select wd.withDrawFlowNo as chargeFlowNo,wd.getDate as chargeTime,wd.getAmount as chargeMoney,wd.getState as chargeStatus,2 remarks from 
+  		t_withdrawals wd WHERE wd.custNo=#{custNo}
+	  	<if test="null!=minTime and minTime!=''">
+			AND <![CDATA[date_format(wd.getDate,'%Y-%m-%d') >= #{minTime}]]>
+		</if>
+		<if test="null!=maxTime and maxTime!=''">
+			AND <![CDATA[date_format(wd.getDate,'%Y-%m-%d') <= #{maxTime}]]>
+		</if>
+		<if test="null!=status">
+			AND wd.getState=#{status}
+		</if>
+  	</if>
+  	<if test="null==type">
+  		UNION ALL
+  	</if>
+  	<if test="null==type || type ==3"><!-- 投标 -->
+  		SELECT blr.buklFlowNo as chargeFlowNo,blr.bidTime as chargeTime,blr.bidAmount as chargeMoney,blr.bulkStatus as chargeStatus,3 remarks from 
+		t_bulkloanrecord blr
+		left join t_bulkloan bl on blr.bulkLoanNumber=bl.bulkLoanNumber
+		left join t_loanapply la on bl.loanApplyId=la.loanApplyID
+		WHERE blr.custNo=#{custNo}
+		<if test="null!=minTime and minTime!=''">
+			AND <![CDATA[date_format(blr.bidTime,'%Y-%m-%d') >= #{minTime}]]>
+		</if>
+		<if test="null!=maxTime and maxTime!=''">
+			AND <![CDATA[date_format(blr.bidTime,'%Y-%m-%d') <= #{maxTime}]]>
+		</if>
+		<if test="null!=status">
+			AND blr.bulkStatus=#{status}
+		</if>
+  	</if>
+  	<if test="null==type">
+  		UNION ALL
+  	</if>
+  	<if test="null==type || type ==4"><!-- 收益 -->
+  		select t.bidEarnFlowNo as chargeFlowNo,t.infactRepaymentTime as chargeTime,(t.expectEarnPrincipal + t.expectEarnInterest) as chargeMoney,t.repaymentStatus as chargeStatus,4 remarks from 
+  		t_bidearndetails_new t
+		where t.custNo=#{custNo}
+		<if test="null!=minTime and minTime!=''">
+			AND <![CDATA[date_format(t.infactRepaymentTime,'%Y-%m-%d') >= #{minTime}]]>
+		</if>
+		<if test="null!=maxTime and maxTime!=''">
+			AND <![CDATA[date_format(t.infactRepaymentTime,'%Y-%m-%d') <= #{maxTime}]]>
+		</if>
+		<if test="null!=status and status==0">
+			AND t.repaymentStatus=1
+		</if>
+		<if test="null!=status and status==1">
+			AND t.repaymentStatus=0
+		</if>
+		<if test="null!=status and status==2">
+			AND t.repaymentStatus=2
+		</if>
+  	</if>
+	ORDER BY chargeTime DESC
+	limit #{beginWith},#{count}
+  </select>
+  <!-- 查询用户交易记录count(一期) -->
+  <select id="getTransactionRecordPageTotal" parameterType="java.util.Map" resultType="int">
+  SELECT count(1) from (
+  	<if test="null==type || type ==1"><!-- 充值 -->
+  		select chargeFlowNo,chargeTime,chargeMoney,chargeStatus,1 remarks from 
+  		t_chargerecord cr WHERE cr.custNo=#{custNo}
+	  	<if test="null!=minTime and minTime!=''">
+			AND <![CDATA[date_format(cr.chargeTime,'%Y-%m-%d') >= #{minTime}]]>
+		</if>
+		<if test="null!=maxTime and maxTime!=''">
+			AND <![CDATA[date_format(cr.chargeTime,'%Y-%m-%d') <= #{maxTime}]]>
+		</if>
+		<if test="null!=status">
+			AND cr.chargeStatus=#{status}
+		</if>
+  	</if>
+  	<if test="null==type">
+  		UNION ALL
+  	</if>
+  	<if test="null==type || type ==2"><!-- 提现 -->
+  		select wd.withDrawFlowNo,wd.getDate,wd.getAmount,wd.getState,2 remarks from 
+  		t_withdrawals wd WHERE wd.custNo=#{custNo}
+	  	<if test="null!=minTime and minTime!=''">
+			AND <![CDATA[date_format(wd.getDate,'%Y-%m-%d') >= #{minTime}]]>
+		</if>
+		<if test="null!=maxTime and maxTime!=''">
+			AND <![CDATA[date_format(wd.getDate,'%Y-%m-%d') <= #{maxTime}]]>
+		</if>
+		<if test="null!=status">
+			AND wd.getState=#{status}
+		</if>
+  	</if>
+  	<if test="null==type">
+  		UNION ALL
+  	</if>
+  	<if test="null==type || type ==3"><!-- 投标 -->
+  		SELECT blr.buklFlowNo,blr.bidTime,blr.bidAmount,blr.bulkStatus,3 remarks from 
+		t_bulkloanrecord blr
+		left join t_bulkloan bl on blr.bulkLoanNumber=bl.bulkLoanNumber
+		left join t_loanapply la on bl.loanApplyId=la.loanApplyID
+		WHERE blr.custNo=#{custNo}
+		<if test="null!=minTime and minTime!=''">
+			AND <![CDATA[date_format(blr.bidTime,'%Y-%m-%d') >= #{minTime}]]>
+		</if>
+		<if test="null!=maxTime and maxTime!=''">
+			AND <![CDATA[date_format(blr.bidTime,'%Y-%m-%d') <= #{maxTime}]]>
+		</if>
+		<if test="null!=status">
+			AND blr.bulkStatus=#{status}
+		</if>
+  	</if>
+  	<if test="null==type">
+  		UNION ALL
+  	</if>
+  	<if test="null==type || type ==4"><!-- 收益 -->
+  		select t.bidEarnFlowNo,t.infactRepaymentTime,(t.expectEarnPrincipal + t.expectEarnInterest) bidAmount,t.repaymentStatus,4 remarks from 
+  		t_bidearndetails_new t
+		where t.custNo=#{custNo}
+		and repaymentStatus =1
+		<if test="null!=minTime and minTime!=''">
+			AND <![CDATA[date_format(t.infactRepaymentTime,'%Y-%m-%d') >= #{minTime}]]>
+		</if>
+		<if test="null!=maxTime and maxTime!=''">
+			AND <![CDATA[date_format(t.infactRepaymentTime,'%Y-%m-%d') <= #{maxTime}]]>
+		</if>
+		<if test="null!=status and status==0">
+			AND t.repaymentStatus=1
+		</if>
+		<if test="null!=status and status==1">
+			AND t.repaymentStatus=0
+		</if>
+		<if test="null!=status and status==2">
+			AND t.repaymentStatus=2
+		</if>
+  	</if>
+  	) total
+  </select>
+  <!-- 查询用户银行卡(联动) -->
+  <select id="getBankCard" parameterType="String" resultType="java.util.HashMap">
+  	select bankNo,bankCardNum from t_bankcardbind where custNo = #{custNo}
+  </select>
+  <insert id="saveWithDrawals" parameterType="java.util.Map">
+  	insert into t_withdrawals (custNo,getAmount,getDate,chargePut,getState,withDrawFlowNo,sfCustNO) 
+							values (#{custNo}, #{money},#{dates},#{chargePut},#{state},#{orderNo},#{custNO});
+  </insert>
+  <!-- 更新提现记录 -->
+  <update id="updateWithDrawals" parameterType="java.util.Map">
+  	update t_withdrawals
+	   	set getState = #{getState}
+      	where withDrawFlowNo = #{transeOder}
+  </update>
+</mapper>

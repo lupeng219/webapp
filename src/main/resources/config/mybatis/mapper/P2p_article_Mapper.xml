@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_articleMapper">
+
+	<resultMap id="baseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_article" >
+	</resultMap>
+	
+	<select id="getArticleByID" parameterType="Long" resultType="com.baibao.web.p2p.generator.bean.P2p_article">
+		SELECT articleID,introduction,paperCoverUrl,articleContents,sort,articlePushTime,articleAuthor,articleTitle,articleType 
+		FROM p2p_article WHERE articleID=#{articleID} limit 0,1
+	</select>
+	<select id="articleList" parameterType="map" resultType="map">
+	SELECT articleID,introduction,paperCoverUrl,articleContents,sort,articlePushTime,articleAuthor,articleTitle,articleType
+		 FROM p2p_article WHERE articleType=#{type}
+		<if test="minTime!=null and minTime!=''">
+			AND	<![CDATA[articlePushTime>=#{minTime}]]>
+		</if>
+		<if test="maxTime!=null and ''!=maxTime">
+			and <![CDATA[articlePushTime<=#{maxTime}]]>
+		</if>
+			ORDER BY sort desc,articlePushTime DESC 
+		<if test="page != null">
+ 	 	limit #{page.pageStartIndex},#{page.pageSize}
+	 </if>
+	</select>
+	<select id="articleListCount" parameterType="map" resultType="java.lang.Integer">
+	SELECT count(articleID) FROM p2p_article WHERE articleType=#{type}
+		<if test="minTime!=null and minTime!=''">
+			AND	<![CDATA[articlePushTime>=#{minTime}]]>
+		</if>
+		<if test="maxTime!=null and ''!=maxTime">
+			and <![CDATA[articlePushTime<=#{maxTime}]]>
+		</if>
+	</select>
+	 <update id="updateArticle" parameterType="com.baibao.web.p2p.generator.bean.P2p_article">
+		update p2p_article
+		<set>
+			<if test="introduction!=null">
+				introduction=#{introduction},
+			</if>
+			
+			<if test="paperCoverUrl!=null">
+				paperCoverUrl=#{paperCoverUrl},
+			</if>
+			<if test="articleContents!=null">
+				articleContents=#{articleContents},
+			</if>
+			<if test="sort!=null">
+				sort=#{sort},
+			</if>
+			<if test="articlePushTime!=null">
+				articlePushTime=#{articlePushTime},
+			</if>
+			
+			<if test="articleAuthor!=null">
+				articleAuthor=#{articleAuthor},
+			</if>
+			<if test="articleTitle!=null">
+				articleTitle=#{articleTitle},
+			</if>
+			<if test="articleType!=null">
+				articleType=#{articleType}
+			</if>
+		</set>
+		where articleID=#{articleID}
+	</update> 
+	<insert id="addArticle" parameterType="com.baibao.web.p2p.generator.bean.P2p_article">
+		insert into p2p_article (introduction,
+				paperCoverUrl,
+				articleContents,
+				sort,
+				articlePushTime,
+				articleAuthor,
+				articleTitle,
+				articleType)
+				values (
+				#{introduction},
+				#{paperCoverUrl},
+				#{articleContents},
+				#{sort},
+				#{articlePushTime},
+				#{articleAuthor},
+				#{articleTitle},
+				#{articleType}
+				)
+	</insert> 
+	 <delete id="deleteArticleByID" parameterType="Long">
+		delete from p2p_article where articleID=#{articleID}
+	</delete>
+	<select id ="manSortByType" parameterType="Long" resultType="java.lang.Integer">
+	 SELECT sort FROM p2p_article 
+	 WHERE articleType=(SELECT articleType FROM p2p_article  WHERE articleID=#{articleID})
+ 	ORDER BY sort desc 	LIMIT 0,1
+	</select>
+	
+	<select id ="queryNoticeList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT articleID,introduction,paperCoverUrl,articleContents,sort,articlePushTime,articleAuthor,articleTitle,articleType 
+		FROM p2p_article where articleType=#{articleType} group by articlePushTime desc limit #{begin},#{count}
+	</select>
+	
+	<select id ="queryNoticeListTotal" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(1) from p2p_article p where p.articleType=#{articleType}
+	</select>
+</mapper>

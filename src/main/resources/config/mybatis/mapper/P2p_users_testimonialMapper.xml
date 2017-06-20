@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_users_testimonialMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_users_testimonial" >
+    <id column="put_testimonialNo" property="putTestimonialno" jdbcType="VARCHAR" />
+    <result column="put_name" property="putName" jdbcType="VARCHAR" />
+    <result column="put_type" property="putType" jdbcType="INTEGER" />
+    <result column="put_quantity" property="putQuantity" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    put_testimonialNo, put_name, put_type, put_quantity
+  </sql>
+  <select id="searchTestimonial" resultType="int">
+  SELECT  put_quantity  from   p2p_users_testimonial  ut  where  put_type=#{type}
+  and put_testimonialNo=#{testimonialNo}
+  </select>
+  
+  <update id="updateByTestimonialNo">
+  update p2p_users_testimonial set put_quantity=#{quantity} where put_testimonialNo =#{testimonialNo} and put_type=#{type}
+  </update>
+</mapper>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_repayment_bill_transMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_repayment_bill_trans" >
+    <id column="prt_repaybillNo" property="prtRepaybillno" jdbcType="CHAR" />
+    <id column="prt_productNo" property="prtProductno" jdbcType="CHAR" />
+    <id column="prt_tradeFlowNo" property="prtTradeflowno" jdbcType="VARCHAR" />
+    <result column="prt_repaymentSeq" property="prtRepaymentseq" jdbcType="CHAR" />
+    <result column="prt_OutAccountNo" property="prtOutaccountno" jdbcType="VARCHAR" />
+    <result column="prt_InAccountNo" property="prtInaccountno" jdbcType="VARCHAR" />
+    <result column="prt_repayCategory" property="prtRepaycategory" jdbcType="CHAR" />
+    <result column="prt_transAmount" property="prtTransamount" jdbcType="VARCHAR" />
+    <result column="prt_repaymentType" property="prtRepaymenttype" jdbcType="VARCHAR" />
+    <result column="prt_repayTime" property="prtRepaytime" jdbcType="TIMESTAMP" />
+    <result column="prt_repayStatus" property="prtRepaystatus" jdbcType="VARCHAR" />
+    <result column="prt_host_response_time" property="prtHostResponseTime" jdbcType="VARCHAR" />
+    <result column="prt_host_response_flowNum" property="prtHostResponseFlownum" jdbcType="VARCHAR" />
+    <result column="prt_host_return_code" property="prtHostReturnCode" jdbcType="VARCHAR" />
+    <result column="prt_host_return_message" property="prtHostReturnMessage" jdbcType="VARCHAR" />
+    <result column="prt_outCustNo" property="prtOutcustno" jdbcType="VARCHAR" />
+    <result column="prt_inCustNo" property="prtIncustno" jdbcType="VARCHAR" />
+    <result column="prt_fee" property="prtFee" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+    <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    prt_repaybillNo, prt_productNo, prt_tradeFlowNo, prt_repaymentSeq, prt_OutAccountNo, 
+    prt_InAccountNo, prt_repayCategory, prt_transAmount, prt_repaymentType, prt_repayTime, 
+    prt_repayStatus, prt_host_response_time, prt_host_response_flowNum, prt_host_return_code, 
+    prt_host_return_message, prt_outCustNo, prt_inCustNo, prt_fee
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from p2p_repayment_bill_trans
+    where prt_repaybillNo = #{prtRepaybillno} and prt_tradeFlowNo=#{prtTradeflowno}
+  </select>
+  
+   <!--只根据账单号查询还款记录 -->
+   <select id="selectByRepaybillno" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from p2p_repayment_bill_trans
+    where prt_repaybillNo = #{prt_repaybillNo} and prt_repayStatus ='00'
+  </select>
+  
+  <!-- 更新状态 -->
+  <update id="updatePrtRepaystatus" parameterType="java.util.Map">
+  	update p2p_repayment_bill_trans
+  	<set>
+  		prt_repayStatus=#{prt_repayStatus}
+  			<if test="prt_host_response_time!=null and ''!=prt_host_response_time">
+  				,prt_host_response_time=#{response_time}
+  			</if>
+  			<if test="prt_host_response_flowNum!=null and ''!=prt_host_response_flowNum">
+  				,prt_host_response_flowNum=#{prt_host_response_flowNum}
+  			</if>
+  			<if test="prt_host_return_code!=null and ''!=prt_host_return_code">
+  				,prt_host_return_code=#{prt_host_return_code}
+  			</if>
+  			<if test="response_message!=null and ''!=response_message">
+  				,prt_host_return_message=#{response_message}
+  			</if>
+  	</set>
+  	 where prt_tradeFlowNo = #{prt_tradeFlowNo}
+  </update>
+  
+  <update id="upadteRepaymentBillTransFlowNo" parameterType="java.util.Map">
+  	update p2p_repayment_bill_trans
+  		set prt_repayStatus = #{prt_repayStatus},prt_host_response_time =#{ptrHostResponseTime},prt_host_return_code=#{ptrHostReturnCode},prt_host_return_message=#{ptrHostReturnMessage}
+  		where prt_tradeFlowNo = #{prt_tradeFlowNo}
+  </update>
+  
+  <select id="querySuspiciousPaymentFlow" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+    select  prt_repaybillNo, prt_productNo, prt_tradeFlowNo, prt_repaymentSeq, prt_OutAccountNo, 
+    prt_InAccountNo, prt_repayCategory, prt_transAmount, prt_repaymentType, prt_repayTime, 
+    prt_repayStatus, prt_host_response_time, prt_host_response_flowNum, prt_host_return_code, 
+    prt_host_return_message, prt_outCustNo, prt_inCustNo, prt_fee
+    from p2p_repayment_bill_trans
+    where prt_repayStatus ='02'
+  </select>
+
+  <insert id="insertSelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_repayment_bill_trans" >
+    insert into p2p_repayment_bill_trans
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prtRepaybillno != null" >
+        prt_repaybillNo,
+      </if>
+      <if test="prtTradeflowno != null" >
+        prt_tradeFlowNo,
+      </if>
+      <if test="prtRepaymentseq != null" >
+        prt_repaymentSeq,
+      </if>
+      <if test="prtProductno != null" >
+        prt_productNo,
+      </if>
+      <if test="prtOutaccountno != null" >
+        prt_OutAccountNo,
+      </if>
+      <if test="prtInaccountno != null" >
+        prt_InAccountNo,
+      </if>
+      <if test="prtRepaycategory != null" >
+        prt_repayCategory,
+      </if>
+      <if test="prtTransamount != null" >
+        prt_transAmount,
+      </if>
+      <if test="prtRepaymenttype != null" >
+        prt_repaymentType,
+      </if>
+      <if test="prtCustno != null" >
+        prt_custNo,
+      </if>
+      <if test="prtRepaytime != null" >
+        prt_repayTime,
+      </if>
+      <if test="prtRepaystatus != null" >
+        prt_repayStatus,
+      </if>
+      <if test="prtHostResponseTime != null" >
+        prt_host_response_time,
+      </if>
+      <if test="prtHostResponseFlownum != null" >
+        prt_host_response_flowNum,
+      </if>
+      <if test="prtHostReturnCode != null" >
+        prt_host_return_code,
+      </if>
+      <if test="prtHostReturnMessage != null" >
+        prt_host_return_message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prtRepaybillno != null" >
+        #{prtRepaybillno,jdbcType=CHAR},
+      </if>
+      <if test="prtTradeflowno != null" >
+        #{prtTradeflowno,jdbcType=CHAR},
+      </if>
+      <if test="prtRepaymentseq != null" >
+        #{prtRepaymentseq,jdbcType=CHAR},
+      </if>
+      <if test="prtProductno != null" >
+        #{prtProductno,jdbcType=CHAR},
+      </if>
+      <if test="prtOutaccountno != null" >
+        #{prtOutaccountno,jdbcType=VARCHAR},
+      </if>
+      <if test="prtInaccountno != null" >
+        #{prtInaccountno,jdbcType=VARCHAR},
+      </if>
+      <if test="prtRepaycategory != null" >
+        #{prtRepaycategory,jdbcType=CHAR},
+      </if>
+      <if test="prtTransamount != null" >
+        #{prtTransamount,jdbcType=VARCHAR},
+      </if>
+      <if test="prtRepaymenttype != null" >
+        #{prtRepaymenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="prtCustno != null" >
+        #{prtCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="prtRepaytime != null" >
+        #{prtRepaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="prtRepaystatus != null" >
+        #{prtRepaystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="prtHostResponseTime != null" >
+        #{prtHostResponseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="prtHostResponseFlownum != null" >
+        #{prtHostResponseFlownum,jdbcType=VARCHAR},
+      </if>
+      <if test="prtHostReturnCode != null" >
+        #{prtHostReturnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="prtHostReturnMessage != null" >
+        #{prtHostReturnMessage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+    
+  <!-- 还款代付成功之后更新代付记录状态为成功 -->
+  <update id="upadteRepaymentBillTrans" parameterType="java.util.Map">
+        update p2p_repayment_bill_trans 
+        <set>
+            prt_repaybillNo=#{prt_repaybillNo},
+            prt_productNo=#{prt_productNo}
+            <if test="prt_repayStatus!=null and ''!=prt_repayStatus">
+                ,prt_repayStatus=#{prt_repayStatus}
+            </if>
+            <if test="response_time!=null and ''!=response_time">
+                ,prt_host_response_time=#{response_time}
+            </if>
+            <if test="out_trade_no!=null and ''!=out_trade_no">
+                ,prt_host_response_flowNum=#{out_trade_no}
+            </if>
+            <if test="response_code!=null and ''!=response_code">
+                ,prt_host_return_code=#{response_code}
+            </if>
+            <if test="response_message!=null and ''!=response_message">
+                ,prt_host_return_message=#{response_message}
+            </if>
+        </set>
+        where prt_tradeFlowNo=#{prt_tradeFlowNo}
+  </update>
+</mapper>

@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_loan_applyMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_loan_apply" >
+    <result column="pp_productNo" property="ppProductNo" jdbcType="VARCHAR" />
+    <result column="pp_custNo" property="ppCustno" jdbcType="VARCHAR" />
+    <result column="pp_productType" property="ppProducttype" jdbcType="VARCHAR" />
+    <result column="pp_loanApplyTime" property="ppLoanapplytime" jdbcType="TIMESTAMP" />
+    <result column="pp_loanTerm" property="ppLoanterm" jdbcType="INTEGER" />
+    <result column="pp_loanAmount" property="ppLoanamount" jdbcType="DECIMAL" />
+    <result column="pp_loanManageFeeRate" property="ppLoanmanagefeerate" jdbcType="DECIMAL" />
+    <result column="pp_comprehensiveRate" property="ppComprehensiverate" jdbcType="DECIMAL" />
+    <result column="pp_loanDesc" property="ppLoandesc" jdbcType="VARCHAR" />
+    <result column="pp_loanRepayment" property="ppLoanrepayment" jdbcType="INTEGER" />
+    <result column="pp_loanApplyStatus" property="ppLoanapplystatus" jdbcType="INTEGER" />
+    <result column="pp_loanGrantTime" property="ppLoangranttime" jdbcType="TIMESTAMP" />
+    <result column="pp_loanRepaymentTime" property="ppLoanrepaymenttime" jdbcType="TIMESTAMP" />
+    <result column="pp_loanPurpose" property="ppLoanpurpose" jdbcType="VARCHAR" />
+    <result column="pp_loanTitle" property="ppLoantitle" jdbcType="VARCHAR" />
+    <result column="pp_repaymentAmount" property="ppRepaymentamount" jdbcType="DECIMAL" />
+    <result column="pp_loanApplyMobile" property="ppLoanapplymobile" jdbcType="VARCHAR" />
+    <result column="pp_guaranteeInfo" property="ppGuaranteeinfo" jdbcType="VARCHAR" />
+    <result column="pp_mortgageInfo" property="ppMortgageinfo" jdbcType="VARCHAR" />
+    <result column="pp_riskMeasure" property="ppRiskmeasure" jdbcType="VARCHAR" />
+    <result column="pp_guaranteeFeeRate" property="ppGuaranteefeerate" jdbcType="DECIMAL" />
+    <result column="pp_serviceFeeRate" property="ppServicefeerate" jdbcType="DECIMAL" />
+    <result column="pp_riskManageAmountRate" property="ppRiskmanageamountrate" jdbcType="DECIMAL" />
+    <result column="pp_riskManageAmount" property="ppRiskmanageamount" jdbcType="DECIMAL" />
+    <result column="pp_interestFeeRate" property="ppInterestfeerate" jdbcType="DECIMAL" />
+    <result column="pp_applyType" property="ppApplytype" jdbcType="INTEGER" />
+    <result column="pp_remark" property="ppRemark" jdbcType="VARCHAR" />
+    <result column="pla_assignationFeeRate" property="plaAssignationFeeRate" jdbcType="DECIMAL"/>
+    <!-- 临时字段 -->
+    <result column="pu_mobile" property="puMobile"/>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!-- pp_loanApplyID -->pp_productNo, pp_custNo, pp_productType, pp_loanApplyTime, pp_loanTerm, pp_loanAmount, 
+    pp_loanManageFeeRate, pp_comprehensiveRate, pp_loanDesc, pp_loanRepayment, pp_loanApplyStatus, 
+    pp_loanGrantTime, pp_loanRepaymentTime, pp_loanPurpose, pp_loanTitle, pp_repaymentAmount, 
+    pp_loanApplyMobile, pp_guaranteeInfo, pp_mortgageInfo, pp_riskMeasure, pp_guaranteeFeeRate, 
+    pp_serviceFeeRate, pp_riskManageAmountRate, pp_riskManageAmount, pp_interestFeeRate, 
+    pp_applyType, pp_remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.baibao.web.p2p.generator.bean.P2p_loan_applyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from p2p_loan_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p2p_loan_apply
+    where <!-- pp_loanApplyID -->pp_productNo = #{ppLoanapplyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p2p_loan_apply
+    where <!-- pp_loanApplyID -->pp_productNo = #{ppLoanapplyid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_loan_applyExample" >
+    delete from p2p_loan_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baibao.web.p2p.generator.bean.P2p_loan_apply" >
+    insert into p2p_loan_apply (<!-- pp_loanApplyID -->pp_productNo, pp_custNo, pp_productType, 
+      pp_loanApplyTime, pp_loanTerm, pp_loanAmount, 
+      pp_loanManageFeeRate, pp_comprehensiveRate, 
+      pp_loanDesc, pp_loanRepayment, pp_loanApplyStatus, 
+      pp_loanGrantTime, pp_loanRepaymentTime, 
+      pp_loanPurpose, pp_loanTitle, pp_repaymentAmount, 
+      pp_loanApplyMobile, pp_guaranteeInfo, pp_mortgageInfo, 
+      pp_riskMeasure, pp_guaranteeFeeRate, pp_serviceFeeRate, 
+      pp_riskManageAmountRate, pp_riskManageAmount, 
+      pp_interestFeeRate,
+      pp_applyType, pp_remark)
+    values (#{ppLoanapplyid,jdbcType=INTEGER}, #{ppCustno,jdbcType=VARCHAR}, #{ppProducttype,jdbcType=VARCHAR}, 
+      #{ppLoanapplytime,jdbcType=TIMESTAMP}, #{ppLoanterm,jdbcType=INTEGER}, #{ppLoanamount,jdbcType=DECIMAL}, 
+      #{ppLoanmanagefeerate,jdbcType=DECIMAL}, #{ppComprehensiverate,jdbcType=DECIMAL}, 
+      #{ppLoandesc,jdbcType=VARCHAR}, #{ppLoanrepayment,jdbcType=INTEGER}, #{ppLoanapplystatus,jdbcType=INTEGER}, 
+      #{ppLoangranttime,jdbcType=TIMESTAMP}, #{ppLoanrepaymenttime,jdbcType=TIMESTAMP}, 
+      #{ppLoanpurpose,jdbcType=VARCHAR}, #{ppLoantitle,jdbcType=VARCHAR}, #{ppRepaymentamount,jdbcType=DECIMAL}, 
+      #{ppLoanapplymobile,jdbcType=VARCHAR}, #{ppGuaranteeinfo,jdbcType=VARCHAR}, #{ppMortgageinfo,jdbcType=VARCHAR}, 
+      #{ppRiskmeasure,jdbcType=VARCHAR}, #{ppGuaranteefeerate,jdbcType=DECIMAL}, #{ppServicefeerate,jdbcType=DECIMAL}, 
+      #{ppRiskmanageamountrate,jdbcType=DECIMAL}, #{ppRiskmanageamount,jdbcType=DECIMAL}, 
+      #{ppInterestfeerate,jdbcType=DECIMAL}, 
+      #{ppApplytype,jdbcType=INTEGER}, #{ppRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_loan_apply" >
+    insert into p2p_loan_apply
+    (	pp_productNo,pp_custNo,pp_productType,pp_loanApplyTime,pp_loanTerm,pp_loanAmount,pp_loanApplyStatus,
+    	pp_loanPurpose,pp_loanApplyMobile,pp_applyType,
+    	pp_province,pp_city,pp_modelcar,pp_vehicleRegistration,pp_cellName,pp_builtupArea,
+    	pp_borrowerType,pp_companyName,pp_ownedIndustry,pp_setUpTime,pp_registeredCapital,pp_otherLoans,pp_mortgageMode
+    )values(
+    	#{ppProductNo},#{ppCustno},#{ppProducttype},#{ppLoanapplytime},#{ppLoanterm},#{ppLoanamount},#{ppLoanapplystatus},
+    	#{ppLoanpurpose},#{ppLoanApplyMobile},#{ppApplytype},
+    	#{ppProvince},#{ppCity},#{ppModelcar},#{ppVehicleRegistration},#{ppCellName},#{ppBuiltupArea},
+    	#{ppBorrowerType},#{ppCompanyName},#{ppOwnedIndustry},#{ppSetUpTime},#{ppRegisteredCapital},#{ppOtherLoans},#{mortgageMode}
+    )
+   
+  </insert>
+  <select id="countByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_loan_applyExample" resultType="java.lang.Integer" >
+    select count(1) from p2p_loan_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p2p_loan_apply
+    <set >
+      <if test="record.ppLoanapplyid != null" >
+        <!-- pp_loanApplyID -->pp_productNo = #{record.ppLoanapplyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ppCustno != null" >
+        pp_custNo = #{record.ppCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppProducttype != null" >
+        pp_productType = #{record.ppProducttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppLoanapplytime != null" >
+        pp_loanApplyTime = #{record.ppLoanapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ppLoanterm != null" >
+        pp_loanTerm = #{record.ppLoanterm,jdbcType=INTEGER},
+      </if>
+      <if test="record.ppLoanamount != null" >
+        pp_loanAmount = #{record.ppLoanamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppLoanmanagefeerate != null" >
+        pp_loanManageFeeRate = #{record.ppLoanmanagefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppComprehensiverate != null" >
+        pp_comprehensiveRate = #{record.ppComprehensiverate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppLoandesc != null" >
+        pp_loanDesc = #{record.ppLoandesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppLoanrepayment != null" >
+        pp_loanRepayment = #{record.ppLoanrepayment,jdbcType=INTEGER},
+      </if>
+      <if test="record.ppLoanapplystatus != null" >
+        pp_loanApplyStatus = #{record.ppLoanapplystatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.ppLoangranttime != null" >
+        pp_loanGrantTime = #{record.ppLoangranttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ppLoanrepaymenttime != null" >
+        pp_loanRepaymentTime = #{record.ppLoanrepaymenttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ppLoanpurpose != null" >
+        pp_loanPurpose = #{record.ppLoanpurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppLoantitle != null" >
+        pp_loanTitle = #{record.ppLoantitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppRepaymentamount != null" >
+        pp_repaymentAmount = #{record.ppRepaymentamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppLoanapplymobile != null" >
+        pp_loanApplyMobile = #{record.ppLoanapplymobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppGuaranteeinfo != null" >
+        pp_guaranteeInfo = #{record.ppGuaranteeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppMortgageinfo != null" >
+        pp_mortgageInfo = #{record.ppMortgageinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppRiskmeasure != null" >
+        pp_riskMeasure = #{record.ppRiskmeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppGuaranteefeerate != null" >
+        pp_guaranteeFeeRate = #{record.ppGuaranteefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppServicefeerate != null" >
+        pp_serviceFeeRate = #{record.ppServicefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppRiskmanageamountrate != null" >
+        pp_riskManageAmountRate = #{record.ppRiskmanageamountrate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppRiskmanageamount != null" >
+        pp_riskManageAmount = #{record.ppRiskmanageamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppInterestfeerate != null" >
+        pp_interestFeeRate = #{record.ppInterestfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppApplytype != null" >
+        pp_applyType = #{record.ppApplytype,jdbcType=INTEGER},
+      </if>
+      <if test="record.ppRemark != null" >
+        pp_remark = #{record.ppRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p2p_loan_apply
+    set <!-- pp_loanApplyID -->pp_productNo = #{record.ppLoanapplyid,jdbcType=INTEGER},
+      pp_custNo = #{record.ppCustno,jdbcType=VARCHAR},
+      pp_productType = #{record.ppProducttype,jdbcType=VARCHAR},
+      pp_loanApplyTime = #{record.ppLoanapplytime,jdbcType=TIMESTAMP},
+      pp_loanTerm = #{record.ppLoanterm,jdbcType=INTEGER},
+      pp_loanAmount = #{record.ppLoanamount,jdbcType=DECIMAL},
+      pp_loanManageFeeRate = #{record.ppLoanmanagefeerate,jdbcType=DECIMAL},
+      pp_comprehensiveRate = #{record.ppComprehensiverate,jdbcType=DECIMAL},
+      pp_loanDesc = #{record.ppLoandesc,jdbcType=VARCHAR},
+      pp_loanRepayment = #{record.ppLoanrepayment,jdbcType=INTEGER},
+      pp_loanApplyStatus = #{record.ppLoanapplystatus,jdbcType=INTEGER},
+      pp_loanGrantTime = #{record.ppLoangranttime,jdbcType=TIMESTAMP},
+      pp_loanRepaymentTime = #{record.ppLoanrepaymenttime,jdbcType=TIMESTAMP},
+      pp_loanPurpose = #{record.ppLoanpurpose,jdbcType=VARCHAR},
+      pp_loanTitle = #{record.ppLoantitle,jdbcType=VARCHAR},
+      pp_repaymentAmount = #{record.ppRepaymentamount,jdbcType=DECIMAL},
+      pp_loanApplyMobile = #{record.ppLoanapplymobile,jdbcType=VARCHAR},
+      pp_guaranteeInfo = #{record.ppGuaranteeinfo,jdbcType=VARCHAR},
+      pp_mortgageInfo = #{record.ppMortgageinfo,jdbcType=VARCHAR},
+      pp_riskMeasure = #{record.ppRiskmeasure,jdbcType=VARCHAR},
+      pp_guaranteeFeeRate = #{record.ppGuaranteefeerate,jdbcType=DECIMAL},
+      pp_serviceFeeRate = #{record.ppServicefeerate,jdbcType=DECIMAL},
+      pp_riskManageAmountRate = #{record.ppRiskmanageamountrate,jdbcType=DECIMAL},
+      pp_riskManageAmount = #{record.ppRiskmanageamount,jdbcType=DECIMAL},
+      pp_interestFeeRate = #{record.ppInterestfeerate,jdbcType=DECIMAL},
+      pp_applyType = #{record.ppApplytype,jdbcType=INTEGER},
+      pp_remark = #{record.ppRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_loan_apply" >
+    update p2p_loan_apply
+    <set >
+      <if test="ppCustno != null" >
+        pp_custNo = #{ppCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="ppProducttype != null" >
+        pp_productType = #{ppProducttype,jdbcType=VARCHAR},
+      </if>
+      <if test="ppLoanapplytime != null" >
+        pp_loanApplyTime = #{ppLoanapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ppLoanterm != null" >
+        pp_loanTerm = #{ppLoanterm,jdbcType=INTEGER},
+      </if>
+      <if test="ppLoanamount != null" >
+        pp_loanAmount = #{ppLoanamount,jdbcType=DECIMAL},
+      </if>
+      <if test="ppLoanmanagefeerate != null" >
+        pp_loanManageFeeRate = #{ppLoanmanagefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="ppComprehensiverate != null" >
+        pp_comprehensiveRate = #{ppComprehensiverate,jdbcType=DECIMAL},
+      </if>
+      <if test="ppLoandesc != null" >
+        pp_loanDesc = #{ppLoandesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ppLoanrepayment != null" >
+        pp_loanRepayment = #{ppLoanrepayment,jdbcType=INTEGER},
+      </if>
+      <if test="ppLoanapplystatus != null" >
+        pp_loanApplyStatus = #{ppLoanapplystatus,jdbcType=INTEGER},
+      </if>
+      <if test="ppLoangranttime != null" >
+        pp_loanGrantTime = #{ppLoangranttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ppLoanrepaymenttime != null" >
+        pp_loanRepaymentTime = #{ppLoanrepaymenttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ppLoanpurpose != null" >
+        pp_loanPurpose = #{ppLoanpurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="ppLoantitle != null" >
+        pp_loanTitle = #{ppLoantitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ppRepaymentamount != null" >
+        pp_repaymentAmount = #{ppRepaymentamount,jdbcType=DECIMAL},
+      </if>
+      <if test="ppLoanapplymobile != null" >
+        pp_loanApplyMobile = #{ppLoanapplymobile,jdbcType=VARCHAR},
+      </if>
+      <if test="ppGuaranteeinfo != null" >
+        pp_guaranteeInfo = #{ppGuaranteeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="ppMortgageinfo != null" >
+        pp_mortgageInfo = #{ppMortgageinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="ppRiskmeasure != null" >
+        pp_riskMeasure = #{ppRiskmeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="ppGuaranteefeerate != null" >
+        pp_guaranteeFeeRate = #{ppGuaranteefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="ppServicefeerate != null" >
+        pp_serviceFeeRate = #{ppServicefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="ppRiskmanageamountrate != null" >
+        pp_riskManageAmountRate = #{ppRiskmanageamountrate,jdbcType=DECIMAL},
+      </if>
+      <if test="ppRiskmanageamount != null" >
+        pp_riskManageAmount = #{ppRiskmanageamount,jdbcType=DECIMAL},
+      </if>
+      <if test="ppInterestfeerate != null" >
+        pp_interestFeeRate = #{ppInterestfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="ppApplytype != null" >
+        pp_applyType = #{ppApplytype,jdbcType=INTEGER},
+      </if>
+      <if test="ppRemark != null" >
+        pp_remark = #{ppRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where <!-- pp_loanApplyID -->pp_productNo = #{ppLoanapplyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baibao.web.p2p.generator.bean.P2p_loan_apply" >
+    update p2p_loan_apply
+    set pp_custNo = #{ppCustno,jdbcType=VARCHAR},
+      pp_productType = #{ppProducttype,jdbcType=VARCHAR},
+      pp_loanApplyTime = #{ppLoanapplytime,jdbcType=TIMESTAMP},
+      pp_loanTerm = #{ppLoanterm,jdbcType=INTEGER},
+      pp_loanAmount = #{ppLoanamount,jdbcType=DECIMAL},
+      pp_loanManageFeeRate = #{ppLoanmanagefeerate,jdbcType=DECIMAL},
+      pp_comprehensiveRate = #{ppComprehensiverate,jdbcType=DECIMAL},
+      pp_loanDesc = #{ppLoandesc,jdbcType=VARCHAR},
+      pp_loanRepayment = #{ppLoanrepayment,jdbcType=INTEGER},
+      pp_loanApplyStatus = #{ppLoanapplystatus,jdbcType=INTEGER},
+      pp_loanGrantTime = #{ppLoangranttime,jdbcType=TIMESTAMP},
+      pp_loanRepaymentTime = #{ppLoanrepaymenttime,jdbcType=TIMESTAMP},
+      pp_loanPurpose = #{ppLoanpurpose,jdbcType=VARCHAR},
+      pp_loanTitle = #{ppLoantitle,jdbcType=VARCHAR},
+      pp_repaymentAmount = #{ppRepaymentamount,jdbcType=DECIMAL},
+      pp_loanApplyMobile = #{ppLoanapplymobile,jdbcType=VARCHAR},
+      pp_guaranteeInfo = #{ppGuaranteeinfo,jdbcType=VARCHAR},
+      pp_mortgageInfo = #{ppMortgageinfo,jdbcType=VARCHAR},
+      pp_riskMeasure = #{ppRiskmeasure,jdbcType=VARCHAR},
+      pp_guaranteeFeeRate = #{ppGuaranteefeerate,jdbcType=DECIMAL},
+      pp_serviceFeeRate = #{ppServicefeerate,jdbcType=DECIMAL},
+      pp_riskManageAmountRate = #{ppRiskmanageamountrate,jdbcType=DECIMAL},
+      pp_riskManageAmount = #{ppRiskmanageamount,jdbcType=DECIMAL},
+      pp_interestFeeRate = #{ppInterestfeerate,jdbcType=DECIMAL},
+      pp_applyType = #{ppApplytype,jdbcType=INTEGER},
+      pp_remark = #{ppRemark,jdbcType=VARCHAR}
+    where <!-- pp_loanApplyID -->pp_productNo = #{ppLoanapplyid,jdbcType=INTEGER}
+  </update>
+  
+    <!-- 借款申请记录 -->
+  <select id="findLoanApplyRecordsByCust" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+  	SELECT u.pu_mobile,la.pp_loanAmount,la.pp_loanApplyTime,la.pp_loanTerm,la.pp_loanApplyStatus 
+  	FROM p2p_loan_apply la,p2p_users u 
+  	WHERE la.pp_custNo = u.pu_custNo and pp_custNo=#{custNo}  and
+  		la.pp_applyType = '10' 
+  		ORDER BY pp_loanApplyTime DESC limit #{beginWith},#{count}
+  	<!-- select <include refid="Base_Column_List"/> from p2p_loan_apply where pp_custNo=#{custNo} 
+  		order by pp_loanApplyTime DESC limit #{beginWith},#{count} -->
+  </select>
+  <!-- 借款申请记录count -->
+  <select id="findLoanApplyRecordsByCustTotal" parameterType="java.util.HashMap" resultType="int">
+  	SELECT count(pp_productNo) FROM p2p_loan_apply la,p2p_users u 
+  	WHERE la.pp_custNo = u.pu_custNo AND pp_custNo=#{custNo} AND la.pp_applyType = '10' 
+  	ORDER BY la.pp_loanApplyTime DESC 
+  </select>
+  
+  
+   <select id="searchByPorductNo" resultMap="BaseResultMap" parameterType="String" >
+	  SELECT
+	   a.pp_loanApplyTime,
+	   a.pp_loanTerm,
+	   a.pp_loanAmount,
+	   a.pp_loanManageFeeRate, 
+	   a.pp_comprehensiveRate,
+	   a.pp_loanDesc,
+	   a.pp_loanRepayment,
+	   a.pp_loanApplyStatus,
+	   a.pp_loanGrantTime,
+	   a.pp_loanRepaymentTime,
+	   a.pp_loanPurpose,
+	   a.pp_loanTitle,
+	   a.pp_repaymentAmount,
+	   a.pp_loanApplyMobile,
+	   a.pp_guaranteeInfo,
+	   a.pp_mortgageInfo,
+	   a.pp_riskMeasure,
+	   a.pp_guaranteeFeeRate,
+	   a.pp_serviceFeeRate,
+	   a.pp_riskManageAmountRate,
+	   a.pp_riskManageAmount,
+	   a.pp_interestFeeRate,
+	   a.pp_productType,
+	   a.pla_assignationFeeRate
+	  FROM
+	   p2p_loan_apply a
+	  WHERE a.pp_productNo = #{productNo}
+  </select>
+</mapper>

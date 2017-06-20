@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+/**************** 邀好友 ***************/
+.yhy-desc{ font-size:18px; color:#ff8c69; line-height:36px; padding:50px 0 40px 10px; }
+.tzxz-nav{ display:inline-block; padding:0 20px; font-size:24px; background:#ff8c69; color:#fff; height:50px; line-height:46px; }
+.jlxz-nav{ margin-left:10px; font-size:24px; color:#f8673a; display:inline-block; }
+.tzxz-ol{ margin-top:30px; }
+.tzxz-ol li{ font-size:14px; color:#5c5e5e; line-height:36px; margin-left:25px; list-style:decimal; }
+.zhuyi{ margin-left:5px; padding-top:25px; }
+.zhuyi span{ display:inline-block; height:40px; float:left; font-size:14px; color:#ff8c69; line-height:30px; }
+.zhuyi p{ display:inline-block; width:1000px; font-size:14px; color:#ff8c69; line-height:30px; }
+.msyq-btn{ margin-top:30px; display:inline-block; width:310px; height:87px; background:url(../../images/special/msyq-btn.png) no-repeat; }
+.yqfs-p{ font-size:14px; color:#5c5e5e; line-height:60px; padding-left:10px; }
+.yhy-01{ width:100%; height:270px; background:url(../../images/special/yhyb_03.png) center center no-repeat; }
+.yhy-02{ width:100%; height:250px; background:url(../../images/special/yhyb_04.jpg) center center no-repeat; }
+/**************** 注册送红包 ***************/
+.zcshb-01{ width:100%; height:254px; background:url(../../images/special/zcshb_01.png) center center no-repeat; }
+.zcshb-02{ width:100%; height:268px; background:url(../../images/special/zcshb_02.png) center center no-repeat; }
+.zcshb-03{ width:100%; height:300px; background:url(../../images/special/zcshb_03.png) center center no-repeat; }
+.zcshb-04{ width:100%; height:301px; background:url(../../images/special/zcshb_05.png) center center no-repeat; }
+.zcshb-05{ width:100%; height:208px; background:url(../../images/special/zcshb_06.png) center center no-repeat; }
+.zcshb-02 p{ font-size:16px; color:#fff; text-align:center; font-weight:bold; padding-left:24px; line-height:45px; }
+.zcshb-02 span{ font-size:24px; color:#fb0263; line-height:38px; display:inline-block; margin-top:115px; padding:0 86px; }
+.zcshb-03 ul{ display:inline-block; margin-top:90px; padding:0 125px; }
+.zcshb-03 ul li{ font-size:18px; color:#ec871e; line-height:48px; }
+.zcshb-03 ul li span{ color:#f50063; font-size:24px; }
+.zcshb-03 ul .later{ font-size:14px; }
+.zcshb-05 p a{ display:inline-block; width:293px; height:57px; background:url(../../images/special/zcshb-btn.png) no-repeat; line-height:54px; text-align:center; color:#fff; font-size:24px; }
+/**************** 幸运大转盘 ***************/
+.dzp-01{ width:100%; height:210px; background:url(../../images/special/dzp_01.jpg) center center no-repeat; }
+.dzp-02{ width:100%; height:185px; background:url(../../images/special/dzp_02.jpg) center center no-repeat; }
+.dzp-03{ width:100%; height:auto; background:url(../../images/special/dzp_04.jpg) center center repeat-y;  padding-bottom:150px;}
+.lplist{ font-size:30px; color:#de4337; text-align:center; line-height:60px; padding-top:25px; }
+.lpdesc{ font-size:18px; color:#de4337; text-align:center; }
+.cont{ width:1055px; margin:0 auto; }
+.dzp-con{ width:630px; height:500px; background:url(../../images/special/dzp-bg.png) no-repeat; margin-top:40px; padding:9px 14px; }
+.dzp-con ul li{ float:left; margin-top:15px; margin-left:15px; }
+.dzp-con ul li img,.dzp-con ul .btn-bg{ box-shadow:0px 5px 8px #333; }
+.img-con{ display:inline-block; position:relative; width:133px; height:102px;}
+.dzp-con ul .btn-bg{ width:281px; height:219px; background:#ffd735; }
+.dzp-zjjl{ width:394px; height:520px; background:url(../../images/special/zjmd.png) no-repeat; margin-top:40px; }
+.dzp-zjjl div.sub{margin-left:54px; margin-top:110px;}
+.cut-ceng{ width:133px; height:102px; background:url(../../images/special/xzk.png) no-repeat; position:absolute; top:0px; left: 0px;}
+.dzp-btn{ width:220px; height:75px; background:url(../../images/special/kscj.png) no-repeat; display:inline-block; margin-top:43px;}
+.dzp-btn-login{ width:220px; height:75px; background:url(../../images/special/kscj.png) no-repeat; display:inline-block; margin-top:43px;}
+.dzp-btn-not{ width:220px; height:75px; background:url(../../images/special/kscj-hui.png) no-repeat; display:inline-block; margin-top:43px;}
+.txt-tzjh,.txt-des{ text-align:center; color:#400408; letter-spacing:1px;}
+.txt-tzjh{ font-size:18px;}
+.txt-tzjh span{ color:#ef0839; font-size:36px;}
+.txt-des{ font-size:14px;}
+.dzp-zjjl ul { display:inline-block;}
+.dzp-zjjl ul li{ height:33px; border-bottom:1px dashed #ef0839; color:#ef0839; line-height:33px; font-size:14px; width:270px; padding:0 5px;}
+.dzp-zjjl ul li span{ margin-left:32px;}
+.dzp-title{ font-size:24px; color:#de4337; letter-spacing:2px; line-height:70px; margin-top:10px; padding-left:10px;}
+.dzp-jlgz li{ color:#de4337; list-style:decimal; font-size:18px; letter-spacing:2px; line-height:34px; margin-left:30px;}
+.jsq-p{color:#de4337; font-size:14px;letter-spacing:2px; margin-left:10px; margin-top:60px;}
+.hj-alert{ position:fixed;width:100%;height:100%;left:0;top:0;z-index:102;}
+.dzp-alert{cursor:pointer; position:absolute;top:50%;left:50%;width:350px; height:120px; margin-left:-175px; margin-top:-130px;background:url(../../images/special/alert-dzp.png) no-repeat; padding-top:140px;}
+.dzp-alert-xie{cursor:pointer; position:absolute;top:50%;left:50%;width:350px; height:120px; margin-left:-175px; margin-top:-130px;background:url(../../images/special/alert-dzp-xie.png) no-repeat; padding-top:140px;}
+.alert-p{ font-size:24px; color:#fff; text-align:center;}
+
+
+

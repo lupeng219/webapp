@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+           http://www.springframework.org/schema/mvc  
+     	   http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+   	<!--token 拦截校验-->
+   	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />   
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
+         <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+                <bean class="org.springframework.http.converter.ResourceHttpMessageConverter" />
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+            </list>
+        </property>
+    </bean>
+    	
+   	<!-- 有 @Controller注解的表现层控制器组件 -->
+	<context:component-scan base-package="com.baibao.web.p2p.controller"/>
+	<mvc:interceptors >
+		<!--拦截所有请求  -->
+		<bean class="com.baibao.core.security.web.CommonInterceptor">
+			<property name="mappingURL">
+				<list>
+					<value>https://www.baibaojr.com/service/tender/checkTender</value>
+					<value>https://www.baibaojr.com/service/tender/sureTender</value>
+					<value>https://www.baibaojr.com/service/personalBorrow/productRepayment</value>
+					<value>https://www.baibaojr.com/service/personalBorrow/productConfirmRepayment</value>
+				</list>
+			</property> 
+		</bean>
+		<bean class="com.baibao.core.security.web.VisitorInterceptor">
+			<property name="mappingURL">
+				<list>
+					<value>/service/index/index</value>
+					<value>/service/message/toMessageCenter</value>
+					<value>/service/message/toMessageDetails</value>
+					<value>/service/message/ajaxShowDetailsMessage</value>
+					<value>/service/piggyBank</value>
+					<value>/service/transRecord</value>
+					<value>/service/transRecord/ajaxPageTransRecord</value>
+					<value>/service/register</value>
+					<value>/service/productList/showProductList</value>
+					<value>/service/productList/ajaxShowProductList</value>
+					<value>/service/productList/showProductListByType</value>
+					<value>/service/productList/productDetails</value>
+					<value>/service/productList/ajaxPageTenderRecords</value>
+					<value>/service/productList/productDetail</value>
+					<value>/service/productList/ajaxPageTenderRecord</value>
+					<value>/service/productList/toCalculator</value>
+					<value>/service/productList/getProfit</value>
+					<value>/service/personalInvestment</value>
+					<value>/service/personalInvestment/ajaxPagetenderRecord</value>
+					<value>/service/personalBorrow</value>
+					<value>/service/personalBorrow/loanApplicationPageUrl</value>
+					<value>/service/personalBorrow/repaymentInPageUrl</value>
+					<value>/service/personalBorrow/hasPaidOffPageUrl</value>
+					<value>/service/wapAccount/wapAccountIndex</value>
+					<value>/service/wapAccount/toWapRecharge</value>
+					<value>/service/wapAccount/toWapwithdrawals</value>
+					<value>/service/wapAccount/wapOpenAccount</value>
+					<value>/service/wapAccount/wapSafecenter</value>
+					<value>/service/wapAccount/wapModifyLoginPassword</value>
+					<value>/service/wapAccount/wapModifyTransPassword</value>
+					<value>/service/wapAccount/wapHelpCenter</value>
+					<value>/service/wapAccount/wapModifyMail</value>
+					<value>/service/wapAccount/wapAccountOldIndex</value>
+					<value>/service/wapAccount/wapOldTransRecord</value>
+					<value>/service/wapAccount/skipWithdrawCash</value>
+					<value>/service/wapActivity/wapInviteFriends</value>
+					<value>/service/wapActivity/ajaxInviteFriends</value>
+					<value>/service/wapActivity/ajaxRecomTender</value>
+					<value>/service/wapActivity/wapRedEnvelopes</value>
+					<value>/service/wapBankcard/toWapBankCard</value>
+					<value>/service/wapBankcard/toWapBindBankCard</value>
+					<value>/service/wapBulkLoan/showProductList</value>
+					<value>/service/wapBulkLoan/ProductListByType</value>
+					<value>/service/wapBulkLoan/wapProductDetails</value>
+					<value>/service/wapBulkLoan/wapProductDetail</value>
+					<value>/service/wapBulkLoan/wapTenderRecord</value>
+					<value>/service/wapBulkLoan/wapTenderRecords</value>
+					<value>/service/wapBulkLoan/tenderRecordByCustNo</value>
+					<value>/service/wapBulkLoan/wapGetRepayments</value>
+					<value>/service/wapIndex/toWapIndex</value>
+					<value>/service/wapIndex/download</value>
+					<value>/service/wapLogin/toWapLogin</value>
+					<value>/service/wapLogin/wapFindPassWordOne</value>
+					<value>/service/wapLogin/wapFindPassWordTwo</value>
+					<value>/service/wapLogin/wapAboutWe</value>
+					<value>/service/wapMessages/wapFindmsg</value>
+					<value>/service/wapMessages/wapMsgDetails</value>
+					<value>/service/wapRecords/rechargeWithdraw</value>
+					<value>/service/tenderRecord</value>
+					<value>/service/wapRegister/toWapRegister</value>
+					<value>/service/wapRegister/registerAgreement</value>
+					<value>/service/agreement/registerAgreement</value>
+					<value>/service/agreement/equitableAssignment</value>
+					<value>/service/agreement/loanAgreement</value>
+					<value>/service/agreement/loanGuaranteeAgreement</value>
+					<value>/service/agreement/equitableAssignments</value>
+					<value>/service/agreement/loanAgreements</value>
+					<value>/service/agreement/loanGuaranteeAgreements</value>
+					<value>/service/agreement/getBorrowContractList</value>
+					<value>/service/agreement/ajaxPagegetBorrowContractList</value>
+					<value>/service/borrowMoney</value>
+					<value>/service/borrowMoney/personBorrow</value>
+					<value>/service/borrowMoney/companyBorrow</value>
+					<value>/service/dissertation/toNewYear</value>
+					<value>/service/dissertation/toTwelveActivity</value>
+					<value>/service/dissertation/appSpecial</value>
+					<value>/service/dissertation/sinaSpecial</value>
+					<value>/service/dissertation/inviteFriends</value>
+					<value>/service/login/unSecurity</value>
+					<value>/service/login/testSecerty</value>
+					<value>/service/login/backLoginPassword</value>
+					<value>/service/account</value>
+					<value>/service/account/toPersonalAccount</value>
+					<value>/service/account/torecharge</value>
+					<value>/service/account/onlineBankRecharge</value>
+					<value>/service/account/towithdrawals</value>
+					<value>/service/account/findtranspassword</value>
+					<value>/service/active/toMyActive</value>
+					<value>/service/active/inviteFriends</value>
+					<value>/service/active/ajaxShowFriendRecord</value>
+					<value>/service/active/ajaxShowFriendTenderRecord</value>
+					<value>/service/asset</value>
+					<value>/service/asset/switcholdaccount</value>
+					<value>/service/asset/ajaxPageTransRecord</value>
+					<value>/service/asset/skipWithdrawCash</value>
+					<value>/service/asset/index</value>
+					<value>/service/aboutUs/contact</value>
+					<value>/service/aboutUs/links</value>
+					<value>/service/aboutUs/recruitment</value>
+					<value>/service/aboutUs/staffcare</value>
+					<value>/service/aboutUs/news</value>
+					<value>/service/aboutUs/activeTimeAxis</value>
+					<value>/service/aboutUs/qualification</value>
+					<value>/service/aboutUs/team</value>
+					<value>/service/aboutUs/company</value>
+				</list>
+			</property> 
+		</bean>
+	</mvc:interceptors>
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">   
+	    <property name="favorPathExtension" value="false" />  
+	    <property name="favorParameter" value="false" />   
+	    <property name="ignoreAcceptHeader" value="false" />   
+	    <property name="mediaTypes" >   
+	        <value>  
+	            atom=application/atom+xml  
+	            html=text/html  
+	            json=application/json  
+	            *=*/*  
+	        </value>   
+	    </property>  
+   </bean>
+   <!--<bean class="com.baibao.p2p.task.taskConfigListener"/>-->
+   <!--   
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ 		<property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean> -->
+    <!-- 配置Freemarker屬性文件路徑 -->
+    <bean id="freemarkerConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+   		<property name="location" value="classpath:config/properties/freemarker.properties" />
+	</bean>
+	<!-- 配置freeMarker模板加載地址 -->
+	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+   		<!-- 視圖解析器會在/WEB-INF/views/路徑下掃描視圖文件 -->
+   		<property name="templateLoaderPath" value="/WEB-INF/views/" />
+   		<property name="freemarkerVariables">
+	        <map>
+	            <entry key="xml_escape" value-ref="fmXmlEscape" />
+	        </map>
+   		</property>
+   		<property name="freemarkerSettings" ref="freemarkerConfiguration">  
+       </property> 
+   		
+	</bean>
+	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+	<!-- 配置freeMarker視圖解析器 -->
+	<bean id="freemakerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+   		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+   		<property name="cache" value="true"/>
+        <property name="suffix" value=".ftl"/>
+	    <property name="contentType" value="text/html; charset=UTF-8" />
+	    <property name="exposeRequestAttributes" value="true" />
+	    <property name="exposeSessionAttributes" value="true" />
+	    <property name="exposeSpringMacroHelpers" value="true" />
+	    <property name="requestContextAttribute" value="request" />
+   		<!-- 給視圖解析器配置優先級，你可以給之前jsp視圖解析器的值配為2 -->
+   		<!-- <property name="order" value="1" /> -->
+	</bean>
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+		<property name="maxUploadSize" value="4096050"/>
+		<property name="resolveLazily" value="true"/> 
+	</bean>
+    <bean id="exceptionHandler" class="com.baibao.core.exception.QZBExceptionHandler"/>
+	    
+	    <!-- eventbus配置（同步和异步） -->
+<!-- 	    <bean id="qzbEventBus" class="com.baibao.web.p2p.controller.eventBus.QZBEventBus" /> -->
+<!-- 		<bean id="qzbAsyncEventBus" class="com.baibao.web.p2p.controller.eventBus.QZBAsyncEventBus" />  -->
+</beans>

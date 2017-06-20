@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_loan_product_aidMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_loan_product_aid" >
+    <result column="pp_productNo" property="ppProductno" jdbcType="VARCHAR" />
+    <result column="pp_custNo" property="ppCustno" jdbcType="VARCHAR" />
+    <result column="pp_loanTitle" property="ppLoantitle" jdbcType="VARCHAR" />
+    <result column="pp_loanTerm" property="ppLoanterm" jdbcType="INTEGER" />
+    <result column="pp_loanAmount" property="ppLoanamount" jdbcType="DECIMAL" />
+    <result column="pp_loanAmountExist" property="ppLoanamountexist" jdbcType="DECIMAL" />
+    <result column="pp_comprehensiveRate" property="ppComprehensiverate" jdbcType="DECIMAL" />
+    <result column="pp_loanRepayment" property="ppLoanrepayment" jdbcType="INTEGER" />
+    <result column="pp_repaymentAmount" property="ppRepaymentamount" jdbcType="DECIMAL" />
+    <result column="pp_productTypeNo" property="ppProducttypeNo" jdbcType="VARCHAR" />
+    <result column="pp_bulkLoanStatus" property="ppBulkloanstatus" jdbcType="INTEGER" />
+    <result column="pp_bulkLoanStartTime" property="ppBulkloanstarttime" jdbcType="TIMESTAMP" />
+    <result column="pp_bulkLoanEndTime" property="ppBulkloanendtime" jdbcType="TIMESTAMP" />
+    <result column="pp_bulkLoanEffectTime" property="ppBulkloaneffecttime" jdbcType="TIMESTAMP" />
+    <result column="pp_bulkLoanDealSeconds" property="ppBulkloandealseconds" jdbcType="VARCHAR" />
+    <result column="pp_terderMinAmount" property="ppTerderminamount" jdbcType="DECIMAL" />
+    <result column="pp_tenderMaxAmount" property="ppTendermaxamount" jdbcType="DECIMAL" />
+    <result column="pp_tenderIncreaseAmount" property="ppTenderincreaseamount" jdbcType="DECIMAL" />
+    <result column="pp_activityType" property="ppActivityType" jdbcType="INTEGER" />
+    <result column="pp_investmentType" property="ppInvestmentType" jdbcType="INTEGER" />
+    <result column="ptr_tenderFlowNo" property="ptrTenderFlowNo" jdbcType="VARCHAR" />
+    <result column="pp_inviteCode" property="pp_inviteCode" jdbcType="VARCHAR" />
+    <result column="pp_duration" property="ppDuration" jdbcType="INTEGER" />
+    <!-- 临时字段 -->
+    <result column="ptr_status" property="tenderStatus" jdbcType="DECIMAL" />
+    <result column="ptr_amount" property="ptr_amount" jdbcType="DECIMAL" />
+    <result column="ptr_transTime" property="ptr_transTime" jdbcType="TIMESTAMP" />
+    <result column="ptr_tradeStatus" property="ptr_tradeStatus" jdbcType="VARCHAR" />
+    <result column="plp_Address" property="plp_Address" jdbcType="VARCHAR" />
+    <result column="progress" property="progress" jdbcType="DECIMAL"/>
+    <result column="pp_loanDesc" property="pp_loanDesc" jdbcType="VARCHAR" />
+    <result column="residualAmount" property="residualAmount" jdbcType="DECIMAL"/>
+    <result column="plp_lockAssignationSeq" property="plpLockAssignationSeq" jdbcType="INTEGER" />
+    <result column="plp_lockAssignationDate" property="plpLockAssignationDate" jdbcType="TIMESTAMP" />
+    <result column="plp_lockAssignationDateTime" property="plpLockAssignationDateTime" jdbcType="INTEGER" />
+    <result column="plp_assignTerm" property="plpAssignTerm" jdbcType="INTEGER" />
+    <result column="plp_assignTenderNo" property="plpAssignTenderNo" jdbcType="VARCHAR" />
+    <result column="plp_assignProductNo" property="plpAssignProductNo" jdbcType="VARCHAR" />
+    <result column="pla_assignationFeeRate" property="assignationFeeRate" jdbcType="DECIMAL" />
+    <result column="plp_lockAssignationStatus" property="lockAssignationStatus" jdbcType="DECIMAL" />
+  </resultMap>
+
+  
+  <sql id="Base_Column_List" >
+    pp_productNo, pp_custNo, pp_loanTitle, pp_loanTerm, pp_loanAmount, 
+    pp_loanAmountExist, pp_comprehensiveRate, pp_loanRepayment, pp_repaymentAmount, pp_productTypeNo, 
+    pp_bulkLoanStatus, pp_bulkLoanStartTime, pp_bulkLoanEndTime, pp_bulkLoanEffectTime, 
+    pp_bulkLoanDealSeconds, pp_terderMinAmount, pp_tenderMaxAmount, pp_tenderIncreaseAmount,pp_activityType
+  </sql>
+ 
+
+  <insert id="insert" parameterType="com.baibao.web.p2p.generator.bean.P2p_loan_product_aid" >
+    insert into p2p_loan_product_aid ( pp_productNo, pp_custNo, 
+      pp_loanTitle, pp_loanTerm, pp_loanAmount, 
+      pp_loanAmountExist, pp_comprehensiveRate, 
+      pp_loanRepayment, pp_repaymentAmount, pp_productTypeNo, 
+      pp_bulkLoanStatus, pp_bulkLoanStartTime, 
+      pp_bulkLoanEndTime, pp_bulkLoanEffectTime, 
+      pp_bulkLoanDealSeconds, pp_terderMinAmount, 
+      pp_tenderMaxAmount, pp_tenderIncreaseAmount,pp_activityType
+      )
+    values (#{ppProductno,jdbcType=VARCHAR}, #{ppCustno,jdbcType=VARCHAR}, 
+      #{ppLoantitle,jdbcType=VARCHAR}, #{ppLoanterm,jdbcType=INTEGER}, #{ppLoanamount,jdbcType=DECIMAL}, 
+      #{ppLoanamountexist,jdbcType=DECIMAL}, #{ppComprehensiverate,jdbcType=DECIMAL}, 
+      #{ppLoanrepayment,jdbcType=INTEGER}, #{ppRepaymentamount,jdbcType=DECIMAL}, #{ppProducttypeNo,jdbcType=VARCHAR}, 
+      #{ppBulkloanstatus,jdbcType=INTEGER}, #{ppBulkloanstarttime,jdbcType=TIMESTAMP}, 
+      #{ppBulkloanendtime,jdbcType=TIMESTAMP}, #{ppBulkloaneffecttime,jdbcType=TIMESTAMP}, 
+      #{ppBulkloandealseconds,jdbcType=VARCHAR}, #{ppTerderminamount,jdbcType=DECIMAL}, 
+      #{ppTendermaxamount,jdbcType=DECIMAL}, #{ppTenderincreaseamount,jdbcType=DECIMAL}
+      )
+  </insert>
+  <!-- 分页查询用户投标记录 -->
+  <select id="queryTenderRecordByCust" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    SELECT
+         plpa.pp_productNo,
+         plpa.pp_loanTitle,
+         plpa.pp_comprehensiveRate,
+         plpa.pp_loanRepayment,
+         plpa.pp_loanTerm,
+         plpa.pp_bulkLoanStatus,
+         plpa.pp_investmentType,
+         plpa.pp_productTypeNo,
+         plpa.plp_lockAssignationSeq,
+         plpa.plp_lockAssignationDate,
+         ptr.ptr_status,
+         ptr.ptr_amount,
+         ptr.ptr_transTime,
+         ptr.ptr_tenderFlowNo,
+         ptr.ptr_tradeStatus,
+         ptps.ptp_tenderFlowNo,
+         ptps.ptp_profitTerm,
+         ptps.ptp_capital,
+         ptps.ptp_interest,
+         ptps.ptp_profit,
+         pla.pla_assignationFeeRate,
+         ptp2.ptp_profitStatus plp_lockAssignationStatus
+    FROM p2p_loan_product_aid plpa
+    INNER JOIN
+       p2p_tender_record ptr ON ptr.ptr_productNo = plpa.pp_productNo
+    LEFT JOIN
+    (SELECT
+            ptp.ptp_tenderFlowNo,
+            COUNT(ptp.id) ptp_profitTerm,
+            SUM(ptp.ptp_capital) ptp_capital,
+            SUM(ptp.ptp_interest) ptp_interest,
+            SUM(ptp.ptp_profit) ptp_profit
+        FROM p2p_tender_profit ptp WHERE
+            ptp.ptp_custNo = #{custNo} AND
+            ptp.ptp_profitStatus IN ("0", "2", "7")
+        GROUP BY ptp.ptp_tenderFlowNo) ptps
+    ON ptps.ptp_tenderFlowNo = ptr.ptr_tenderFlowNo
+    LEFT JOIN
+        p2p_tender_profit ptp2 ON
+        ptp2.ptp_custNo = #{custNo} AND
+        ptp2.ptp_tenderFlowNo = ptr.ptr_tenderFlowNo AND
+        ptp2.ptp_loanSeq = (
+            CASE ISNULL(plpa.plp_assignTerm)
+                WHEN 1 THEN
+                    plpa.plp_lockAssignationSeq
+                ELSE
+                    plpa.plp_assignTerm - plpa.pp_loanTerm + plpa.plp_lockAssignationSeq
+            END
+        )
+    INNER JOIN
+        p2p_loan_apply pla ON
+        pla.pp_productNo = plpa.pp_productNo
+    WHERE
+       ptr.ptr_custNo = #{custNo} AND
+       ptr.ptr_tradeStatus = '00' AND (
+        ptr.ptr_status is null OR
+        ptr.ptr_status = "10" OR
+        ptr.ptr_status = "11"
+        <if test="bulkStatus==5 or null==bulkStatus or ''==bulkStatus">
+        OR ptr.ptr_status = "12"
+        </if>
+       )
+    <if test="null!=bulkStatus and ''!=bulkStatus">
+        AND (
+          plpa.pp_bulkLoanStatus = #{bulkStatus}
+          <if test="bulkStatus==5">
+          OR ptr.ptr_status = "12"
+          </if>
+        )
+    </if>
+    <if test="null==bulkStatus or ''==bulkStatus">
+        AND plpa.pp_bulkLoanStatus IN(1, 2, 4, 5) 
+    </if>
+    <if test="null!=beginTime and ''!=beginTime">
+        <![CDATA[AND ptr.ptr_transTime >= #{beginTime}]]>
+    </if>
+    <if test="null!=endTime and ''!=endTime">
+        <![CDATA[AND ptr.ptr_transTime <= #{endTime}]]>
+    </if>
+    ORDER BY ptr.ptr_transTime DESC
+    LIMIT #{beginWith}, #{count}
+  </select>
+  
+  <select id="getCustTenderRecordTotal" parameterType="java.util.HashMap" resultType="int">
+    SELECT
+         COUNT(ptr.ptr_tenderFlowNo)
+    FROM p2p_loan_product_aid plpa
+    INNER JOIN
+       p2p_tender_record ptr ON ptr.ptr_productNo = plpa.pp_productNo
+    INNER JOIN
+        p2p_loan_apply pla ON
+        pla.pp_productNo = plpa.pp_productNo
+    WHERE
+       ptr.ptr_custNo = #{custNo} AND
+       ptr.ptr_tradeStatus = '00' AND (
+        ptr.ptr_status is null OR
+        ptr.ptr_status = "10" OR
+        ptr.ptr_status = "11"
+        <if test="bulkStatus==5 or null==bulkStatus or ''==bulkStatus">
+        OR ptr.ptr_status = "12"
+        </if>
+       )
+    <if test="null!=bulkStatus and ''!=bulkStatus">
+        AND (
+          plpa.pp_bulkLoanStatus = #{bulkStatus}
+          <if test="bulkStatus==5">
+          OR ptr.ptr_status = "12"
+          </if>
+        )
+    </if>
+    <if test="null==bulkStatus or ''==bulkStatus">
+        AND plpa.pp_bulkLoanStatus IN(1, 2, 4, 5) 
+    </if>
+    <if test="null!=beginTime and ''!=beginTime">
+        <![CDATA[AND ptr.ptr_transTime >= #{beginTime}]]>
+    </if>
+    <if test="null!=endTime and ''!=endTime">
+        <![CDATA[AND ptr.ptr_transTime <= #{endTime}]]>
+    </if>
+    ORDER BY ptr.ptr_transTime DESC
+  </select>
+  
+   <!-- 首页产品展示 
+   <select id="queryPorductAid" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select p.pp_productNo,p.pp_terderMinAmount, p.pp_loanTitle,p.pp_loanAmount,p.pp_loanAmountExist,p.pp_comprehensiveRate,p.pp_loanRepayment,p.pp_loanTerm,p.pp_bulkLoanStatus,m.plp_Address  from p2p_loan_product_aid p  left join p2p_loan_product_picture m on p.pp_productNo =m.plp_productNo
+    where  p.pp_bulkLoanStatus !=0  and m.plp_productCover=1
+    order by pp_bulkLoanStatus asc ,p.pp_bulkLoanStartTime desc 
+     <if test="null!=showCount and ''!=showCount">
+        limit #{showCount}
+    </if>
+  </select>-->
+   <!-- 首页推荐项目展示 -->
+   <select id="queryProductAidBydybz" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+   	SELECT 
+   		m.pp_productNo, m.pp_loanTitle,
+   	    m.pp_loanAmount, m.pp_loanAmountExist,
+   	    m.pp_comprehensiveRate,
+   	    m.pp_loanRepayment, m.pp_loanTerm,
+   	    m.pp_bulkLoanStatus, m.pp_terderMinAmount,
+   	    m.plp_assignTerm, m.plp_assignProductNo,
+   	    m.plp_assignTenderNo
+   	FROM ((SELECT
+   	    p.pp_productNo, p.pp_loanTitle,
+   	    p.pp_loanAmount, p.pp_loanAmountExist,
+   	    p.pp_comprehensiveRate,
+   	    p.pp_loanRepayment, p.pp_loanTerm,
+   	    p.pp_bulkLoanStatus, p.pp_terderMinAmount,
+   	    p.plp_assignTerm, p.plp_assignProductNo,
+   	    p.plp_assignTenderNo
+   	FROM
+   	    p2p_loan_product_aid p
+   	WHERE
+   	    p.pp_bulkLoanStatus = 1 AND
+   	    p.pp_activityType != 1 AND
+   	    p.pp_loanRepayment != 5 AND
+   	    p.pp_investmentType = #{productTypeNo} AND
+        <![CDATA[p.pp_bulkLoanStartTime <= #{now}]]>
+    ORDER BY
+        pp_bulkLoanStatus ,
+        p.pp_bulkLoanStartTime ASC LIMIT 10)
+    UNION ALL
+    (SELECT
+   	    p.pp_productNo, p.pp_loanTitle,
+   	    p.pp_loanAmount, p.pp_loanAmountExist,
+   	    p.pp_comprehensiveRate,
+   	    p.pp_loanRepayment, p.pp_loanTerm,
+   	    p.pp_bulkLoanStatus, p.pp_terderMinAmount,
+   	    p.plp_assignTerm, p.plp_assignProductNo,
+   	    p.plp_assignTenderNo
+   	FROM
+   	    p2p_loan_product_aid p
+   	WHERE
+   	    p.pp_bulkLoanStatus != 0 AND
+   	    p.pp_bulkLoanStatus != 1 AND
+   	    p.pp_bulkLoanStatus != 3 AND
+   	    p.pp_activityType != 1 AND
+   	    p.pp_loanRepayment != 5 AND
+   	    p.pp_investmentType = #{productTypeNo} AND
+        <![CDATA[p.pp_bulkLoanStartTime <= #{now}]]>
+    ORDER BY
+        pp_bulkLoanStatus ASC,
+        p.pp_bulkLoanEffectTime DESC LIMIT 10))m
+    LIMIT #{ztCount}
+    
+  </select>
+  <!-- 首页资产包推荐 -->
+   <select id="queryAssetsPackProductAid" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+   	SELECT 
+   		m.pp_productNo, m.pp_loanTitle,
+   	    m.pp_loanAmount, m.pp_loanAmountExist,
+   	    m.pp_comprehensiveRate, m.pp_loanRepayment,
+   	    m.pp_loanTerm, m.pp_bulkLoanStatus,
+   	    m.pp_terderMinAmount
+   	FROM 
+   	((SELECT
+   	    p.pp_productNo, p.pp_loanTitle,
+   	    p.pp_loanAmount, p.pp_loanAmountExist,
+   	    p.pp_comprehensiveRate, p.pp_loanRepayment,
+   	    p.pp_loanTerm, p.pp_bulkLoanStatus,
+   	    p.pp_terderMinAmount
+   	FROM p2p_loan_product_aid p
+   	WHERE
+   	    p.pp_bulkLoanStatus = 1 AND
+   	    p.pp_activityType != 1 AND
+   	    p.pp_investmentType = 3 AND
+        <![CDATA[p.pp_bulkLoanStartTime <= #{now}]]>
+    ORDER BY
+        p.pp_bulkLoanStatus,
+        p.pp_bulkLoanStartTime ASC
+    LIMIT 3)
+    UNION ALL
+    (SELECT
+   	    p.pp_productNo, p.pp_loanTitle,
+   	    p.pp_loanAmount, p.pp_loanAmountExist,
+   	    p.pp_comprehensiveRate, p.pp_loanRepayment,
+   	    p.pp_loanTerm, p.pp_bulkLoanStatus,
+   	    p.pp_terderMinAmount
+   	FROM p2p_loan_product_aid p
+   	WHERE
+   	    p.pp_bulkLoanStatus !=0 AND
+   	    p.pp_bulkLoanStatus !=1 AND
+   	    p.pp_bulkLoanStatus != 3 AND
+   	    p.pp_activityType !=1 AND
+   	    p.pp_investmentType = 3 AND
+        <![CDATA[p.pp_bulkLoanStartTime <= #{now}]]>
+    ORDER BY
+        p.pp_bulkLoanStatus ASC,
+        p.pp_bulkLoanEffectTime DESC
+    LIMIT 3))m
+    LIMIT #{assetsPackCount}
+  </select>
+  
+  <!-- 首页佰宝day推荐 -->
+   <select id="queryTermDaysProductAid" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+   	SELECT
+   	    p.pp_productNo, p.pp_loanTitle,
+   	    p.pp_loanAmount, p.pp_loanAmountExist,
+   	    p.pp_comprehensiveRate, p.pp_loanRepayment,
+   	    p.pp_loanTerm, p.pp_bulkLoanStatus,
+   	    p.pp_terderMinAmount
+   	FROM p2p_loan_product_aid p
+   	WHERE
+   	    p.pp_bulkLoanStatus != 0 AND
+   	    p.pp_bulkLoanStatus != 3 AND
+   	    p.pp_activityType != 1 AND
+   	    p.pp_investmentType = 4 AND
+        <![CDATA[p.pp_bulkLoanStartTime <= #{now}]]>
+    ORDER BY
+        pp_bulkLoanStatus,
+        p.pp_bulkLoanStartTime ASC
+    LIMIT #{termDaysCount}
+  </select>
+  
+ <!--App首页展示活动标  -->
+  <select id="queryPorductAidActiveApp"  resultType="java.util.Map">
+    select (p.pp_loanAmountExist/p.pp_loanAmount) as progress , p.pp_productNo,
+    p.pp_loanTitle,p.pp_loanAmount,p.pp_loanAmountExist,p.pp_comprehensiveRate,
+    p.pp_loanRepayment,p.pp_loanTerm,p.pp_bulkLoanStatus,p.pp_terderMinAmount
+    from p2p_loan_product_aid p 
+    where  p.pp_bulkLoanStatus !=0 and p.pp_activityType='2' and
+        <![CDATA[p.pp_bulkLoanStartTime <= NOW() ]]>
+    order by p.pp_bulkLoanStartTime desc  
+    limit 1
+  </select>
+  <!--App首页展示可投标 (资产包)-->
+  <select id="queryPorductAidApp" resultType="java.util.Map">
+    select(p.pp_loanAmountExist/p.pp_loanAmount) as progress ,p.pp_productNo,
+    p.pp_loanTitle,(p.pp_loanAmount-p.pp_loanAmountExist) residualAmount,p.pp_loanAmountExist,p.pp_loanAmount,p.pp_comprehensiveRate,
+    p.pp_loanRepayment,p.pp_loanTerm,p.pp_bulkLoanStatus,p.pp_terderMinAmount,p.pp_investmentType
+    from p2p_loan_product_aid p 
+    where   p.pp_activityType !='1' AND p.pp_bulkLoanStatus!='0' AND p.pp_bulkLoanStatus!='3' AND p.pp_investmentType='3' and
+        <![CDATA[p.pp_bulkLoanStartTime <= NOW() ]]>
+    order by p.pp_bulkLoanStatus asc,p.pp_bulkLoanStartTime asc
+    limit 1
+  </select>
+  <!--App首页展示可投标 (直投)-->
+  <select id="queryPorductAidAppDirect" resultType="java.util.Map">
+    select(p.pp_loanAmountExist/p.pp_loanAmount) as progress ,p.pp_productNo,
+    p.pp_loanTitle,(p.pp_loanAmount-p.pp_loanAmountExist) residualAmount,p.pp_loanAmountExist,p.pp_loanAmount,p.pp_comprehensiveRate,
+    p.pp_loanRepayment,p.pp_loanTerm,p.pp_bulkLoanStatus,p.pp_terderMinAmount,p.pp_investmentType
+    from p2p_loan_product_aid p 
+    where   p.pp_activityType !='1' AND p.pp_bulkLoanStatus!='0' AND p.pp_bulkLoanStatus!='3' AND p.pp_investmentType='1' AND (p.pp_loanRepayment='0' or p.pp_loanRepayment='4')  and
+        <![CDATA[p.pp_bulkLoanStartTime <= NOW() ]]>
+    order by p.pp_bulkLoanStatus asc,p.pp_bulkLoanStartTime asc
+    limit 1
+  </select>
+  <!--App首页展示可投标 (按天计息)-->
+  <select id="queryPorductAidAppDay" resultType="java.util.Map">
+    select(p.pp_loanAmountExist/p.pp_loanAmount) as progress ,p.pp_productNo,
+    p.pp_loanTitle,(p.pp_loanAmount-p.pp_loanAmountExist) residualAmount,p.pp_loanAmountExist,p.pp_loanAmount,p.pp_comprehensiveRate,
+    p.pp_loanRepayment,p.pp_loanTerm,p.pp_bulkLoanStatus,p.pp_terderMinAmount,p.pp_investmentType
+    from p2p_loan_product_aid p 
+    where   p.pp_activityType !='1' AND p.pp_bulkLoanStatus!='0' AND p.pp_bulkLoanStatus!='3' AND p.pp_investmentType='4'   and
+        <![CDATA[p.pp_bulkLoanStartTime <= NOW() ]]>
+    order by p.pp_bulkLoanStatus asc,p.pp_bulkLoanStartTime asc
+    limit 1
+  </select>
+  <select id="queryPorductAidAppAttornCount" resultType="java.lang.Integer">
+  	SELECT COUNT(id) FROM p2p_loan_product_aid p 
+  		WHERE p.pp_investmentType ='2'  AND p.pp_bulkLoanStatus='1'
+  </select>
+   <!-- 根据产品号查询产品详情 -->
+  <select id="queryByProductNo" parameterType="String" resultMap="BaseResultMap">
+    SELECT
+        p.pp_activityType,
+        p.pp_productNo,
+        p.pp_custNo,
+        p.pp_loanTitle,
+        p.pp_loanTerm,
+        p.pp_loanAmount, 
+        p.pp_loanAmountExist,
+        p.pp_comprehensiveRate,
+        p.pp_loanRepayment,
+        p.pp_repaymentAmount,
+        p.pp_productTypeNo, 
+        p.pp_bulkLoanStatus,
+        p.pp_bulkLoanStartTime,
+        p.pp_bulkLoanEndTime,
+        p.pp_bulkLoanEffectTime, 
+        p.pp_bulkLoanDealSeconds,
+        p.pp_terderMinAmount,
+        p.pp_tenderMaxAmount,
+        p.pp_tenderIncreaseAmount,
+        pl.pp_loanDesc,
+        p.pp_investmentType,
+        pl.pp_inviteCode,
+        p.plp_lockAssignationSeq,
+        p.plp_assignTenderNo,
+        p.plp_assignProductNo
+    FROM p2p_loan_product_aid p 
+    LEFT JOIN p2p_loan_apply pl ON p.pp_productNo = pl.pp_productNo
+    WHERE p.pp_productNo = #{productNo} 
+  </select>
+  <!-- 分页查询用户借款记录(还款) -->
+  <select id="findLoanProductAidPage" parameterType="java.util.HashMap" resultType="map">
+    SELECT 
+        plpa.pp_ProductNo,
+        plpa.pp_loanTitle,
+        pcp.pcp_amount as pp_loanAmount,
+        plpa.pp_comprehensiveRate,
+        plpa.pp_investmentType
+    <if test="bulkStatus == 4">
+        ,prb.repaymentBillCount,
+        plpa.pp_loanTerm,
+        prb.prb_repaymentTime,
+        prb.prb_repaymentPrincipal,
+        prb.prb_repaymentStatus
+    </if>
+    <if test="bulkStatus == 5">,prbs.prb_repaymentPrincipal</if>
+        FROM p2p_loan_product plpa 
+        LEFT JOIN p2p_creditor_pack pcp ON plpa.pp_productNo = pcp.pcp_productNo
+    <if test="bulkStatus == 4">
+        LEFT JOIN (
+           SELECT COUNT(sublist.prb_repaybillNo) AS repaymentBillCount,
+                sublist.prb_productNo,
+                sublist.prb_repaymentTime,
+                sublist.prb_repaymentPrincipal,
+                sublist.prb_repaymentStatus 
+           FROM 
+            (SELECT
+            prb_repaybillNo,
+            prb_productNo,
+            prb_repaymentTime,
+            prb_repaymentPrincipal,
+            prb_repaymentStatus 
+            FROM p2p_repayment_bill 
+            WHERE
+              (prb_repaymentStatus = 0 OR prb_repaymentStatus = 2 OR prb_repaymentStatus = 4) 
+              AND prb_custNo = #{custNo} 
+             ORDER BY prb_repaymentSeq) sublist 
+          GROUP BY sublist.prb_productNo) prb 
+            ON plpa.pp_productNo = prb.prb_productNo 
+    </if>
+    <if test="bulkStatus == 5">
+       LEFT JOIN (
+           SELECT SUM(prb_repaymentPrincipal) prb_repaymentPrincipal,
+               prb_productNo
+           FROM
+               p2p_repayment_bill
+           WHERE prb_custNo = #{custNo}
+           GROUP BY prb_productNo)
+               prbs ON plpa.pp_productNo = prbs.prb_productNo
+    </if>
+    WHERE
+       pcp.pcp_custNo = #{custNo} AND
+       plpa.pp_bulkLoanStatus = #{bulkStatus}
+    <if test="bulkStatus == 4">
+       AND repaymentBillCount IS NOT NULL
+    </if>
+    LIMIT #{beginWith}, #{count}
+  </select>
+  
+  
+  
+  <!-- 分页查询用户借款记录count -->
+  <select id="findLoanProductAidTotal" parameterType="java.util.HashMap" resultType="int">
+    SELECT COUNT(pp_productNo) FROM
+       p2p_loan_product plpa 
+       LEFT JOIN p2p_creditor_pack pcp ON
+          plpa.pp_productNo = pcp.pcp_productNo
+    WHERE
+       pcp.pcp_custNo = #{custNo} AND
+       plpa.pp_bulkLoanStatus = #{bulkStatus}
+  </select>
+
+  <select id="findLoanListByActivityType" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+   SELECT (p.pp_loanAmountExist/p.pp_loanAmount) as progress ,p.pp_terderMinAmount,
+          pp_tenderIncreaseAmount,pp_tenderMaxAmount,p.pp_productNo, p.pp_loanTitle,
+          p.pp_loanAmount,p.pp_loanAmountExist,(p.pp_loanAmount-p.pp_loanAmountExist) residualAmount,p.pp_comprehensiveRate,p.pp_loanRepayment,
+          p.pp_loanTerm,p.pp_bulkLoanStatus,p.pp_investmentType,p.pp_activityType,p.pp_bulkLoanEndTime
+          from p2p_loan_product_aid p
+          where 
+            <if test="null!=productType and '2'==productType">
+                p.pp_bulkLoanStatus !=0 and p.pp_bulkLoanStatus !=3
+            </if>
+            <if test="null!=productType and '2'!=productType">
+                p.pp_bulkLoanStatus !=0
+            </if>
+            <if test="null!=beginTerm and ''!=beginTerm">
+             <![CDATA[and p.pp_loanTerm>=#{beginTerm} ]]> 
+             </if>
+             <if test="null!=endTerm and ''!=endTerm">
+              <![CDATA[and p.pp_loanTerm<=#{endTerm} ]]> 
+            </if>
+            <if test="null!=bulkStatus and ''!=bulkStatus">
+             and p.pp_bulkLoanStatus =#{bulkStatus}
+            </if>
+            <if test="null!=type and ''!=type">
+             and p.pp_activityType=#{type}
+            </if>
+            <if test="null!=productType and ''!=productType">
+             and p.pp_investmentType=#{productType} 
+            </if>
+            and <![CDATA[p.pp_bulkLoanStartTime <= #{now}]]>
+            order by  p.pp_bulkLoanStatus ,pp_bulkLoanStartTime
+            limit #{beginWith},#{count}
+  </select>
+  <select id="findLoanListByActivityTypeCount" parameterType="java.util.HashMap" resultType="int">
+   SELECT count(1)  from p2p_loan_product_aid p
+		  where 
+		    <if test="null!=productType and ''!=productType and 2==productType">
+                p.pp_bulkLoanStatus !=0 and p.pp_bulkLoanStatus !=3
+            </if>
+            <if test="null!=productType and ''!=productType and 2!=productType">
+                p.pp_bulkLoanStatus !=0
+            </if>
+            <if test="null!=beginTerm and ''!=beginTerm">
+             <![CDATA[and p.pp_loanTerm>=#{beginTerm} ]]> 
+             </if>
+             <if test="null!=endTerm and ''!=endTerm">
+              <![CDATA[and p.pp_loanTerm<=#{endTerm} ]]> 
+            </if>
+            <if test="null!=bulkStatus and ''!=bulkStatus">
+             and p.pp_bulkLoanStatus =#{bulkStatus}
+            </if>
+            <if test="null!=productType and ''!=productType">
+             and p.pp_investmentType=#{productType} 
+            </if>
+            and <![CDATA[p.pp_bulkLoanStartTime <= #{now}]]>
+  </select>
+  
+  <!--理财展示列表 -->
+   <select id="findLoanProductAidListPage" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+     SELECT (p.pp_loanAmountExist/p.pp_loanAmount) as progress ,p.pp_terderMinAmount,
+         pp_tenderIncreaseAmount,pp_tenderMaxAmount,p.pp_productNo, p.pp_loanTitle,
+         p.pp_loanAmount,p.pp_loanAmountExist,p.pp_comprehensiveRate,p.pp_loanRepayment,
+         p.pp_loanTerm,p.pp_bulkLoanStatus,"1" as type,p.pp_bulkLoanStartTime,p.pp_bulkLoanEffectTime
+       FROM p2p_loan_product_aid p
+       WHERE p.pp_bulkLoanStatus NOT IN (0, 3) AND p.pp_InvestmentType != 2
+           <if test="activityType!=null and ''!=activityType">
+               AND p.pp_activityType=1
+           </if>
+           <if test="null!=beginTerm and ''!=beginTerm">
+            <![CDATA[AND p.pp_duration>=#{beginTerm} ]]> 
+            </if>
+            <if test="null!=endTerm and ''!=endTerm">
+             <![CDATA[AND p.pp_duration<=#{endTerm} ]]> 
+           </if>
+           <if test="null!=bulkStatus and ''!=bulkStatus">
+            AND p.pp_bulkLoanStatus =#{bulkStatus}
+           </if>
+           <if test="null!=productType and ''!=productType">
+            AND p.pp_productTypeNo =#{productType}
+           </if>
+           <if test="null!=ppInvestmentType and ''!=ppInvestmentType">
+            AND p.pp_InvestmentType =#{ppInvestmentType}
+           </if>
+           <![CDATA[AND p.pp_bulkLoanStartTime <= #{now}]]>
+       ORDER BY p.pp_bulkLoanStatus = 1 DESC, pp_bulkLoanEffectTime DESC, pp_bulkLoanStartTime ASC
+       LIMIT #{beginWith},#{count}
+  </select>
+  
+  <select id="getLoanProductAidListTotal" parameterType="java.util.HashMap" resultType="int">
+      SELECT count(1) from (
+           SELECT (p.pp_loanAmountExist/p.pp_loanAmount) as progress ,p.pp_terderMinAmount,
+          pp_tenderIncreaseAmount,pp_tenderMaxAmount,p.pp_productNo, p.pp_loanTitle,
+          p.pp_loanAmount,p.pp_loanAmountExist,p.pp_comprehensiveRate,p.pp_loanRepayment,
+          p.pp_loanTerm,p.pp_bulkLoanStatus,"1" as type
+          from p2p_loan_product_aid p
+          where  p.pp_bulkLoanStatus !=0 and p.pp_bulkLoanStatus !=3 and p.pp_InvestmentType != 2
+            <if test="activityType!=null and ''!=activityType">
+                and p.pp_activityType=1
+            </if>
+            <if test="null!=beginTerm and ''!=beginTerm">
+             <![CDATA[and p.pp_duration>=#{beginTerm} ]]> 
+             </if>
+             <if test="null!=endTerm and ''!=endTerm">
+              <![CDATA[and p.pp_duration<=#{endTerm} ]]> 
+            </if>
+            <if test="null!=bulkStatus and ''!=bulkStatus">
+             and p.pp_bulkLoanStatus =#{bulkStatus}
+            </if>
+            <if test="null!=productType and ''!=productType">
+             and p.pp_productTypeNo =#{productType}
+            </if>
+            <if test="null!=termDays and ''!=termDays and termDays==1">
+           		AND p.pp_InvestmentType = 1
+           		ANd p.pp_loanRepayment = 5
+           	</if>
+           	<if test="null!=termDays and ''!=termDays and termDays==2">
+           		AND p.pp_loanRepayment != 5
+           	</if>
+            <if test="null!=ppInvestmentType and ''!=ppInvestmentType">
+             and p.pp_InvestmentType =#{ppInvestmentType}
+            </if>
+            <![CDATA[and p.pp_bulkLoanStartTime <= #{now}]]>
+      ) m
+  </select>
+  
+  <!--理财展示列表 -->
+   <select id="findLoanProductAidCreditTransListPage" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+     
+          SELECT (p.pp_loanAmountExist/p.pp_loanAmount) as progress ,p.pp_terderMinAmount,
+          pp_tenderIncreaseAmount,pp_tenderMaxAmount,p.pp_productNo, p.pp_loanTitle,
+          p.pp_loanAmount,p.pp_loanAmountExist,p.pp_comprehensiveRate,p.pp_loanRepayment,
+          p.pp_loanTerm,p.pp_bulkLoanStatus,"1" as type,p.pp_bulkLoanStartTime, p.pp_bulkLoanEffectTime
+          from p2p_loan_product_aid p
+          where  p.pp_bulkLoanStatus not in (0, 3)
+            <if test="null!=beginTerm and ''!=beginTerm">
+             <![CDATA[and p.pp_loanTerm>=#{beginTerm} ]]> 
+             </if>
+             <if test="null!=endTerm and ''!=endTerm">
+              <![CDATA[and p.pp_loanTerm<=#{endTerm} ]]> 
+            </if>
+            <if test="null!=beginRate and ''!=beginRate">
+             <![CDATA[and p.pp_comprehensiveRate>=#{beginRate} ]]> 
+            </if>
+            <if test="null!=endRate and ''!=endRate">
+              <![CDATA[and p.pp_comprehensiveRate<=#{endRate} ]]> 
+            </if>
+            and p.pp_InvestmentType = 2
+            and (p.pp_bulkLoanStatus != 0 and p.pp_bulkLoanStatus != 3)
+            <![CDATA[and p.pp_bulkLoanStartTime <= #{now}]]>
+    ORDER BY  p.pp_bulkLoanStatus,p.pp_bulkLoanStartTime ASC
+    limit #{beginWith},#{count}
+  </select>
+  
+   <select id="getLoanProductAidCreditTransListTotal" parameterType="java.util.HashMap" resultType="int">
+      SELECT count(1) from (
+           SELECT (p.pp_loanAmountExist/p.pp_loanAmount) as progress ,p.pp_terderMinAmount,
+          pp_tenderIncreaseAmount,pp_tenderMaxAmount,p.pp_productNo, p.pp_loanTitle,
+          p.pp_loanAmount,p.pp_loanAmountExist,p.pp_comprehensiveRate,p.pp_loanRepayment,
+          p.pp_loanTerm,p.pp_bulkLoanStatus,"1" as type
+          from p2p_loan_product_aid p
+          where  p.pp_bulkLoanStatus !=0
+            <if test="null!=beginTerm and ''!=beginTerm">
+             <![CDATA[and p.pp_loanTerm>=#{beginTerm} ]]> 
+             </if>
+             <if test="null!=endTerm and ''!=endTerm">
+              <![CDATA[and p.pp_loanTerm<=#{endTerm} ]]> 
+            </if>
+            <if test="null!=beginRate and ''!=beginRate">
+             <![CDATA[and p.pp_comprehensiveRate>=#{beginRate} ]]> 
+             </if>
+             <if test="null!=endRate and ''!=endRate">
+              <![CDATA[and p.pp_comprehensiveRate<=#{endRate} ]]> 
+            </if>
+            and p.pp_InvestmentType = 2
+             and (p.pp_bulkLoanStatus != 0 and p.pp_bulkLoanStatus != 3 )
+            <![CDATA[and p.pp_bulkLoanStartTime <= #{now}]]>
+      ) m
+  </select>
+     <!-- 更新状态 -->
+  <update id="updateLoanProduct_aidStatus" parameterType="java.util.Map">
+    update p2p_loan_product_aid
+    <set>
+        pp_bulkLoanStatus=#{pp_bulkLoanStatus},
+        pp_bulkLoanEffectTime=#{bulkLoanEffectTime}
+    </set>
+    where pp_productNo=#{pp_productNo}
+  </update>
+   <select id="findActiveProductAidList"  resultMap="BaseResultMap">
+  SELECT p.pp_productNo,p.pp_terderMinAmount,p.pp_loanTitle,p.pp_loanAmount,
+  p.pp_loanAmountExist,p.pp_comprehensiveRate,p.pp_loanRepayment,p.pp_loanTerm,p.pp_bulkLoanStatus
+  from p2p_loan_product_aid p   
+  where <!-- p.pp_activityType =1 and --> 
+  p.pp_bulkLoanStatus !=0 
+  group by p.pp_bulkLoanStartTime desc limit 1
+  </select>
+   <!-- 更新状态:修改产品的最终状态 -->
+    <update id="updateLoanProductStatus" parameterType="java.util.Map">
+    update p2p_loan_product_aid
+    <set>
+        pp_bulkLoanStatus=#{pp_bulkLoanStatus}
+    </set>
+    where pp_productNo=#{pp_productNo}
+  </update>
+  <!-- 查询新手体验标 -->
+  <select id="queryNoviceExclusive" resultMap="BaseResultMap">
+    select (p.pp_loanAmountExist/p.pp_loanAmount) as progress ,p.pp_productNo, p.pp_loanTitle,(p.pp_loanAmount-p.pp_loanAmountExist) residualAmount,p.pp_loanAmountExist,p.pp_loanAmount,p.pp_comprehensiveRate,p.pp_loanRepayment,p.pp_loanTerm,p.pp_bulkLoanStatus,p.pp_terderMinAmount,p.pp_investmentType,p.pp_activityType 
+    from p2p_loan_product_aid p
+    where 
+    pp_activityType = 1 and (pp_bulkLoanStatus=1 or pp_bulkLoanStatus =2 or pp_bulkLoanStatus =4 or pp_bulkLoanStatus =5) order by pp_bulkLoanStatus asc, pp_bulkLoanStartTime asc limit 1
+  </select>
+  
+  <!-- 查询新手体验标 多条 -->
+  <select id="queryNoviceExclusives" resultMap="BaseResultMap">
+    select (p.pp_loanAmountExist/p.pp_loanAmount) as progress,
+         p.pp_productNo, p.pp_loanTitle,
+         p.pp_loanAmount, p.pp_loanAmountExist,
+         p.pp_comprehensiveRate, p.pp_loanRepayment,
+         p.pp_loanTerm, p.pp_bulkLoanStatus,
+         p.pp_terderMinAmount 
+    from p2p_loan_product_aid p
+    where 
+        pp_activityType = 1 and
+        <![CDATA[p.pp_bulkLoanStartTime <= NOW() and]]>
+        (pp_bulkLoanStatus = 1 or
+         pp_bulkLoanStatus = 2 or
+         pp_bulkLoanStatus = 4 or
+         pp_bulkLoanStatus = 5)
+    order by
+        pp_bulkLoanStartTime desc limit 4
+  </select>
+  <!-- 查询债权转让协议 -->
+  <select id="getequitableAssignments" parameterType="map" resultType="map">
+    SELECT plpa.pp_productNo, ptr.ptr_amount,plpa.pp_comprehensiveRate,plpa.pp_loanTerm
+    ,plpa.pp_loanRepayment,plpa.pp_bulkLoanEffectTime,jpui.pui_real_name,pu.pu_mobile,
+    tpui.pui_real_name as lender,tpui.pui_cert_type lpui_cert_type,tpui.pui_cert_no lpui_cert_no,tpui.pui_address lpui_address,pui.pu_mobile lpu_mobile,
+    pla.pp_loanManageFeeRate,pla.pp_serviceFeeRate
+    FROM p2p_loan_product_aid plpa 
+    left join p2p_tender_record ptr on plpa.pp_productNo = ptr.ptr_productNo
+    left join p2p_loan_apply pla on plpa.pp_productNo = pla.pp_productNo
+    left join p2p_user_info jpui on plpa.pp_custNo = jpui.pui_custNo
+    left join p2p_user_info tpui on ptr.ptr_custNo = tpui.pui_custNo
+    inner join p2p_users pu on jpui.pui_custNo = pu.pu_custNo
+    inner join p2p_users pui on tpui.pui_custNo = pui.pu_custNo
+    where ptr.ptr_tenderFlowNo = #{tenderFlowNo}
+  </select>
+  <!-- 查询借款保证协议 -->
+  <select id="loanGuaranteeAgreements" parameterType="map" resultType="map">
+  SELECT lpa.pp_bulkLoanEffectTime ,ui.pui_real_name,tr.ptr_channel,tr.ptr_amount,lpa.pp_loanTerm,lpa.pp_loanRepayment,tp.ptp_factInterest,la.pp_loanPurpose,
+  la.pp_comprehensiveRate,rb.prb_repaymentTime,la.pp_riskManageAmountRate,
+  la.pp_serviceFeeRate,pui.pui_real_name as loan_real_name,pui.pui_cert_no,pu.pu_mobile,lpa.pp_productNo from  p2p_tender_record tr  LEFT JOIN  
+  p2p_user_info  ui on tr.ptr_custNo=ui.pui_custNo  LEFT JOIN  p2p_loan_product_aid lpa on tr.ptr_productNo =lpa.pp_productNo 
+  LEFT JOIN p2p_tender_profit tp  on tr.ptr_tenderFlowNo =tp.ptp_tenderFlowNo  LEFT JOIN p2p_loan_apply la  on tr.ptr_productNo =la.pp_productNo 
+  LEFT JOIN  p2p_repayment_bill rb on tr.ptr_productNo =rb.prb_productNo LEFT JOIN  p2p_user_info pui  on la.pp_custNo=pui.pui_custNo
+  LEFT JOIN p2p_users pu on pu.pu_custNo = la.pp_custNo
+  where  rb.prb_repaymentSeq='1' and tp.ptp_loanSeq='1' and  tr.ptr_tenderFlowNo=#{tenderFlowNo}  
+  </select>
+  <!-- 查询借款协议 -->
+  <select id="loanAgreements" parameterType="map" resultType="map">
+    SELECT plpa.pp_bulkLoanEffectTime,tpui.pui_real_name,ptr.ptr_amount,plpa.pp_loanTerm,
+        jpui.pui_real_name pui_real_names,jpui.pui_cert_no,u.pu_mobile,
+        plpa.pp_loanAmount,plpa.pp_comprehensiveRate,pla.pp_riskManageAmountRate,pla.pp_loanPurpose,plpa.pp_loanRepayment
+    FROM p2p_loan_product_aid plpa
+    left join p2p_loan_apply pla on plpa.pp_productNo = pla.pp_productNo
+    left join p2p_tender_record ptr on plpa.pp_productNo = ptr.ptr_productNo
+    inner join p2p_user_info jpui on plpa.pp_custNo = jpui.pui_custNo
+    inner join p2p_user_info tpui on ptr.ptr_custNo = tpui.pui_custNo
+    inner join p2p_users u on u.pu_custNo = plpa.pp_custNo
+    where ptr.ptr_tenderFlowNo = #{tenderFlowNo}
+  </select>
+  <!-- 根据产品编号查询产品(一期项目) -->
+  <select id="getProductNo" parameterType="String" resultType="map">
+    SELECT l.loanTitle,b.bulkLoanNumber,b.bulkLoanStartTime,l.loanAmount,l.loanAmountExist,l.comprehensiveRate,l.loanTerm,l.loanRepayment,l.loanDesc,
+        b.bulkLoanDealSeconds,b.bulkLoanEndTime,b.terderMinAmount,b.tenderMaxAmount,b.tenderIncreaseAmount
+    FROM 
+    t_bulkloan b 
+    INNER JOIN t_loanapply l ON b.loanApplyId = l.loanApplyID
+    WHERE b.bulkLoanNumber = #{productNo}
+  </select>
+    <!-- 全网累计交易笔数 产品总数-->
+  <select id="getAllProductCount" parameterType="String" resultType="int">
+    SELECT sum(a) from ( (select count(1) a from p2p_loan_product_aid where pp_bulkLoanStatus != '0' and pp_bulkLoanStatus != '3') ) c
+  </select>
+  
+  <select id="tenderAssigning" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select p.pp_activityType,p.pp_productNo, p.pp_custNo, p.pp_loanTitle, p.pp_loanTerm, p.pp_loanAmount, 
+    p.pp_loanAmountExist, p.pp_comprehensiveRate, p.pp_loanRepayment, p.pp_repaymentAmount, p.pp_productTypeNo, 
+    p.pp_bulkLoanStatus, p.pp_bulkLoanStartTime, p.pp_bulkLoanEndTime, p.pp_bulkLoanEffectTime, 
+    p.pp_bulkLoanDealSeconds, p.pp_terderMinAmount, p.pp_tenderMaxAmount, p.pp_tenderIncreaseAmount,
+    ptr.ptr_tenderFlowNo, ptr.ptr_transTime,pla.pp_loanDesc,p.pp_investmentType, pla.pp_inviteCode, pla.pla_assignationFeeRate,
+    p.plp_lockAssignationSeq,p.plp_lockAssignationDate,p.plp_assignTerm,p.plp_assignTenderNo,p.plp_assignProductNo
+    FROM p2p_loan_product_aid p 
+    left join p2p_tender_record ptr on p.plp_assignTenderNo = ptr.ptr_tenderFlowNo
+    left join p2p_loan_apply pla on p.plp_assignProductNo = pla.pp_productNo
+    where p.pp_custNo = #{custNo} 
+    and ptr.ptr_custNo = #{custNo} 
+    and p.pp_investmentType=#{investmentType} 
+    and ptr.ptr_status=11
+    and (pp_bulkLoanStatus=1 or pp_bulkLoanStatus=2)
+    ORDER BY pp_bulkLoanEndTime asc limit #{beginWith}, #{count}
+  </select>
+  <select id="tenderAssigningCount" resultType="int" parameterType="java.util.Map">
+    SELECT count(1)
+    FROM p2p_loan_product_aid p 
+    left join p2p_tender_record ptr on p.plp_assignTenderNo = ptr.ptr_tenderFlowNo
+    left join p2p_loan_apply pla on p.plp_assignProductNo = pla.pp_productNo
+    where p.pp_custNo = #{custNo} 
+    and ptr.ptr_custNo = #{custNo} 
+    and p.pp_investmentType=#{investmentType} 
+    and ptr.ptr_status=11
+    and (pp_bulkLoanStatus=1 or pp_bulkLoanStatus=2)
+  </select>
+  
+  <select id="tenderAssignFinish" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select p.pp_activityType,p.pp_productNo, p.pp_custNo, p.pp_loanTitle, p.pp_loanTerm, p.pp_loanAmount, 
+    p.pp_loanAmountExist, p.pp_comprehensiveRate, p.pp_loanRepayment, p.pp_repaymentAmount, p.pp_productTypeNo, 
+    p.pp_bulkLoanStatus, p.pp_bulkLoanStartTime, p.pp_bulkLoanEndTime, p.pp_bulkLoanEffectTime, 
+    p.pp_bulkLoanDealSeconds, p.pp_terderMinAmount, p.pp_tenderMaxAmount, p.pp_tenderIncreaseAmount,
+    ptr.ptr_tenderFlowNo, ptr.ptr_transTime, pla.pp_loanDesc,p.pp_investmentType, pla.pp_inviteCode, pla.pla_assignationFeeRate,
+    p.plp_lockAssignationSeq,p.plp_lockAssignationDate,p.plp_assignTerm,p.plp_assignTenderNo,p.plp_assignProductNo
+    FROM p2p_loan_product_aid p 
+    left join p2p_tender_record ptr on p.plp_assignTenderNo = ptr.ptr_tenderFlowNo
+    left join p2p_loan_apply pla on p.plp_assignProductNo = pla.pp_productNo
+    where p.pp_custNo = #{custNo} 
+    and ptr.ptr_custNo = #{custNo} 
+    and p.pp_investmentType=#{investmentType} 
+    and ptr.ptr_status=12
+    and (pp_bulkLoanStatus=4 or pp_bulkLoanStatus=5)
+    ORDER BY pp_bulkLoanEndTime asc limit #{beginWith}, #{count}
+  </select>
+  <select id="tenderAssignFinishCount" resultType="int" parameterType="java.util.Map">
+    SELECT count(1)
+    FROM p2p_loan_product_aid p 
+    left join p2p_tender_record ptr on p.plp_assignTenderNo = ptr.ptr_tenderFlowNo
+    left join p2p_loan_apply pla on p.plp_assignProductNo = pla.pp_productNo
+    where p.pp_custNo = #{custNo} 
+    and ptr.ptr_custNo = #{custNo} 
+    and p.pp_investmentType=#{investmentType} 
+    and ptr.ptr_status=12
+    and (pp_bulkLoanStatus=4 or pp_bulkLoanStatus=5)
+  </select>
+  
+</mapper>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_activityMapper">
+
+
+	<update id="updateActiveB2cTransAid" parameterType="java.util.Map">
+		update p2p_active_b2c_trans_aid
+  		<set>
+  		part_status=#{part_status}
+  			<if test="part_host_response_time!=null and ''!=part_host_response_time">
+  				,part_host_response_time=#{part_host_response_time}
+  			</if>
+  			<if test="part_host_response_flowNum!=null and ''!=part_host_response_flowNum">
+  				,part_host_response_flowNum=#{part_host_response_flowNum}
+  			</if>
+  			<if test="part_host_return_code!=null and ''!=part_host_return_code">
+  				,part_host_return_code=#{part_host_return_code}
+  			</if>
+  			<if test="part_host_return_message!=null and ''!=part_host_return_message">
+  				,part_host_return_message=#{part_host_return_message}
+  			</if>
+	  	</set>
+	  	 where part_transFlowNo = #{part_transFlowNo}
+	</update>
+	
+	 <!--查询活动代收成功列表 （请求代付）  -->
+   <select id="selectActiveTransByStatus" resultType="Map" parameterType="java.lang.String" >
+   SELECT ta.part_transFlowNo,uw.puw_custNo from  p2p_user_warehouse  uw LEFT JOIN p2p_user_warehouse_flow uwf ON
+   uw.puw_whNo=uwf.puwf_whNo  LEFT JOIN p2p_active_b2c_trans_aid  ta  on ta.part_orderFlowNo =uwf.puwf_flowNo   where  uw.puw_state='4' and uwf.puwf_status='02'
+   and ta.part_status='00'
+  </select>
+  <!--查询代收状态为处理中的数据（跑批使用）  -->
+   <select id="selectActiveTransAidByProcessing" resultType="Map" parameterType="java.lang.String" >
+   SELECT  part_transFlowNo  from p2p_active_b2c_trans_aid ta where ta.part_status='02'  
+  </select>
+  <!--查询代付状态为处理中的数据（跑批使用）  -->
+   <select id="selectActiveTransByProcessing" resultType="Map" parameterType="java.lang.String" >
+   SELECT  part_transFlowNo  from p2p_active_b2c_trans bt where bt.part_status='02'  
+  </select>
+	<!--更新活动代付流水表  -->
+	<update id="updateActiveB2cTrans" parameterType="java.util.Map">
+		update p2p_active_b2c_trans
+  		<set>
+  		part_status=#{part_status}
+  			<if test="part_host_response_time!=null and ''!=part_host_response_time">
+  				,part_host_response_time=#{part_host_response_time}
+  			</if>
+  			<if test="part_host_response_flowNum!=null and ''!=part_host_response_flowNum">
+  				,part_host_response_flowNum=#{part_host_response_flowNum}
+  			</if>
+  			<if test="part_host_return_code!=null and ''!=part_host_return_code">
+  				,part_host_return_code=#{part_host_return_code}
+  			</if>
+  			<if test="part_host_return_message!=null and ''!=part_host_return_message">
+  				,part_host_return_message=#{part_host_return_message}
+  			</if>
+	  	</set>
+	  	 where part_transFlowNo = #{part_transFlowNo}
+	</update>
+
+</mapper>

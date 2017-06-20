@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_activity_paramMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_activity_param" >
+    <id column="paramId" property="paramId" jdbcType="BIGINT" />
+    <result column="activeId" property="activeId" jdbcType="BIGINT" />
+    <result column="fromParamValue" property="fromParamValue" jdbcType="VARCHAR" />
+    <result column="toParamValue" property="toParamValue" jdbcType="VARCHAR" />
+    <result column="excitationValue" property="excitationValue" jdbcType="VARCHAR" />
+    <result column="goodsType" property="goodsType" jdbcType="VARCHAR" />
+  </resultMap>
+ 	
+ 	<sql id="Base_Column_List" >
+	    paramId,activeId,fromParamValue,excitationValue,toParamValue,paramType
+  	</sql>
+ 	
+ 	<insert id="addActivityParam" parameterType="com.baibao.web.p2p.generator.bean.P2p_activity_param">
+ 		insert into p2p_activity_param (activeId,conditionsParamValue,excitationValue,goodsType)
+ 		values(#{activeId},#{conditionsParamValue},#{excitationValue},#{goodsType})
+ 	</insert>
+ 	
+ 	<select id="getActiveParamById" parameterType="long" resultType="com.baibao.web.p2p.generator.bean.P2p_activity_param">
+ 		select <include refid="Base_Column_List"/> from p2p_activity_param where activeId = #{id}
+ 	</select>
+</mapper>

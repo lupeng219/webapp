@@ -1,0 +1,383 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+input,
+button {
+	outline: none;
+}
+
+.contContainer {
+	width: 1198px;
+	overflow: auto;
+	border: 1px solid #cccccc;
+	margin: 30px auto 30px;
+	margin-top: 30px;
+	background: #fff;
+	min-height: 700px;
+}
+
+.sideNav {
+	float: left;
+	width: 198px;
+}
+
+.helpCenter {
+	width: 100%;
+	height: 50px;
+	background-color: #6bd4f2;
+}
+
+.helpCenter span {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	font-size: 16px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 50px;
+	background: url(../pictures/helpCenter/icon-help.png) no-repeat 37px center;
+	background-size: 20px;
+}
+
+.bigNav {
+	margin-left: 18px;
+}
+
+.firstNav {
+	padding-left: 26px;
+}
+
+.bigNav>li {
+	width: 160px;
+	border-bottom: 1px dashed #ccc;
+	height: 50px;
+	line-height: 50px;
+	background: url(../pictures/helpCenter/ico-add.png) no-repeat 24px center;
+	text-align: center;
+}
+
+.ico-add {
+	background: url(../pictures/helpCenter/ico-add.png) no-repeat 24px center !important;
+}
+
+.ico-push {
+	background: url(../pictures/helpCenter/ico-push.png) no-repeat 24px center !important;
+}
+
+.bigNav>li>a {
+	font-size: 14px;
+	font-weight: bold;
+	color: #676767;
+}
+
+.smallNav {
+	width: 160px;
+	display: none;
+}
+
+.smallNav>li {
+	width: 100%;
+	height: 100%;
+	line-height: 50px;
+	border-bottom: 1px dashed #ccc;
+	text-align: center;
+	position: relative;
+}
+
+.smallNav>li>a {
+	font-size: 12px;
+	color: #999999;
+	font-weight: bold;
+}
+
+.left-line {
+	display: none;
+	position: absolute;
+	left: -18px;
+	top: 0;
+	width: 6px;
+	height: 50px;
+	background: url(../pictures/helpCenter/left-line.png) no-repeat left center;
+}
+
+.ico-none {
+	background: none !important;
+}
+
+.content {
+	float: left;
+	width: 998px;
+	border-left: 1px solid #cccccc;
+	min-height: 700px;
+}
+
+.remail-title {
+	font-size: 12px;
+	border-bottom: 1px solid #09afdf;
+	margin-left: 18px;
+	width: 980px;
+	color: #656565;
+	font-weight: bold;
+	height: 48px;
+	line-height: 48px;
+}
+
+.containSTitle {
+	width: 920px;
+	height: 36px;
+	margin: 8px 0 0 36px;
+}
+
+.containSTitle:hover {
+	background-color: #fbfbf9;
+}
+
+.containSTitle a {
+	padding-left: 26px;
+	color: #09afdf;
+	font-size: 12px;
+	display: inline-block;
+	height: 36px;
+	line-height: 36px;
+	background: url(../pictures/helpCenter/btn-close-nomo.png) no-repeat 6px center;
+}
+
+.contExplain {
+	width: 922px;
+	border: 1px solid #eeeeee;
+	margin: 18px 0 0 32px;
+	background: #fbfbfb;
+	position: relative;
+}
+
+.ksj {
+	position: absolute;
+	top: -20px;
+	left: 40px;
+	width: 0;
+	height: 0;
+	border-width: 10px;
+	border-color: transparent transparent #eeeeee;
+	border-style: solid dashed dashed dashed;
+	font-size: 0;
+	line-height: 0;
+	display: block;
+}
+
+.btn-open {
+	background: url(../pictures/helpCenter/btn-open.png) no-repeat 6px center !important;
+}
+
+.ssj {
+	position: absolute;
+	top: -19px;
+	left: 40px;
+	width: 0;
+	height: 0;
+	border-width: 10px;
+	border-style: solid dashed dashed dashed;
+	font-size: 0;
+	border-color: transparent transparent #fbfbfb;
+	line-height: 0;
+	display: block;
+}
+
+.contGuide {
+	margin: 20px 0 0 24px;
+	font-size: 14px;
+	color: #676767;
+}
+
+.guidePic {
+	margin: 10px 0 10px 80px;
+}
+
+.lastguidePic {
+	margin-bottom: 30px;
+}
+
+.ico-line {
+	height: 1px;
+	width: 924px;
+	margin: 28px 0 28px 30px;
+	background: url(../pictures/helpCenter/ico-line.png) no-repeat left center;
+}
+
+.remain-btn {
+	text-align: center;
+	margin-bottom: 80px;
+}
+
+.remain-btn button {
+	width: 110px;
+	height: 32px;
+	font-size: 12px;
+	color: #fff;
+	background: #09afdf;
+	border-radius: 4px;
+	border: none;
+}
+
+.introPro {
+	margin: 20px 70px 150px 24px;
+	font-size: 14px;
+	line-height: 26px;
+	color: #676767;
+}
+
+.infoTable {
+	width: 842px;
+	height: 396px;
+	margin: 22px 0 22px 28px;
+}
+
+.infoTable tr {
+	background-color: #fbfbfb;
+}
+
+.infoTable tr td {
+	border-collapse: collapse;
+	font-size: 12px;
+	color: #666666;
+}
+
+.firstTd {
+	width: 214px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.sectondTd {
+	padding: 0 20px 0 38px;
+}
+
+.disb {
+	display: block;
+	margin-top: 38px;
+	line-height: 22px;
+}
+
+.introRed {
+	font-style: normal;
+	color: #fb484b;
+}
+
+.remark {
+	margin: 20px 0 30px 28px;
+}
+
+.remark p {
+	font-size: 12px;
+	line-height: 22px;
+	color: #666666;
+}
+
+.txtIN3 {
+	text-indent: 3em;
+}
+
+.explainNoun {
+	margin: 18px 24px;
+	font-size: 12px;
+	color: #666666;
+	line-height: 26px;
+}
+
+.explainNounPic {
+	display: block;
+	margin: 30px 0 10px 110px;
+}
+
+.leftL {
+	width: 140px !important;
+	padding-left: 20px !important;
+}
+
+.leftLA {
+	color: #6ad7f4 !important;
+}
+
+.leftL2 {
+	width: 140px !important;
+	padding-left: 20px !important;
+}
+
+.leftLA2 {
+	color: #6ad7f4 !important;
+}
+
+.left-line2 {
+	display: none;
+	position: absolute;
+	left: -18px;
+	top: 0;
+	width: 6px;
+	height: 50px;
+	background: url(../pictures/helpCenter/left-line.png) no-repeat left center;
+}
+
+.disShow {
+	display: block !important;
+	display: block !important;
+}
+
+.contains {
+	position: relative;
+}
+
+.ksjL {
+	position: absolute;
+	top: 11px;
+	left: 153px;
+	width: 0;
+	height: 0;
+	border-width: 14px;
+	border-color: transparent #ccc transparent transparent;
+	border-style: solid dashed dashed dashed;
+	font-size: 0;
+	line-height: 0;
+	display: none;
+}
+
+.ssjL {
+	position: absolute;
+	top: 11px;
+	left: 154px;
+	width: 0;
+	height: 0;
+	border-width: 14px;
+	border-style: solid dashed dashed dashed;
+	font-size: 0;
+	border-color: transparent #ffffff transparent transparent;
+	line-height: 0;
+	display: none;
+}
+
+
+/*.disHide {
+    display: none !important;
+}*/
+
+.pl20 {
+	padding-left: 20px;
+}
+
+.smallNav li {
+	position: relative;
+}
+
+.afdf {
+	color: ##09addf;
+}

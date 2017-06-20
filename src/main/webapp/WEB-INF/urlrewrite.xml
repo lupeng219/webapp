@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>   
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+<urlrewrite decode-using="UTF-8">
+   <outbound-rule encodefirst="true">
+       <from>/service/index/index</from>
+       <to>/</to>
+   </outbound-rule>
+   <outbound-rule encodefirst="true">
+        <from>^(.*);jsessionid=.*$</from>
+        <to>$1</to>
+    </outbound-rule>
+    <outbound-rule match-type="wildcard">
+        <from>*;jsessionid=*</from>
+        <to>$1</to>
+    </outbound-rule>
+   <rule>
+       <from>/$</from>
+       <to>/service/index/index</to>
+   </rule> 
+   
+   <rule>
+       <from>/service/invite/(QZB.*)$</from>
+       <to>/service/register?inviteCode=$1</to>
+   </rule>
+   
+   <rule>
+       <from>^/minisite</from>
+       <to>/service/dissertation/minisite</to>
+   </rule>
+   
+</urlrewrite>
+

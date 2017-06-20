@@ -1,0 +1,270 @@
+@charset "utf-8";
+.ui-bankcard li {
+    width: 100%;
+    height: 3rem;
+    border-bottom: 1px solid #dbdbdb;
+    line-height: 3rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.ui-bankcard li .setting-title {
+    display: inline-block;
+    float: left;
+    padding-left: 0.5rem;
+    color: #2b2b2b;
+}
+
+.ui-bankcard li .setting-op {
+    display: inline-block;
+    float: right;
+    padding-right: 0.5rem;
+    color: #868686;
+}
+
+.ui-bankcard li a:hover {
+    color: #f8711f;
+}
+
+.bankcard-title {
+    height: 3rem;
+    line-height: 3rem;
+    background: #f1f1f1;
+    color: #868686;
+    padding-left: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.bankcard-name {
+    font-size: 0.9rem;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    border-bottom: 1px dashed #dbdbdb;
+}
+
+.bankcard-name span {
+    color: #666;
+    padding-left: 1rem;
+}
+
+.form-txt {
+    margin: 0 1rem 0 1rem;
+}
+
+.txt-cn {
+    height: 3.7rem;
+    position: relative;
+}
+
+.txt {
+    padding-left: 1.5%;
+    font-weight: 100;
+    width: 98.5%;
+    background: #fff;
+    height: 2.5rem;
+    border: 1px solid #cfd7da;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #000;
+}
+
+.txt.txt-err {
+    border: 1px solid #f8586a;
+}
+
+.ui-banklsit {
+    height: 7.2rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    border: 1px solid #cfd7da;
+    font-size: 0.8em;
+    z-index: 100;
+    padding: 0.5rem 0;
+    border-radius: 3px;
+    position: absolute;
+    top: 2.8rem;
+    background: #fff;
+}
+
+.ui-banklsit li {
+    cursor: pointer;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    padding-left: 0.5rem;
+}
+
+.ui-banklsit li:hover {
+    color: #f8711f;
+}
+
+.down-icon {
+    cursor: pointer;
+    width: 2rem;
+    height: 2.6rem;
+    background: url(../../images/wap/down-icon.png) 9px 12px no-repeat;
+    border-left: 1px solid #cfd7da;
+    position: absolute;
+    right: 0;
+    top: 0px;
+}
+
+.logion-btn {
+    margin-top: 0.7rem;
+    cursor: pointer;
+    font-weight: 100;
+    height: 2.5rem;
+    font-size: 1em;
+    line-height: 2.5rem;
+    background: #fa7937;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.logion-btn-online {
+    margin-top: 0.1rem;
+    cursor: pointer;
+    font-weight: 100;
+    height: 2.5rem;
+    font-size: 1em;
+    line-height: 2.5rem;
+    background: #fa7937;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.logion-btn a:hover,
+.logion-btn a {
+    color: #fff;
+}
+
+.logion-btn-online a:hover,
+.logion-btn-online a {
+    color: #fff;
+}
+
+.add-bankcard {
+    display: inline-block;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    height: 1.5rem;
+    border-radius: 14px;
+    border: 1px solid #868686;
+    color: #868686;
+    float: right;
+    margin-top: 0.7rem;
+    margin-right: 0.5rem;
+}
+
+
+/* 错误提示 */
+
+.err-p {
+    font-size: 0.7rem;
+    color: #f8586a;
+    line-height: 1rem;
+    padding-left: 0.5rem;
+}
+
+.my-bankcard {
+    width: 98.8%;
+    padding: 0.5rem 0 0.5rem 0.3rem;
+    border: 1px solid #cfd7da;
+    margin-top: 0.8rem;
+}
+
+.bank-img {
+    width: 60%;
+    float: left;
+}
+
+.opbank-con {
+    width: 6rem;
+    float: right
+}
+
+.bank-img img {
+    width: 100%;
+}
+
+.bank-num {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.update-bank,
+.disphone-pay,
+.phone-pay {
+    display: inline-block;
+    width: 5rem;
+    text-align: center;
+    line-height: 1.8rem;
+    margin-top: 0.6rem;
+    border-radius: 3px;
+    height: 1.8rem;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.update-bank {
+    background: #f8711f;
+}
+
+.phone-pay {
+    background: #0068b7;
+}
+
+.disphone-pay {
+    background: #868686;
+}
+
+.chongzhi-p {
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    line-height: 1rem;
+    color: #868686;
+}
+
+.hqyzm-btn {
+    cursor: pointer;
+    display: inline-block;
+    height: 2.62rem;
+    padding: 0 15px;
+    line-height: 2.5rem;
+    background: #fa7937;
+    font-size: 0.8em;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 3px 3px 0;
+    position: absolute;
+    right: -1px;
+    top: 0;
+    text-decoration: none;
+}
+
+.hqyzm-btn:hover {
+    color: #ffffff;
+}
+
+.tabList {
+    height: 2rem;
+    position: relative;
+    margin-top: 1rem;
+    border: 1px solid #fa7937;
+}
+
+.tabList .tab {
+    display: inline-block;
+    width: 50%;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    cursor: pointer;
+    color: #E43F3F;
+}
+
+.tabList .active {
+    color: #fff;
+    background: #fa7937;
+}

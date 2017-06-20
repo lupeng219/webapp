@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_users_lotteryDrawMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_users_lotteryDraw" >
+    <id column="pul_lotteryDrawNo" property="pulLotterydrawno" jdbcType="VARCHAR" />
+    <result column="pul_custNo" property="pulCustno" jdbcType="VARCHAR" />
+    <result column="pul_sourceType" property="pulSourcetype" jdbcType="CHAR" />
+    <result column="pul_getTime" property="pulGettime" jdbcType="TIMESTAMP" />
+    <result column="pul_tenderFlowNo" property="pulTenderflowno" jdbcType="VARCHAR" />
+    <result column="pul_status" property="pulStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pul_lotteryDrawNo, pul_custNo, pul_sourceType, pul_getTime, pul_tenderFlowNo, pul_status
+  </sql>
+  
+  <!-- 根据客户号查询用户抽奖次数(当天) -->
+  <select id="queryLotteryDrawCount" parameterType="String" resultType="int">
+  	SELECT COUNT(*) FROM p2p_users_lotteryDraw 
+  	WHERE pul_custNo = #{custNo} 
+  	AND pul_status = 0
+  	AND <![CDATA[date_format(pul_getTime,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')]]>
+  </select>
+  
+  <!-- 根据客户号查询用户抽奖次数(当天) -->
+  <select id="queryLotteryDrawList" parameterType="String" resultMap="BaseResultMap">
+  	SELECT <include refid="Base_Column_List"/> FROM p2p_users_lotteryDraw
+  	WHERE pul_custNo = #{custNo} 
+  	and pul_status = 0
+  	AND <![CDATA[date_format(pul_getTime,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')]]>
+  </select>
+  
+  <!-- 查询用户中奖纪录 -->
+  <select id="queryPracticalityAndRedenvelopeList" resultType="HashMap">
+  	SELECT hortation.put_name,u.pu_mobile FROM (
+	SELECT pup.pup_custNo,put.put_name,pup.pup_getTime FROM p2p_users_practicality pup LEFT JOIN p2p_users_testimonial put on pup.pup_testimonialNo = put.put_testimonialNo 
+	UNION ALL
+	SELECT pur_custNo,CONCAT(pur_money,'元红包'),pur_getTime FROM p2p_users_redenvelope WHERE pur_activeId = #{activeid_dzp}) hortation 
+	LEFT JOIN p2p_users u on hortation.pup_custNo = u.pu_custNo ORDER BY hortation.pup_getTime DESC LIMIT 0,20
+  </select>
+  
+   <!-- 根据客户号、类型查询当前用户抽奖次数 -->
+  <select id="queryBycustNoAndSourceType" parameterType="String" resultType="int">
+  	SELECT COUNT(*) FROM p2p_users_lotteryDraw 
+  	WHERE pul_custNo = #{custNo} and pul_sourceType=#{sourceType}
+  	AND <![CDATA[date_format(pul_getTime,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')]]>
+  </select>
+  
+   <!--插入数据-->
+  <insert id="insertLotteryDraw" parameterType="map" >
+  	insert into  p2p_users_lotteryDraw (pul_lotteryDrawNo, pul_custNo, pul_sourceType, pul_getTime, pul_tenderFlowNo, pul_status) 
+  	values(#{pul_lotteryDrawNo,jdbcType=VARCHAR},#{pul_custNo,jdbcType=VARCHAR},#{pul_sourceType,jdbcType=CHAR},#{pul_getTime,jdbcType=TIMESTAMP},
+  	#{pul_tenderFlowNo,jdbcType=VARCHAR},#{pul_status,jdbcType=INTEGER})
+  </insert>
+  
+  <!--根据用户抽奖编号修改使用状态  -->
+  <update id="updateLotteryDraw" parameterType="String">
+  	UPDATE p2p_users_lotteryDraw
+  	SET pul_status = 1
+  	WHERE pul_lotteryDrawNo = #{pulLotteryDrawNo}
+  </update>
+  
+</mapper>

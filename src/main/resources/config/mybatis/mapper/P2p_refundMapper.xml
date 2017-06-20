@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_refundMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_refund" >
+    <id column="pr_id" property="prId" jdbcType="BIGINT" />
+    <result column="pr_fefundFlowNo" property="prFefundflowno" jdbcType="VARCHAR" />
+    <result column="pr_fefundType" property="prFefundtype" jdbcType="VARCHAR" />
+    <result column="pr_originalNo" property="prOriginalno" jdbcType="VARCHAR" />
+    <result column="pr_status" property="prStatus" jdbcType="VARCHAR" />
+    <result column="pr_remark" property="prRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pr_id, pr_fefundFlowNo, pr_fefundType, pr_originalNo, pr_status, pr_remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.baibao.web.p2p.generator.bean.P2p_refundExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from p2p_refund
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from p2p_refund
+    where pr_id = #{prId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from p2p_refund
+    where pr_id = #{prId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_refundExample" >
+    delete from p2p_refund
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baibao.web.p2p.generator.bean.P2p_refund" >
+    insert into p2p_refund (pr_id, pr_fefundFlowNo, pr_fefundType, 
+      pr_originalNo, pr_status, pr_remark
+      )
+    values (#{prId,jdbcType=BIGINT}, #{prFefundflowno,jdbcType=VARCHAR}, #{prFefundtype,jdbcType=VARCHAR}, 
+      #{prOriginalno,jdbcType=VARCHAR}, #{prStatus,jdbcType=VARCHAR}, #{prRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_refund" >
+    insert into p2p_refund
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prId != null" >
+        pr_id,
+      </if>
+      <if test="prFefundflowno != null" >
+        pr_fefundFlowNo,
+      </if>
+      <if test="prFefundtype != null" >
+        pr_fefundType,
+      </if>
+      <if test="prOriginalno != null" >
+        pr_originalNo,
+      </if>
+      <if test="prStatus != null" >
+        pr_status,
+      </if>
+      <if test="prRemark != null" >
+        pr_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prId != null" >
+        #{prId,jdbcType=BIGINT},
+      </if>
+      <if test="prFefundflowno != null" >
+        #{prFefundflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="prFefundtype != null" >
+        #{prFefundtype,jdbcType=VARCHAR},
+      </if>
+      <if test="prOriginalno != null" >
+        #{prOriginalno,jdbcType=VARCHAR},
+      </if>
+      <if test="prStatus != null" >
+        #{prStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="prRemark != null" >
+        #{prRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_refundExample" resultType="java.lang.Integer" >
+    select count(1) from p2p_refund
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p2p_refund
+    <set >
+      <if test="record.prId != null" >
+        pr_id = #{record.prId,jdbcType=BIGINT},
+      </if>
+      <if test="record.prFefundflowno != null" >
+        pr_fefundFlowNo = #{record.prFefundflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prFefundtype != null" >
+        pr_fefundType = #{record.prFefundtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prOriginalno != null" >
+        pr_originalNo = #{record.prOriginalno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prStatus != null" >
+        pr_status = #{record.prStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prRemark != null" >
+        pr_remark = #{record.prRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p2p_refund
+    set pr_id = #{record.prId,jdbcType=BIGINT},
+      pr_fefundFlowNo = #{record.prFefundflowno,jdbcType=VARCHAR},
+      pr_fefundType = #{record.prFefundtype,jdbcType=VARCHAR},
+      pr_originalNo = #{record.prOriginalno,jdbcType=VARCHAR},
+      pr_status = #{record.prStatus,jdbcType=VARCHAR},
+      pr_remark = #{record.prRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_refund" >
+    update p2p_refund
+    <set >
+      <if test="prFefundflowno != null" >
+        pr_fefundFlowNo = #{prFefundflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="prFefundtype != null" >
+        pr_fefundType = #{prFefundtype,jdbcType=VARCHAR},
+      </if>
+      <if test="prOriginalno != null" >
+        pr_originalNo = #{prOriginalno,jdbcType=VARCHAR},
+      </if>
+      <if test="prStatus != null" >
+        pr_status = #{prStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="prRemark != null" >
+        pr_remark = #{prRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pr_id = #{prId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baibao.web.p2p.generator.bean.P2p_refund" >
+    update p2p_refund
+    set pr_fefundFlowNo = #{prFefundflowno,jdbcType=VARCHAR},
+      pr_fefundType = #{prFefundtype,jdbcType=VARCHAR},
+      pr_originalNo = #{prOriginalno,jdbcType=VARCHAR},
+      pr_status = #{prStatus,jdbcType=VARCHAR},
+      pr_remark = #{prRemark,jdbcType=VARCHAR}
+    where pr_id = #{prId,jdbcType=BIGINT}
+  </update>
+</mapper>
