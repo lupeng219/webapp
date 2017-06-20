@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_tender_profitMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_tender_profit" >
+    <result column="ptp_incomebillNo" property="ptpIncomebillNo" jdbcType="VARCHAR" />
+    <result column="ptp_tenderFlowNo" property="ptpTenderFlowNo" jdbcType="VARCHAR" />
+    <!-- <id column="ptp_id" property="ptpId" jdbcType="BIGINT" /> -->
+    <!-- <result column="ptp_bidEarnFlowNo" property="ptpBidEarnFlowNo" jdbcType="VARCHAR" /> -->
+    <result column="ptp_productNo" property="ptpProductNo" jdbcType="VARCHAR" />
+    <result column="ptp_loanSeq" property="ptpLoanseq" jdbcType="INTEGER" />
+    <result column="ptp_capital" property="ptpCapital" jdbcType="DECIMAL" />
+    <result column="ptp_interest" property="ptpInterest" jdbcType="DECIMAL" />
+    <result column="ptp_profit" property="ptpProfit" jdbcType="DECIMAL" />
+    <result column="ptp_factCapital" property="ptpFactcapital" jdbcType="DECIMAL" />
+    <result column="ptp_factInterest" property="ptpFactinterest" jdbcType="DECIMAL" />
+    <result column="ptp_factProfit" property="ptpFactprofit" jdbcType="DECIMAL" />
+    <result column="ptp_profitTime" property="ptpProfittime" jdbcType="TIMESTAMP" />
+    <result column="ptp_factProfitTime" property="ptpFactprofittime" jdbcType="TIMESTAMP" />
+    <result column="ptp_profitType" property="ptpProfittype" jdbcType="CHAR" />
+    <result column="ptp_custNo" property="ptpCustno" jdbcType="VARCHAR" />
+    <result column="ptp_profitstatus" property="ptpProfitstatus" jdbcType="CHAR" />
+    <result column="ptp_remark" property="ptpRemark" jdbcType="VARCHAR" />
+    <result column="pca_accountNo" property="pcaAccountNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ptp_incomebillNo,ptp_tenderFlowNo,ptp_productNo, ptp_loanSeq, ptp_capital, ptp_interest, ptp_profit, 
+    ptp_factCapital, ptp_factInterest, ptp_factProfit, ptp_profitTime, ptp_factProfitTime, 
+    ptp_profitType, ptp_custNo, ptp_profitstatus, ptp_remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_profitExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from p2p_tender_profit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from p2p_tender_profit
+    where ptp_id = #{ptpId,jdbcType=BIGINT}
+  </select> -->
+  <!-- <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from p2p_tender_profit
+    where ptp_id = #{ptpId,jdbcType=BIGINT}
+  </delete> -->
+  <delete id="deleteByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_profitExample" >
+    delete from p2p_tender_profit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_profit" >
+    insert into p2p_tender_profit (<!-- ptp_id, --> ptp_tenderFlowNo, <!-- ptp_loanNo, --> ptp_productNo,
+      ptp_loanSeq, ptp_capital, ptp_interest, 
+      ptp_profit, ptp_factCapital, ptp_factInterest, 
+      ptp_factProfit, ptp_profitTime, ptp_factProfitTime, 
+      ptp_profitType, ptp_custNo, ptp_profitstatus, 
+      ptp_remark)
+    values (<!-- #{ptpId,jdbcType=BIGINT}, --> #{ptpTenderFlowNo,jdbcType=VARCHAR}, <!-- #{ptpLoanno,jdbcType=VARCHAR}, --> #{ptpProductNo,jdbcType=VARCHAR},
+      #{ptpLoanseq,jdbcType=INTEGER}, #{ptpCapital,jdbcType=DECIMAL}, #{ptpInterest,jdbcType=DECIMAL}, 
+      #{ptpProfit,jdbcType=DECIMAL}, #{ptpFactcapital,jdbcType=DECIMAL}, #{ptpFactinterest,jdbcType=DECIMAL}, 
+      #{ptpFactprofit,jdbcType=DECIMAL}, #{ptpProfittime,jdbcType=TIMESTAMP}, #{ptpFactprofittime,jdbcType=TIMESTAMP}, 
+      #{ptpProfittype,jdbcType=CHAR}, #{ptpCustno,jdbcType=VARCHAR}, #{ptpProfitstatus,jdbcType=CHAR}, 
+      #{ptpRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_profit" >
+    insert into p2p_tender_profit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <!-- <if test="ptpId != null" >
+        ptp_id,
+      </if> -->
+      <if test="ptpTenderFlowNo != null" >
+        ptp_tenderFlowNo,
+      </if>
+      <!-- <if test="ptpLoanno != null" >
+        ptp_loanNo,
+      </if> -->
+      <if test="ptpProductNo != null">
+      	ptp_productNo
+      </if>
+      <if test="ptpLoanseq != null" >
+        ptp_loanSeq,
+      </if>
+      <if test="ptpCapital != null" >
+        ptp_capital,
+      </if>
+      <if test="ptpInterest != null" >
+        ptp_interest,
+      </if>
+      <if test="ptpProfit != null" >
+        ptp_profit,
+      </if>
+      <if test="ptpFactcapital != null" >
+        ptp_factCapital,
+      </if>
+      <if test="ptpFactinterest != null" >
+        ptp_factInterest,
+      </if>
+      <if test="ptpFactprofit != null" >
+        ptp_factProfit,
+      </if>
+      <if test="ptpProfittime != null" >
+        ptp_profitTime,
+      </if>
+      <if test="ptpFactprofittime != null" >
+        ptp_factProfitTime,
+      </if>
+      <if test="ptpProfittype != null" >
+        ptp_profitType,
+      </if>
+      <if test="ptpCustno != null" >
+        ptp_custNo,
+      </if>
+      <if test="ptpProfitstatus != null" >
+        ptp_profitstatus,
+      </if>
+      <if test="ptpRemark != null" >
+        ptp_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+     <!--  <if test="ptpId != null" >
+        #{ptpId,jdbcType=BIGINT},
+      </if> -->
+      <if test="ptpTenderFlowNo != null" >
+        #{ptpTenderFlowNo,jdbcType=VARCHAR},
+      </if>
+     <!--  <if test="ptpLoanno != null" >
+        #{ptpLoanno,jdbcType=VARCHAR},
+      </if> -->
+      <if test="ptpProductNo != null">
+      	#{ptpProductNo,jdbcType=VARCHAR}
+      </if>
+      <if test="ptpLoanseq != null" >
+        #{ptpLoanseq,jdbcType=INTEGER},
+      </if>
+      <if test="ptpCapital != null" >
+        #{ptpCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpInterest != null" >
+        #{ptpInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpProfit != null" >
+        #{ptpProfit,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpFactcapital != null" >
+        #{ptpFactcapital,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpFactinterest != null" >
+        #{ptpFactinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpFactprofit != null" >
+        #{ptpFactprofit,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpProfittime != null" >
+        #{ptpProfittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptpFactprofittime != null" >
+        #{ptpFactprofittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptpProfittype != null" >
+        #{ptpProfittype,jdbcType=CHAR},
+      </if>
+      <if test="ptpCustno != null" >
+        #{ptpCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptpProfitstatus != null" >
+        #{ptpProfitstatus,jdbcType=CHAR},
+      </if>
+      <if test="ptpRemark != null" >
+        #{ptpRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_profitExample" resultType="java.lang.Integer" >
+    select count(1) from p2p_tender_profit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p2p_tender_profit
+    <set >
+      <!-- <if test="record.ptpId != null" >
+        ptp_id = #{record.ptpId,jdbcType=BIGINT},
+      </if> -->
+      <if test="record.ptpTenderFlowNo != null" >
+        ptp_tenderFlowNo = #{record.ptpTenderFlowNo,jdbcType=VARCHAR},
+      </if>
+     <!--  <if test="record.ptpLoanno != null" >
+        ptp_loanNo = #{record.ptpLoanno,jdbcType=VARCHAR},
+      </if> -->
+      <if test="record.ptpProductNo != null">
+      	ptp_productNo = #{record.ptpProductNo,jdbcType},
+      </if>
+      <if test="record.ptpLoanseq != null" >
+        ptp_loanSeq = #{record.ptpLoanseq,jdbcType=INTEGER},
+      </if>
+      <if test="record.ptpCapital != null" >
+        ptp_capital = #{record.ptpCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ptpInterest != null" >
+        ptp_interest = #{record.ptpInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ptpProfit != null" >
+        ptp_profit = #{record.ptpProfit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ptpFactcapital != null" >
+        ptp_factCapital = #{record.ptpFactcapital,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ptpFactinterest != null" >
+        ptp_factInterest = #{record.ptpFactinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ptpFactprofit != null" >
+        ptp_factProfit = #{record.ptpFactprofit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ptpProfittime != null" >
+        ptp_profitTime = #{record.ptpProfittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ptpFactprofittime != null" >
+        ptp_factProfitTime = #{record.ptpFactprofittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ptpProfittype != null" >
+        ptp_profitType = #{record.ptpProfittype,jdbcType=CHAR},
+      </if>
+      <if test="record.ptpCustno != null" >
+        ptp_custNo = #{record.ptpCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ptpProfitstatus != null" >
+        ptp_profitstatus = #{record.ptpProfitstatus,jdbcType=CHAR},
+      </if>
+      <if test="record.ptpRemark != null" >
+        ptp_remark = #{record.ptpRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p2p_tender_profit
+    set <!-- ptp_id = #{record.ptpId,jdbcType=BIGINT}, -->
+      ptp_tenderFlowNo = #{record.ptpTenderFlowNo,jdbcType=VARCHAR},
+    <!--   ptp_loanNo = #{record.ptpLoanno,jdbcType=VARCHAR}, -->
+    ptp_productNo = #{record.ptpProductNo,jdbcType=VARCHAR},
+      ptp_loanSeq = #{record.ptpLoanseq,jdbcType=INTEGER},
+      ptp_capital = #{record.ptpCapital,jdbcType=DECIMAL},
+      ptp_interest = #{record.ptpInterest,jdbcType=DECIMAL},
+      ptp_profit = #{record.ptpProfit,jdbcType=DECIMAL},
+      ptp_factCapital = #{record.ptpFactcapital,jdbcType=DECIMAL},
+      ptp_factInterest = #{record.ptpFactinterest,jdbcType=DECIMAL},
+      ptp_factProfit = #{record.ptpFactprofit,jdbcType=DECIMAL},
+      ptp_profitTime = #{record.ptpProfittime,jdbcType=TIMESTAMP},
+      ptp_factProfitTime = #{record.ptpFactprofittime,jdbcType=TIMESTAMP},
+      ptp_profitType = #{record.ptpProfittype,jdbcType=CHAR},
+      ptp_custNo = #{record.ptpCustno,jdbcType=VARCHAR},
+      ptp_profitstatus = #{record.ptpProfitstatus,jdbcType=CHAR},
+      ptp_remark = #{record.ptpRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+ <!--  <update id="updateByPrimaryKeySelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_profit" >
+    update p2p_tender_profit
+    <set >
+      <if test="ptpTenderFlowNo != null" >
+        ptp_tenderFlowNo = #{ptpTenderFlowNo,jdbcType=VARCHAR},
+      </if>
+      <if test="ptpLoanno != null" >
+        ptp_loanNo = #{ptpLoanno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptpLoanseq != null" >
+        ptp_loanSeq = #{ptpLoanseq,jdbcType=INTEGER},
+      </if>
+      <if test="ptpCapital != null" >
+        ptp_capital = #{ptpCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpInterest != null" >
+        ptp_interest = #{ptpInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpProfit != null" >
+        ptp_profit = #{ptpProfit,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpFactcapital != null" >
+        ptp_factCapital = #{ptpFactcapital,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpFactinterest != null" >
+        ptp_factInterest = #{ptpFactinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpFactprofit != null" >
+        ptp_factProfit = #{ptpFactprofit,jdbcType=DECIMAL},
+      </if>
+      <if test="ptpProfittime != null" >
+        ptp_profitTime = #{ptpProfittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptpFactprofittime != null" >
+        ptp_factProfitTime = #{ptpFactprofittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptpProfittype != null" >
+        ptp_profitType = #{ptpProfittype,jdbcType=CHAR},
+      </if>
+      <if test="ptpCustno != null" >
+        ptp_custNo = #{ptpCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptpProfitstatus != null" >
+        ptp_profitstatus = #{ptpProfitstatus,jdbcType=CHAR},
+      </if>
+      <if test="ptpRemark != null" >
+        ptp_remark = #{ptpRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ptp_id = #{ptpId,jdbcType=BIGINT}
+  </update> -->
+  <!-- <update id="updateByPrimaryKey" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_profit" >
+    update p2p_tender_profit
+    set ptp_tenderFlowNo = #{ptpTenderFlowNo,jdbcType=VARCHAR},
+      ptp_loanNo = #{ptpLoanno,jdbcType=VARCHAR},
+      ptp_loanSeq = #{ptpLoanseq,jdbcType=INTEGER},
+      ptp_capital = #{ptpCapital,jdbcType=DECIMAL},
+      ptp_interest = #{ptpInterest,jdbcType=DECIMAL},
+      ptp_profit = #{ptpProfit,jdbcType=DECIMAL},
+      ptp_factCapital = #{ptpFactcapital,jdbcType=DECIMAL},
+      ptp_factInterest = #{ptpFactinterest,jdbcType=DECIMAL},
+      ptp_factProfit = #{ptpFactprofit,jdbcType=DECIMAL},
+      ptp_profitTime = #{ptpProfittime,jdbcType=TIMESTAMP},
+      ptp_factProfitTime = #{ptpFactprofittime,jdbcType=TIMESTAMP},
+      ptp_profitType = #{ptpProfittype,jdbcType=CHAR},
+      ptp_custNo = #{ptpCustno,jdbcType=VARCHAR},
+      ptp_profitstatus = #{ptpProfitstatus,jdbcType=CHAR},
+      ptp_remark = #{ptpRemark,jdbcType=VARCHAR}
+    where ptp_id = #{ptpId,jdbcType=BIGINT}
+  </update> -->
+  
+  <select id="getRepaymentMoney" parameterType="java.util.Map" resultType="java.math.BigDecimal">
+  	select sum(ptp_capital+ptp_interest) from p2p_tender_profit
+  	where ptp_loanSeq=#{ptp_loanSeq} <!-- and ptp_loanNo=#{ptp_loanNo} --> and ptp_productNo=#{ptpProductNo} and ptp_profitstatus=#{ptp_profitstatus}
+  </select>
+  
+  <select id="getTenderProfitByProductNo" parameterType="java.util.Map"  resultMap="BaseResultMap">
+  	SELECT <include refid="Base_Column_List"/> FROM p2p_tender_profit
+  	WHERE 1 = 1
+  	    <if test="productNo != null and custNo != null">
+	  	    AND ptp_tenderFlowNo IN 
+		  	(SELECT ptr_tenderFlowNo FROM p2p_tender_record
+		  	WHERE ptr_productNo = #{productNo} AND ptr_custNo = #{custNo})  	
+	  	</if>
+	  	<if test="tenderFlowNo != null">
+	  	    AND ptp_tenderFlowNo = #{tenderFlowNo}
+	  	</if>
+	  	<choose>
+		  	<when test="profitStatus == 6">
+		  	   AND ptp_profitstatus IN ( "6", "7" )
+		  	</when>
+		  	<when test="profitStatus != null">
+		  	   AND ptp_profitstatus = #{profitStatus}
+		  	</when>
+	  	</choose>
+  	ORDER BY ptp_loanSeq, ptp_profitTime
+  </select>
+  
+  <select id="getTenderProfitByProduct" parameterType="java.util.Map"  resultMap="BaseResultMap">
+  	SELECT <include refid="Base_Column_List"/> FROM p2p_tender_profit
+  	WHERE 1 = 1
+  	    <if test="productNo != null">
+	  	    AND ptp_tenderFlowNo IN 
+		  	(SELECT ptr_tenderFlowNo FROM p2p_tender_record
+		  	WHERE ptr_productNo = #{productNo})
+	  	</if>
+	  	<if test="tenderFlowNo != null">
+	  	    AND ptp_tenderFlowNo = #{tenderFlowNo}
+	  	</if>
+	  
+  	ORDER BY ptp_loanSeq, ptp_profitTime
+  </select>
+  
+  <!-- 根据借款编号查询某期的收益 -->
+  <select id="getListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT <include refid="Base_Column_List"/> , pca.pca_accountNo
+  	FROM
+  	     p2p_tender_profit ptp
+  	LEFT JOIN p2p_cust_account pca ON
+  	     pca.pca_cust_no = ptp.ptp_custNo
+  	WHERE
+  	     ptp_productNo = #{ptpProductNo} AND
+  	     ptp_loanSeq = #{ptp_loanSeq} AND
+  	     ptp_profitstatus = #{ptpProfitstatus}
+  </select>
+  
+  <!-- 根据投资流水单号查询收益记录 -->
+  <select id="findTenderProfitListByTenderFlowNo" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT <include refid="Base_Column_List"/> FROM p2p_tender_profit ptp LEFT JOIN p2p_tender_record ptr 
+  	ON ptr.ptr_tenderFlowNo = ptp.ptp_tenderFlowNo WHERE ptp.ptp_tenderFlowNo = #{tenderFlowNo} order by ptp_loanSeq
+  </select>
+  
+  <!-- 根据客户号和借款编号和当前期数进行更新 -->
+  <update id="updatePtpProfitstatus" parameterType="java.util.Map">
+  	update p2p_tender_profit 
+  	<set>
+  		ptp_loanSeq=#{loanSeq}
+  		<if test="bidEarnFlowNo!=null and ''!=bidEarnFlowNo">
+  			,ptp_bidEarnFlowNo=#{bidEarnFlowNo}
+  		</if>
+  		<if test="profitstatus!=null and ''!=profitstatus">
+  			,ptp_profitstatus=#{profitstatus}
+  		</if>
+  	</set>
+  	where ptp_custNo=#{custNo} <!-- and ptp_loanNo=#{loanNo} --> and ptp_productNo=#{ptpProductNo} and ptp_loanSeq=#{loanSeq}
+  </update>
+  
+  <!-- 根据流水号进行修改状态 -->
+  <update id="updateStatusByOrderNo" parameterType="java.util.Map">
+  	update p2p_tender_profit 
+  	<set>
+  		ptp_profitstatus=#{ptp_profitstatus}
+  	</set>
+  	where ptp_bidEarnFlowNo=#{ptp_bidEarnFlowNo}
+  </update>
+   <!-- 根据借款单号进行修改状态 -->
+  <update id="updateStatusByProductNo" parameterType="java.util.Map">
+  	update p2p_tender_profit 
+  	<set>
+  		ptp_profitstatus=#{ptp_profitstatus}
+  	</set>
+  	where ptp_productNo=#{ptp_productNo}
+  </update>
+  <!-- 查询该借款所有未收益的本息和 -->
+  <select id="getAllProfitByBulkloanNumber" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select sum(ptp_capital+ptp_interests) profit, <include refid="Base_Column_List"/> ,pca.pca_accountNo pcaAccountNo
+  	from p2p_tender_profit ptp
+  	left join p2p_cust_account pca on pca.pca_cust_no=ptp.ptp_custNo
+  	where <!-- ptp_loanNo = #{ptp_loanNo} and -->ptp_productNo=#{ptpProductNo} and ptp_profitstatus=#{ptp_profitstatus}
+  	group by ptp.ptp_custNo
+  </select>
+  
+  <!-- 根据收益状态和客户号统计[实际本期利息][预期本金加利息] -->
+  <select id="getCustAllProfitByCustNoAndStatus" parameterType="java.util.Map" resultType="java.util.Map">
+  	SELECT
+  	     SUM(t.ptp_factInterest) AS fact_interest,
+  	     SUM(ptp_profit) AS capital_and_interest,
+  		 SUM(t.ptp_capital) AS capital,
+  		 SUM(ptp_factProfit) AS ptp_factProfit
+    FROM p2p_tender_profit t
+    WHERE t.ptp_custNo = #{custNo} 
+  		<if test="status!=null">AND t.ptp_profitstatus IN (0, 2, 7)</if>
+  		<if test="time!=null">
+  		    <![CDATA[
+  		        AND t.ptp_profitTime >= #{beginTime} AND
+  		        t.ptp_profitTime <= #{endTime}
+  		    ]]>
+  		</if>
+  </select>
+  
+  <!-- 查询当日待收收益 原版
+  <select id="getCustWaitdayInterest" parameterType="java.util.Map" resultType="java.util.Map">
+  	SELECT dwi.dayWaitInterest,mti.monthTotalInterest,lj.totalIncome,mti.monthPrincipal,mti.monthMatureCount,wc.financingAmount FROM 
+	(select sum(t.ptp_factInterest) dayWaitInterest from p2p_tender_profit t where t.ptp_profitstatus = 1 and date_format(t.ptp_factProfitTime,'%Y-%m-%d') = date_format(NOW(),'%Y-%m-%d') and ptp_custNo = #{custNo}) dwi, 
+	(select sum(t.ptp_factInterest) monthTotalInterest,sum(ptp_factProfit) monthPrincipal,count(ptp_incomebillNo) monthMatureCount 
+		from  p2p_tender_profit t where  t.ptp_profitstatus = 1 and date_format(t.ptp_profitTime,'%Y-%m') = date_format(NOW(),'%Y-%m') and ptp_custNo = #{custNo}) mti,
+	(select sum(t.ptp_factInterest) totalIncome from  p2p_tender_profit t where t.ptp_profitstatus = 1 and ptp_custNo = #{custNo}) lj,
+	(select sum(t.ptp_capital) financingAmount from  p2p_tender_profit t where t.ptp_profitstatus = 0 and ptp_custNo = #{custNo}) wc
+  </select>
+  -->
+  <!-- 查询当日待收收益 修改版-->
+  <select id="getCustWaitdayInterest" parameterType="java.util.Map" resultType="java.util.Map">
+  	SELECT
+  	     dwi.dayWaitInterest,
+  	     mt.monthTotalInterest,
+  	     lj.totalIncome,
+  	     mti.monthPrincipal,
+  	     mti.monthMatureCount,
+  	     wc.financingAmount
+  	FROM (
+         SELECT SUM(t.ptp_factInterest) dayWaitInterest FROM 
+            p2p_tender_profit t
+         WHERE
+            t.ptp_profitstatus = 1 AND
+            date_format(t.ptp_factProfitTime, '%Y-%m-%d') = date_format(NOW(), '%Y-%m-%d') AND
+            ptp_custNo = #{custNo}) dwi, 
+	        (SELECT 
+	           SUM(t.ptp_factInterest) monthTotalInterest
+	        FROM
+	           p2p_tender_profit t
+	        WHERE
+	           t.ptp_profitstatus = 1 AND
+	           date_format(t.ptp_factProfitTime, '%Y-%m') = date_format(NOW(), '%Y-%m') AND
+	           ptp_custNo = #{custNo}
+	      ) mt,
+	      (SELECT 
+               SUM(ptp_factProfit) monthPrincipal,
+               COUNT(ptp_incomebillNo) monthMatureCount 
+           FROM p2p_tender_profit t
+           WHERE
+               t.ptp_profitstatus = 1 AND
+               date_format(t.ptp_profitTime, '%Y-%m') = date_format(NOW(), '%Y-%m') AND
+               ptp_custNo = #{custNo}
+          ) mti,
+	      (SELECT
+	           SUM(t.ptp_factInterest) totalIncome 
+	       FROM
+	           p2p_tender_profit t
+	       WHERE
+	           t.ptp_profitstatus = 1 AND
+	           ptp_custNo = #{custNo}
+	      ) lj,
+	      (SELECT
+	           SUM(t.ptp_capital) financingAmount 
+	       FROM
+	           p2p_tender_profit t
+	       WHERE
+	           t.ptp_profitstatus IN (0, 2, 7) AND
+	           ptp_custNo = #{custNo}
+	      ) wc
+  </select>
+  
+  <!-- 根据收益流水号得到收益详情 -->
+  <select id="getByTradeFlowNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/>,pca.pca_accountNo from p2p_tender_profit ptp inner join p2p_repayment_bill_trans_detail prd on ptp.ptp_incomebillNo=prd.prd_incomebillNo inner join p2p_cust_account pca on ptp.ptp_custNo =pca.pca_cust_no
+  	where prd.prd_tradeFlowNo =#{tradeFlowNo}
+  </select>
+  <!-- 根据投标流水号得到待收本息  -->
+  <select id="tenderProfitByTenderFlowNo" parameterType="java.lang.String" resultType="java.math.BigDecimal">
+  SELECT sum(ptp_profit) as ptp_profit FROM p2p_tender_profit 
+  WHERE ptp_tenderFlowNo =#{tenderFlowNo} and (ptp_profitstatus='0' or ptp_profitstatus='7')
+  </select>
+  <!-- 根据投标流水号得到已收本息  -->
+  <select id="tenderFactProfitByTenderFlowNo" parameterType="java.lang.String" resultType="java.math.BigDecimal">
+  SELECT sum(ptp_factProfit) as ptp_profit FROM p2p_tender_profit 
+  WHERE ptp_tenderFlowNo =#{tenderFlowNo} and ptp_profitstatus='1'
+  </select>
+  <!-- 根据投标流水号得到待收利息 -->
+  <select id="tenderInterestByTenderFlowNo" parameterType ="java.util.Map"  resultType="java.math.BigDecimal">
+   SELECT sum(ptp_factInterest) as ptp_profit FROM p2p_tender_profit 
+  WHERE ptp_tenderFlowNo =#{tenderFlowNo} and (ptp_profitstatus='0' or ptp_profitstatus='7')
+  </select>
+  <!-- 根据投标流水号得到已收利息 -->
+  <select id="tenderInterestedByTenderFlowNo" parameterType ="java.util.Map"  resultType="java.math.BigDecimal">
+   SELECT sum(ptp_factInterest) as ptp_profit FROM p2p_tender_profit 
+  WHERE ptp_tenderFlowNo =#{tenderFlowNo} and ptp_profitstatus='1'
+  </select>
+  <!--回款计划  -->
+  <select id="paymentPlanByTenderFlowNo" parameterType="java.lang.String" resultType="java.util.Map">
+	SELECT ptp_loanSeq, ptp_profit, ptp_capital,
+	       ptp_interest, ptp_profitTime, ptp_factProfitTime,
+	       ptp_factProfit, ptp_profitstatus, pp_loanRepayment
+		FROM p2p_tender_profit 
+		LEFT JOIN p2p_loan_product_aid  ON pp_ProductNo= ptp_productNo
+  	WHERE ptp_tenderFlowNo =  #{ptp_tenderFlowNo} ORDER BY ptp_profitTime
+  </select>
+  
+  
+  <select id="paymentPlanByTenderFlowNo2" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT <include refid="Base_Column_List"/> FROM p2p_tender_profit
+		    WHERE 1 = 1
+		        <if test="productNo != null and custNo != null">
+		            AND ptp_tenderFlowNo IN 
+		            (SELECT ptr_tenderFlowNo FROM p2p_tender_record
+		            WHERE ptr_productNo = #{productNo} AND ptr_custNo = #{custNo})
+		        </if>
+		        <if test="tenderFlowNo != null">
+		            AND ptp_tenderFlowNo = #{tenderFlowNo}
+		        </if>
+		        <if test="profitStatus != '6'">
+		            AND ptp_profitstatus IN ( "6", "7" )
+		        </if>
+		    ORDER BY ptp_loanSeq, ptp_profitTime
+  </select>
+  
+  <!-- 更新收益记录状态 -->
+  <update id="updateProfitRecord" parameterType="java.util.Map">
+  		update p2p_tender_profit 
+  		<set>
+  			ptp_profitstatus=#{ptp_profitstatus}
+  			<if test="ptp_factCapital!=null and ''!=ptp_factCapital">
+ 			,ptp_factCapital=#{ptp_factCapital}
+  			</if>
+  			<if test="ptp_factInterest!=null and ''!=ptp_factInterest">
+  				,ptp_factInterest=#{ptp_factInterest}
+  			</if>
+  			<if test="ptp_factProfit!=null and ''!=ptp_factProfit">
+  				,ptp_factProfit=#{ptp_factProfit}
+  			</if>
+  			<if test="ptp_factProfitTime!=null and ''!=ptp_factProfitTime">
+  				,ptp_factProfitTime=#{ptp_factProfitTime}
+  			</if>
+  			<if test="ptp_profitType!=null and ''!=ptp_profitType">
+  				,ptp_profitType=#{ptp_profitType}
+  			</if>
+  			<if test="ptp_remark!=null and ''!=ptp_remark">
+  				,ptp_remark=#{ptp_remark}
+  			</if>
+  		</set>
+  		where ptp_incomebillNo=#{ptp_incomebillNo}
+  </update>
+  <select id="tenderProfit" parameterType="java.lang.String" resultType="BigDecimal">
+    SELECT SUM(ptp_interest) FROM p2p_tender_profit where ptp_profitstatus = #{profitType}
+  </select>
+   <!-- 每月收益总额 -->
+  <select id="getIncomeAmount" parameterType="String" resultType="java.util.Map">
+  	<![CDATA[
+  		select sum(ptp_factInterest) ptp_factInterest,
+  		    DATE_FORMAT(ptp_factProfitTime,"%Y-%m") ptp_factProfitTime
+  		from
+  		    p2p_tender_profit where
+  		    ptp_custNo = #{custNo} and ptp_profitstatus = '1'
+  		GROUP BY DATE_FORMAT(ptp_factProfitTime,"%Y-%m")
+  	]]>
+  </select>
+  
+    <!-- 累计收益总额 -->
+  <select id="getFrofitTotal" parameterType="String" resultType="java.math.BigDecimal">
+  	<![CDATA[
+  		SELECT sum(a) from ((select sum(ptp_factInterest) a  from p2p_tender_profit) ) c
+  	]]>
+  </select>
+  
+   <!-- 得到某个产品某一期的所有收益记录 -->
+  <select id="getAllProfit" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/>,pca.pca_accountNo
+  	from p2p_tender_profit ptp
+  	left join p2p_cust_account pca on ptp.ptp_custNo=pca.pca_cust_no
+  	where ptp_productNo=#{ptp_productNo} and ptp_loanSeq=#{ptp_loanSeq} and ptp_profitstatus="0"
+  </select>
+  
+   <!-- 根据产品号和期数查询未收益人数 -->
+   <select id="getNotprofitCount" parameterType="String" resultType="int">
+  	<![CDATA[
+  		select count(1) from p2p_tender_profit where ptp_productNo = #{productNo}  and ptp_loanSeq=#{loanSeq} and ptp_profitstatus != '1' 
+  	]]>
+  </select>
+  <!--查询待收利息 或 已收利息  -->
+  <select id="profitSum" parameterType ="java.util.Map" resultType="BigDecimal">
+  	SELECT SUM(ptp_factInterest)  FROM p2p_tender_profit where ptp_custNo =#{custNo} and ptp_profitstatus in 
+  	<foreach item="item" index="index" collection="status" open="(" separator="," close=")">  
+        #{item}  
+    </foreach>  
+  </select>
+   <!-- 通过编号查询最后一条投资记录 -->
+  <select id="findLastTenderProfit" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/>  FROM p2p_tender_profit where 
+	ptp_productNo = #{productNo}
+	ORDER BY ptp_loanSeq DESC, id ASC
+	LIMIT 0,1
+  </select>
+</mapper>

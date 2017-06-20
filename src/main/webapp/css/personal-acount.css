@@ -1,0 +1,578 @@
+@charset "utf-8";
+
+/*********************************** 我的账户 模块 ***************************/
+
+.myacount-con {
+    padding: 0 22px;
+    display: none;
+}
+
+.acount-ui {
+    margin-top: 30px;
+}
+
+.acount-ui .lev {
+    height: 34px;
+    float: left;
+    width: 986px;
+    border-bottom: 1px solid #d5d5d5;
+    line-height: 34px;
+    font-size: 14px;
+    padding: 0 20px;
+    margin-top: 13px;
+}
+
+.acount-ui .acount-title {
+    display: inline-block;
+    width: 337px;
+    float: left;
+}
+
+.acount-ui .acount-desc {
+    display: inline-block;
+    width: 380px;
+    float: left;
+}
+
+.acount-ui .acount-op,
+.acount-ui .acount-disop {
+    display: inline-block;
+    float: left;
+}
+
+.acount-ui .acount-op {
+    cursor: pointer;
+}
+
+.acount-ui .acount-op {
+    color: #09afdf;
+}
+
+.acount-ui .l1 {
+    height: auto;
+    float: left;
+    margin-top: 0;
+    padding: 0;
+    width: 1026px;
+}
+
+.update-con {
+    padding: 30px 130px;
+    border: 1px solid #d5d5d5;
+    border-top: 0;
+    display: none;
+    position: relative;
+}
+
+.acount-txt {
+    width: 300px;
+    border: 1px solid #aaa;
+    background: #fff none repeat scroll 0 0;
+    border-radius: 4px;
+    padding: 11px 0 10px 10px;
+    /*line-height: 100%;*/
+    font-size: 12px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .acount-txt {
+        padding: 10px 0 8px 10px;
+        font-size: 14px;
+    }
+    .yzm-txt1 {
+        padding: 10px 0 8px 10px;
+        font-size: 14px;
+    }
+}
+
+.acdesc {
+    width: 370px;
+    margin: 0 auto;
+}
+
+.acdesc-ui li {
+    height: 50px;
+    float: left;
+    margin-bottom: 14px;
+    margin-left: -16px;
+}
+
+.acdesc-ui .acdesc-title {
+    display: inline-block;
+    width: 85px;
+    text-align: right;
+    font-size: 14px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.ellipsis2 {
+    font-size: 14px;
+}
+
+.err-p {
+    padding-left: 90px;
+    color: #f8586a;
+    width: 450px;
+    padding-top: 4px;
+}
+
+input {
+    outline: none;
+}
+
+.wxts-ui {
+    margin-top: 10px;
+    margin-right: -20px;
+}
+
+.wxts-ui li {
+    width: 360px;
+    line-height: 26px;
+    color: #868686;
+}
+
+.act-txcon {
+    width: 140px;
+    height: 140px;
+    background: #e0e0e0;
+}
+
+.txsc-con {
+    width: 456px;
+    height: 35px;
+    position: relative;
+}
+
+.sctx-txt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    cursor: pointer;
+    width: 445px;
+    padding-left: 10px;
+    height: 35px;
+    border: none;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+}
+
+.sctx-btn {
+    padding: 0 25px;
+    color: #fff;
+    height: 35px;
+    font-size: 14px;
+    line-height: 34px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: #09afdf;
+    border-radius: 0 4px 4px 0;
+}
+
+.sctx-op {
+    margin-left: 80px;
+}
+
+.zhedie {
+    width: 9px;
+    height: 9px;
+    background-position: -98px -91px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+
+/*********************************** 银行卡管理 模块 ***************************/
+
+.errbank-p {
+    padding-left: 105px;
+    color: #f8586a;
+    font-size: 12px;
+}
+
+.bankcard-con {
+    padding: 0 22px 140px 22px;
+    position: relative;
+}
+
+.question-icon {
+    cursor: pointer;
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background-position: -135px -35px;
+    float: left;
+}
+
+.bankc-wxts {
+    padding-left: 20px;
+    padding-top: 35px;
+}
+
+.bankc-wxts span {
+    line-height: 18px;
+}
+
+.bang-card {
+    /* width:335px; */
+    display: inline-block;
+    font-size: 14px;
+}
+
+.bang-card .bangcard-ui {
+    margin-top: 70px;
+}
+
+.bang-card .bangcard-ui .ms {
+    height: 55px;
+    margin-left: 19px;
+    position: relative;
+}
+
+.bang-card .card-title {
+    display: inline-block;
+    width: 100px;
+    float: left;
+    line-height: 30px;
+}
+
+.bang-card .card-desc {
+    display: inline-block;
+    float: left;
+    line-height: 30px;
+}
+
+.bank-txt {
+    width: 206px;
+    border-radius: 4px;
+    height: 31px;
+    line-height: 30px;
+    float: left;
+    padding-left: 8px;
+    border: 1px solid #aaa;
+    background: #fff;
+}
+
+.bankbang-help {
+    background: #fff;
+    display: none;
+    width: 438px;
+    padding: 20px;
+    border: 1px solid #008fe1;
+    position: absolute;
+    right: 30px;
+    top: 100px;
+}
+
+.bankhelp-jiao {
+    display: none;
+    width: 29px;
+    height: 34px;
+    background-position: -53px -85px;
+    position: absolute;
+    right: 147px;
+    top: 78px;
+}
+
+.bankbang-help ol {
+    margin-left: 15px;
+}
+
+.bankbang-help ol li {
+    line-height: 24px;
+    list-style: decimal;
+    color: #676766;
+}
+
+.bankbang-title,
+.bankbang-tel {
+    color: #fc952f;
+}
+
+.bankbang-title {
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.bankbang-tel {
+    font-size: 14px;
+    line-height: 38px;
+    margin-top: 10px;
+}
+
+.bangcard-title {
+    font-size: 14px;
+    color: #666565;
+    line-height: 50px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.okcard-ui li {
+    width: 305px;
+    height: 169px;
+    border: 1px solid #dcdcdc;
+    float: left;
+    margin-left: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.bank-imgcon {
+    padding: 10px 20px 5px 20px;
+    height: 120px;
+}
+
+.bank-imgcon p {
+    line-height: 24px;
+    color: #838ba2;
+}
+
+.bank-img {
+    width: 220px;
+    height: 62px;
+    margin: 0 auto;
+}
+
+.card-op {
+    border-top: 1px solid #dcdcdc;
+    line-height: 30px;
+}
+
+.warn-tip {
+    color: #F90B0B;
+    line-height: 30px;
+    height: 30px;
+    width: 200px;
+    margin-left: 15px;
+    float: left;
+}
+
+.card-jiebang {
+    color: #fb6a2a;
+    font-size: 14px;
+    float: right;
+    margin-right: 10px;
+}
+
+.card-xe {
+    margin-top: 30px;
+}
+
+.card-xe p {
+    line-height: 20px;
+    padding-left: 20px;
+}
+
+.divtab {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.txt-err {
+    border: 1px solid #f8586a;
+}
+
+
+/*********************************** 银行卡解绑 ***************************/
+
+.thtx_kd {
+    width: 450px;
+    height: 200px;
+    border: solid 1px #c8c6c6;
+    top: 357px;
+    left: 15.7%;
+}
+
+.posAb {
+    position: absolute;
+}
+
+.backg5 {
+    background-color: #fff;
+}
+
+.bigFont14 {
+    font-size: 14px;
+}
+
+.bigFont18 {
+    font-size: 18px;
+}
+
+.ptop60 {
+    padding-top: 60px;
+}
+
+.plet170 {
+    padding-left: 170px;
+}
+
+.scwj_an {
+    width: 68px;
+    height: 30px;
+    border-radius: 15px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.backg4 {
+    background-color: #59c2f3;
+}
+
+.fl {
+    float: left;
+}
+
+.ptop10 {
+    padding-top: 10px;
+}
+
+.ptop40 {
+    padding-top: 40px;
+}
+
+.fr {
+    float: right;
+}
+
+.height40 {
+    height: 20px;
+}
+
+.lheight40 {
+    line-height: 20px;
+}
+
+.mrt20 {
+    margin-right: 20px;
+}
+
+
+/*********************************** 后来添加的样式  ***************************/
+
+.tab-Account-tip {
+    font-size: 14px;
+    padding-bottom: 10px;
+    margin-top: -15px;
+    color: #F90B0B;
+    margin-left: 6px;
+}
+
+.bang-card .card-desc.not-cert {
+    color: #008fe1;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.select-txt {
+    background: url("../images/down.jpg") no-repeat;
+    background-position: 182px 0px;
+}
+
+.analogSelect {
+    display: none;
+    width: 214px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    background: #fff;
+    position: absolute;
+    z-index: 2;
+    left: 100px;
+    top: 33px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 240px;
+}
+
+.analogSelect li {
+    display: inline-block;
+    width: 209px;
+    padding-left: 5px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.analogSelect li:hover {
+    background: #008fe1;
+    color: #fff;
+}
+
+.yzm-txt1 {
+    width: 166px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+    background: #fff;
+    padding: 10px 0 10px 10px;
+}
+
+.yzm-txt1.txt-err {
+    border: 1px solid #f8586a;
+}
+
+.yzm-btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 120px;
+    height: 38px;
+    float: right;
+    margin-right: 140px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    line-height: 38px;
+    background: #09afdf;
+}
+
+.yzm-btn:hover {
+    color: #fff;
+    background: #08a6d1;
+}
+
+.paddli {
+    margin-top: 12px;
+}
+
+.ui-sp1 {
+    float: left;
+    line-height: 24px;
+    width: 70px;
+    text-align: right;
+    padding-right: 10px;
+    display: inline-block;
+}
+
+.ui-desc {
+    display: inline-block;
+    line-height: 24px;
+}
+
+.ui-txt {
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    padding-left: 8px;
+    width: 150px;
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
+}
+
+.padd ul li {
+    height: 41px;
+}

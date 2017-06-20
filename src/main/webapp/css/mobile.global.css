@@ -1,0 +1,89 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+ 
+ ul,
+ ol,
+ li {
+     list-style: none;
+ }
+ 
+ .icon-rt >img {
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     left: 0;
+     top: 0;
+ }
+ 
+ .wp {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     overflow: hidden;
+ }
+ 
+ .page {
+     position: relative;
+ }
+ /* 箭头 */
+ 
+ @-webkit-keyframes start {
+     0%,
+     30% {
+         opacity: 0.2;
+         -webkit-transform: translate(0, -5px);
+     }
+     60% {
+         opacity: 1;
+         -webkit-transform: translate(0, 0);
+     }
+     100% {
+         opacity: 0.2;
+         -webkit-transform: translate(0, 10px);
+     }
+ }
+ 
+ @keyframes start {
+     0%,
+     30% {
+         opacity: 0.2;
+         transform: translate(0, -5px);
+     }
+     60% {
+         opacity: 1;
+         transform: translate(0, 0);
+     }
+     100% {
+         opacity: 0.2;
+         transform: translate(0, 10px);
+     }
+ }
+ 
+ .start {
+     position: absolute;
+     left: 50%;
+     margin-left: -17px;
+     top: 97%;
+     margin-top: -34px;
+     width: 34px;
+     height: 34px;
+     z-index: 999;
+ }
+ 
+ .start b {
+     position: absolute;
+     left: 50%;
+     top: 10px;
+     margin-left: -9px;
+     width: 19px;
+     height: 12px;
+     background: url(../../images/icon-rotate.png);
+     background-size: 100% 100%;
+     -webkit-animation: start 1.5s infinite ease-in-out;
+     animation: start 1.5s infinite ease-in-out;
+ }

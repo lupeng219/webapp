@@ -1,0 +1,240 @@
+@import url(./mobile.global.css);
+html,
+body {}
+
+.saf-banner {
+    width: 100%;
+    height: 2.7rem;
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.page1,
+.page2,
+.page3,
+.page4,
+.page5 {
+    position: relative;
+}
+
+.saf-banner>img {
+    width: 100%;
+    height: 100%;
+}
+
+.one-contain {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: .6rem;
+    left: 0;
+    background: url(../../images/one-bg.png) no-repeat;
+    background-size: cover;
+}
+
+.one-list:first-child {
+    margin-top: 4.3rem;
+}
+
+.one-list {
+    margin: 0 .14rem 0 1.22rem;
+    height: 2rem;
+}
+
+.one-list-left {
+    float: left;
+    width: 1.2rem;
+    height: 1.4rem;
+    margin-right: .4rem;
+}
+
+.one-list-left:first-child img,
+.one-list-left:last-child img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: .1rem;
+}
+
+.one-list-left:nth-of-type(2)>img {
+    width: 100%;
+    height: 100%;
+}
+
+.one-list-right {
+    float: left;
+    width: 3.9rem;
+    height: 100%;
+}
+
+.h100 {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.sm-title {
+    font-size: .26rem;
+    line-height: .36rem;
+    color: #333333;
+    padding-top: .24rem;
+    font-weight: normal;
+}
+
+.intro-cont {
+    font-size: .22rem;
+    line-height: .3rem;
+    color: #666666;
+    padding-top: .06rem;
+}
+
+.two-contain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: .6rem;
+    background: url(../../images/two-bg.png) no-repeat;
+    background-size: cover;
+}
+
+.two-title,
+.two-titleT {
+    height: .48rem;
+    line-height: .48rem;
+    padding-left: 2.28rem;
+    font-size: .26rem;
+    color: #14ccA6;
+    font-weight: normal;
+}
+
+.two-title {
+    margin-top: .62rem;
+}
+
+.two-titleT {
+    padding-top: .06rem;
+}
+
+.cont-pic {
+    position: absolute;
+    width: 5rem;
+    height: 7.72rem;
+    top: 2.42rem;
+    margin-left: 1.08rem;
+}
+
+.cont-pic>img {
+    width: 100%;
+}
+
+.three-contain,
+.four-contain,
+.five-contain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: .6rem;
+    background: url(../../images/three-bg.png) no-repeat;
+    background-size: cover;
+}
+
+.four-contain {
+    background: url(../../images/four-bg.png) no-repeat !important;
+    background-size: cover !important;
+}
+
+.five-contain {
+    background: url(../../images/five-bg.png) no-repeat !important;
+    background-size: cover !important;
+}
+
+.pay-pic {
+    width: 4.6rem;
+    /*height: 3.9rem;*/
+    margin: .84rem 1.1rem .3rem 1.5rem;
+}
+
+.pay-pic>img {
+    width: 100%;
+}
+
+.intro-info {
+    width: 5.54rem;
+    margin-left: 1rem;
+}
+
+.intro-info p {
+    line-height: .36rem;
+    color: #666666;
+    font-size: .24rem;
+}
+
+.intro-infoT {
+    margin-top: .44rem;
+}
+
+.four-title {
+    margin-top: .62rem;
+    height: .48rem;
+    line-height: .48rem;
+    padding-left: 2.28rem;
+    font-size: .26rem;
+    color: #14ccA6;
+    font-weight: normal;
+}
+
+.intro-infoFive {
+    width: 3.88rem;
+    margin-left: 2.28rem;
+    margin-top: .52rem;
+}
+
+.intro-infoFive>p {
+    font-size: .24rem;
+    line-height: .36rem;
+    color: #666666;
+}
+
+.four-pple {
+    /*width: 4.2rem;
+    height: 2.62rem;*/
+    width: 4rem;
+    height: 2.32rem;
+    margin-left: 2rem;
+    margin-top: .62rem;
+}
+
+.four-pple>img {
+    width: 100%;
+    height: 100%;
+}
+
+.four-titleT {
+    font-weight: normal;
+    margin-top: .26rem;
+    height: 1.12rem;
+    line-height: 1.12rem;
+    font-size: .26rem;
+    color: #14ccA6;
+    padding-left: 2.28rem;
+}
+
+.intro-infoFiveT {
+    margin-top: 0rem;
+}
+
+.calcu-pic {
+    width: 3.08rem;
+    height: 2rem;
+    margin-top: 1.22rem;
+    margin-left: 2.22rem;
+    margin-bottom: 1.22rem;
+}
+
+.calcu-pic>img {
+    width: 100%;
+    height: 100%;
+}

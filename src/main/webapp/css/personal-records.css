@@ -1,0 +1,346 @@
+@charset "utf-8";
+.records-title {
+    padding-left: 25px;
+    width: 1200px;
+    background: #f0f7ff;
+    height: 60px;
+}
+
+.records-title .records-title {
+    font-size: 24px;
+    float: left;
+    color: #2b2b2b;
+    line-height: 60px;
+}
+
+.op-fenlei {
+    padding: 0 0 15px 0;
+    border-bottom: 2px solid #fff;
+}
+
+.records-ui {
+    margin-top: 13px;
+}
+
+.records-ui li {
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    padding: 0 10px;
+    margin-left: 12px;
+}
+
+.records-ui li a {
+    cursor: pointer;
+}
+
+.records-ui li:hover,
+.records-ui .current {
+    background: #09afdf;
+    border-radius: 3px;
+}
+
+.records-ui li:hover a,
+.records-ui .current a {
+    color: #fff;
+}
+
+.records-ui .ui-title:hover {
+    background: #fff;
+}
+
+.op-conduct {
+    height: 60px;
+    padding-left: 10px;
+    border-bottom: 1px solid #fff;
+    background: #fff;
+}
+
+.op-title {
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 70px;
+    float: left;
+}
+
+.biao-state {
+    margin-top: 17px;
+    width: 200px;
+    height: 36px;
+    float: left;
+    position: relative;
+}
+
+.biaoo-timerl {
+    border: none;
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    margin-top: 9px;
+    position: absolute;
+    z-index: 0;
+}
+
+.biao-timeinput {
+    border: 0px solid #fff;
+    width: 150px;
+    height: 34px;
+    border-radius: 4px;
+    float: right;
+}
+
+.biao-state-sel,
+.biao-time {
+    font-size: 14px;
+    width: 134px;
+    padding-left: 10px;
+    height: 34px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background: #fff;
+  
+}
+
+.biao-time {
+    margin-top: 17px;
+    float: left;
+    background: url(../pictures/ICON-calendar.png) no-repeat 16px center;
+    padding-left: 50px;
+    height: 26px\9;
+    padding-top: 8px\9;
+}
+:root .biao-time {
+    height: 34px\9;
+    padding-top: 0px\9;
+}
+.down-card {
+    cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    border-left: 1px solid #aaa;
+    height: 35px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    text-align: center;
+    background: url(../images/select2.png) 7px 5px no-repeat;
+}
+
+.downcard-click {
+    background: url(../images/select2.png) -11px 7px no-repeat;
+}
+
+.find-btn {
+    display: inline-block;
+    padding: 0 15px;
+    height: 36px;
+    color: #fff;
+    background: #f8586a;
+    line-height: 36px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 17px;
+}
+
+.find-btn:hover {
+    color: #fff;
+}
+
+.find-ui {
+    float: left;
+    margin: 0 20px;
+    margin-top: 23px;
+}
+
+.find-ui li {
+    float: left;
+    font-size: 12px;
+    cursor: pointer;
+    height: 24px;
+    line-height: 22px;
+    padding: 0 10px;
+}
+
+.find-ui li a {
+    color: #09afdf;
+}
+
+.find-ui li:hover,
+.find-ui .current {
+    background: #09afdf;
+    border-radius: 3px;
+}
+
+.find-ui li:hover a,
+.find-ui .current a {
+    color: #fff;
+}
+
+.records-project {
+    margin-top: 20px;
+    text-align: center;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.records-project li {
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+}
+
+.records-project li span,
+.records-project li a {
+    width: 24%;
+    float: left;
+    padding-left: 2%;
+    display: inline-block;
+    height: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.records-project .project-title {
+    color: #333333;
+    background: #eeeeee;
+}
+
+.records-project li .xuhao {
+    width: 10%;
+}
+
+.zichan-con {
+    height: 148px;
+    float: left;
+    padding: 20px 30px;
+}
+
+.zichan-con .zichan-tel {
+    font-size: 18px;
+    line-height: 40px;
+    font-family: 微软雅黑;
+    color: #474e5d;
+    font-weight: 700;
+}
+
+.zichan-con .zichan-number {
+    font-size: 18px;
+    color: #fc7a2d;
+}
+
+.zichan-con .zichan-number span {
+    font-size: 32px;
+}
+
+.zichan-ui,
+.operation-ui {
+    float: left;
+    display: inline-block;
+}
+
+.zichan-ui {
+    margin-left: 5px;
+}
+
+.ui-dian {
+    width: 5px;
+    height: 5px;
+    background: url(../images/dian.png) center center no-repeat;
+    float: left;
+    margin-right: 10px;
+    margin-top: 16px;
+}
+
+.zichan-ui li {
+    float: left;
+    width: 500px;
+    line-height: 36px;
+    height: 36px;
+}
+
+.zichan-ui li span {
+    font-size: 18px;
+}
+
+.zichan-ui li p {
+    display: inline-block;
+    width: 150px;
+    float: left;
+}
+
+.zichan-ui li .ui-title {
+    font-size: 14px;
+    display: inline-block;
+    float: left;
+    width: 80px;
+}
+
+.zichan-ui li a {
+    display: inline-block;
+    margin-right: 15px;
+    float: left;
+}
+
+.chongz-btn {
+    padding: 3px 10px;
+    background: #fc9c66;
+    color: #fff;
+    line-height: 18px;
+    margin-top: 7px;
+}
+
+.zichan-ui li a:hover {
+    color: #ed8144;
+}
+
+.zichan-ui .chongz-btn:hover {
+    color: #fff;
+    background: #ed8144;
+}
+
+.per-txtcon {
+    position: relative;
+}
+
+.oldtx-btn {
+    display: inline-block;
+    padding: 5px 20px;
+    color: #fff;
+    background: #0089cd;
+    position: absolute;
+    top: 67px;
+    right: 125px;
+    border-radius: 3px;
+}
+
+.oldtx-btn:hover {
+    color: #fff;
+    background: #0379b4;
+}
+
+
+/*换行变色*/
+
+.changeColor ul li:nth-child(2n) {
+    background: #F4F4F4;
+}
+
+.changeColor ul li:nth-child(2n+1) {
+    background: #fff;
+}
+
+.changeColor ul li:hover {
+    background: #f9f9f9;
+}
+
+
+/*交易记录*/
+
+.textrecord {
+    !import;
+    width: 100%;
+    background-color: white;
+    padding: 15px 0;
+    padding-bottom: 130px;
+}

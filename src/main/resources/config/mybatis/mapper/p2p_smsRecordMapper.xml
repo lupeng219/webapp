@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_smsRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_smsRecord" >
+    <id column="smsRecordId" property="smsRecordId" />
+    <result column="sendTime" property="sendTime" />
+    <result column="smsContent" property="smsContent" />
+    <result column="sendResult" property="sendResult" />
+    <result column="realName" property="realName" />
+    <result column="failPhone" property="failPhone" />
+    <result column="sendType" property="sendType" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+  	smsRecordId,sendTime,smsContent,sendResult,realName,failPhone,sendType
+  </sql>
+  
+  <!-- 保存记录 -->
+  <insert id="saveSmsRecord" parameterType="com.baibao.web.p2p.generator.bean.P2p_smsRecord">
+  	insert into p2p_smsrecord (sendTime,smsContent,sendResult,realName,failPhone,sendType) 
+  	values (#{sendTime},#{smsContent},#{sendResult},#{realName},#{failPhone},#{sendType})
+  </insert>
+  
+</mapper>

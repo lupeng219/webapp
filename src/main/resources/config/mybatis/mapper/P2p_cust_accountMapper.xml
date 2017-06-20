@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_cust_accountMapper" >
+  <resultMap id="CustAccountMap" type="com.baibao.web.p2p.generator.bean.P2p_cust_account" >
+    <id column="pca_cust_no" property="pcaCustNo" jdbcType="CHAR" />
+    <result column="pca_accountNo" property="pcaAccountno" jdbcType="VARCHAR" />
+    <result column="pca_accountType" property="pcaAccounttype" jdbcType="CHAR" />
+    <result column="pca_custody_type" property="pcaCustodyType" jdbcType="CHAR" />
+    <result column="pca_account_balance" property="pcaAccountBalance" jdbcType="DECIMAL" />
+    <result column="pca_account_freeze" property="pcaAccountFreeze" jdbcType="DECIMAL" />
+    <!-- <result column="pca_account_recharge" property="pcaAccountRecharge" jdbcType="DECIMAL" />
+    <result column="pca_mention_now" property="pcaMentionNow" jdbcType="DECIMAL" />
+    <result column="pca_investMoney" property="pcaInvestmoney" jdbcType="DECIMAL" /> -->
+    <result column="pca_account_open_time" property="pcaAccountOpenTime" jdbcType="TIMESTAMP" />
+    <result column="pca_modifyTime" property="pcaModifytime" jdbcType="TIMESTAMP" />
+    <result column="pca_status" property="pcaStatus" jdbcType="CHAR" />
+   <!--  <result column="pui_protocolOne" property="puiProtocolone" jdbcType="CHAR" />
+    <result column="pui_protocolTwo" property="puiProtocoltwo" jdbcType="CHAR" />
+    <result column="pui_protocolThree" property="puiProtocolthree" jdbcType="CHAR" />
+    <result column="pui_protocolFour" property="puiProtocolfour" jdbcType="CHAR" /> -->
+    <result column="pca_payPassword" property="pcaPayPassword" jdbcType="VARCHAR" />
+    <!-- <result column="pca_accountMobile" property="pcaAccountMobile" jdbcType="VARCHAR" /> -->
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    <!-- pca_id, --> pca_cust_no, pca_accountNo, pca_accountType, pca_custody_type, pca_account_balance, 
+    pca_account_freeze, <!-- pca_account_recharge, pca_mention_now, pca_investMoney, --> pca_account_open_time, 
+    pca_modifyTime, pca_status,pca_payPassword<!--  pui_protocolOne, pui_protocolTwo, pui_protocolThree, 
+    pui_protocolFour,pca_payPassword,pca_accountMobile -->
+  </sql>
+
+  <!-- 根据id或客户号查询 -->
+  <select id="getCustAccountByIdOrCustNo" resultMap="CustAccountMap" parameterType="java.util.Map" >
+    select <include refid="Base_Column_List" /> from p2p_cust_account where 1=1 
+	    <if test="custNo!=null">
+	    	and (pca_cust_no = #{custNo} or pca_accountNo = #{custNo} )
+	    </if>
+  </select>
+  
+  <!-- 保存第三方支付账户下信息 -->
+  <insert id="save" parameterType="com.baibao.web.p2p.generator.bean.P2p_cust_account">
+  	insert into p2p_cust_account (<!-- pca_id, --> pca_cust_no, pca_accountNo, 
+      pca_accountType, pca_custody_type, pca_account_balance, 
+      pca_account_freeze,<!--  pca_account_recharge, pca_mention_now, 
+      pca_investMoney, --> pca_account_open_time, pca_modifyTime, 
+      pca_status,pca_payPassword <!-- pui_protocolOne, pui_protocolTwo, 
+      pui_protocolThree, pui_protocolFour, pca_payPassword,pca_accountMobile -->
+      )
+    values (<!-- #{pcaId,jdbcType=BIGINT}, --> #{pcaCustNo,jdbcType=CHAR}, #{pcaAccountno,jdbcType=VARCHAR}, 
+      #{pcaAccounttype,jdbcType=CHAR}, #{pcaCustodyType,jdbcType=CHAR}, #{pcaAccountBalance,jdbcType=DECIMAL}, 
+      #{pcaAccountFreeze,jdbcType=DECIMAL}, <!-- #{pcaAccountRecharge,jdbcType=DECIMAL}, #{pcaMentionNow,jdbcType=DECIMAL}, 
+      #{pcaInvestmoney,jdbcType=DECIMAL}, --> #{pcaAccountOpenTime,jdbcType=TIMESTAMP}, #{pcaModifytime,jdbcType=TIMESTAMP}, 
+      #{pcaStatus,jdbcType=CHAR},#{pcaPayPassword,jdbcType=VARCHAR}<!--  #{puiProtocolone,jdbcType=CHAR}, #{puiProtocoltwo,jdbcType=CHAR}, 
+      #{puiProtocolthree,jdbcType=CHAR}, #{puiProtocolfour,jdbcType=CHAR}, #{pcaPayPassword,jdbcType=VARCHAR} -->
+      )
+  </insert>
+  
+  <!-- 根据客户号和支付账号更新余额、充值金额 -->
+  <update id="updateBalanceAndRechargeByCustNoAccountNo" parameterType="java.util.Map" >
+  	update p2p_cust_account t set t.pca_account_balance=#{balance}
+  		<!-- <if test="recharge!=null">
+  		  ,t.pca_account_recharge=#{recharge} 
+  		</if>  -->
+  		where t.pca_cust_no=#{custNo}
+  		<!--  and t.pca_accountNo=#{accountNo}  -->
+  </update>
+  
+  <!-- 根据客户号和支付账号更新余额、提现金额 -->
+  <update id="updateBalanceAndMentionNowByCustNoAccountNo" parameterType="java.util.Map">
+  	update p2p_cust_account t set t.pca_account_balance=#{balance}<!-- ,t.pca_mention_now=#{mentionNow} -->
+  		where t.pca_cust_no=#{custNo}
+  		<!-- and t.pca_accountNo=#{accountNo} -->
+  </update>
+  
+  <!-- 根据客户号和类型查询第三方账户表 -->
+    <select id="getByCustNoAndType"  resultMap="CustAccountMap" parameterType="java.util.Map">
+    	select <include refid="Base_Column_List" /> from p2p_cust_account 
+    	where pca_cust_no = #{custNo}
+    	and pca_custody_type =#{type}  and pca_status=${status} limit 1
+    </select>
+    
+  <!-- 根据客户号查询 -->
+	<select id="queryIdentityId" resultMap="CustAccountMap" >
+	    select <include refid="Base_Column_List" /> from p2p_cust_account where pca_cust_no = #{custNo}
+		    <!-- <if test="custNo!=null">
+		    	and pca_cust_no = #{custNo,jdbcType=CHAR}
+		    </if> -->
+	</select>
+  
+  <!-- 更新账户余额 -->
+  <update id="updatePcaAccountBalance" parameterType="java.util.Map">
+  	update p2p_cust_account
+  	<set>
+  		pca_account_balance=#{pca_account_balance}
+  	</set>
+  	where pca_cust_no = #{pca_cust_no}
+  </update>
+
+  
+   <!-- 根据客户号更新账户余额和冻结金额 -->
+  <update id="updateBalanceAndFreeze" parameterType="String">
+  	update p2p_cust_account
+  	<set>
+  		pca_account_balance=#{balance},
+  		pca_account_freeze=#{freeze}
+  	</set>
+  	where pca_cust_no = #{custNo}
+  </update>
+  
+  <!-- 设置或更新交易密码 -->
+  <update id="updatePayPassword" parameterType="java.util.Map">
+  	update p2p_cust_account t set t.pca_payPassword = #{paypassword} where t.pca_cust_no = #{custNo}
+  </update>
+
+ <!-- 更新账户余额 -->
+  <update id="updateAccountBalance" parameterType="java.util.Map">
+  		update p2p_cust_account
+  		<set>
+  			pca_account_balance=#{pca_account_balance}
+  		</set>
+  		where pca_accountNo=#{pca_accountNo}
+  </update>
+  
+  <!--根据客户号更新账户使用状态  -->
+  <update id="updateCustAccount" parameterType="java.util.Map" >
+  		update p2p_cust_account
+  		<set>
+  			pca_status=#{pcaStatus}
+  		</set>
+  		where pca_cust_no=#{custNo}
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_cust_account" >
+    update p2p_cust_account
+    <set >
+      <if test="pcaCustNo != null" >
+        pca_cust_no = #{pcaCustNo,jdbcType=CHAR},
+      </if>
+      <if test="pcaAccountno != null" >
+        pca_accountNo = #{pcaAccountno,jdbcType=VARCHAR},
+      </if>
+      <if test="pcaAccounttype != null" >
+        pca_accountType = #{pcaAccounttype,jdbcType=CHAR},
+      </if>
+      <if test="pcaCustodyType != null" >
+        pca_custody_type = #{pcaCustodyType,jdbcType=CHAR},
+      </if>
+      <if test="pcaAccountBalance != null" >
+        pca_account_balance = #{pcaAccountBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="pcaAccountFreeze != null" >
+        pca_account_freeze = #{pcaAccountFreeze,jdbcType=DECIMAL},
+      </if>
+      <if test="pcaAccountOpenTime != null" >
+        pca_account_open_time = #{pcaAccountOpenTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pcaModifytime != null" >
+        pca_modifyTime = #{pcaModifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pcaStatus != null" >
+        pca_status = #{pcaStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where pca_cust_no = #{pcaCustNo,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>baibaojinfnu</display-name>
+  
+  <!-- ======================================================================================= --> 
+  <!-- ============================初始化======================================== -->
+  <!-- ======================================================================================= -->  
+  <context-param>  
+		 <param-name>spring.profiles.active</param-name>  
+		 <param-value>dev</param-value>  
+  </context-param>  
+  <context-param>  
+	  	<param-name>spring.profiles.default</param-name>  
+		<param-value>dev</param-value>  
+  </context-param>
+  <context-param>  
+		<param-name>spring.liveBeansView.mbeanDomain</param-name>  
+		<param-value>dev</param-value>  
+  </context-param>  
+<!-- 
+  <context-param>
+	  <param-name>logbackConfigLocation</param-name>
+	  <param-value>/WEB-INF/classes/logback.xml</param-value>
+   </context-param>
+ -->
+  <context-param>
+	    <param-name>contextConfigLocation</param-name>
+	    <param-value>/WEB-INF/classes/config/spring/applicationContext-config.xml</param-value>
+  </context-param>
+  <!-- ======================================================================================= --> 
+  <!-- ============================listener监听器begin======================================== -->
+  <!-- ======================================================================================= -->  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+<!-- 
+  <listener>
+    <listener-class>com.baibao.core.logback.loggly.spring.web.LogbackConfigListener</listener-class>
+  </listener>
+ -->
+  <listener>
+    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  </listener>
+  <!-- ======================================================================================= --> 
+  <!-- ============================filter过滤器begin======================================== -->
+  <!-- ======================================================================================= -->  
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+    <filter>
+	    <filter-name>springSessionRepositoryFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>springSessionRepositoryFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	            <dispatcher>REQUEST</dispatcher>
+	            <dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	
+	  
+  <!-- 
+		1，防sql注入
+	
+  <filter>
+    <filter-name>Sqlurl</filter-name>
+    <filter-class>com.baibao.filter.URLfilter</filter-class>
+    <init-param>
+      <param-name>forward</param-name>
+      <param-value>/Sql500.jsp</param-value>
+    </init-param>
+    <init-param>
+      <param-name>sql</param-name>
+      <param-value>
+				'| and|and | exec|exec |insert | insert|select |
+				select|delete | delete|update | update|
+				count|count(|*|'%|chr(|mid(|master |truncate |char(&quot;
+				+|declare | or|or |or(|)or|+|;
+			</param-value>
+		</init-param>
+	</filter>
+	
+	
+	
+	<filter-mapping>
+		<filter-name>Sqlurl</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Sqlurl</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Sqlurl</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Sqlurl</filter-name>
+		<url-pattern>/service/*</url-pattern>
+	</filter-mapping>
+	
+	-->
+	
+	
+	<!-- 
+		1，过滤跨站脚本
+		2，防止框架钓鱼漏洞可以被恶意攻击者通过构造参数
+	-->
+
+	<filter>
+		<filter-name>XSS</filter-name>
+		<filter-class>com.baibao.core.security.web.CrossScriptFilter</filter-class>
+	</filter>	
+	<filter-mapping>
+		<filter-name>XSS</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+    <!-- 添加Spring-Security过滤器-->
+    <filter>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/service/*</url-pattern>
+    </filter-mapping>
+  <!-- ======================================================================================= --> 
+  <!-- ============================servlet begin======================================== -->
+  <!-- ======================================================================================= -->  
+    <servlet>
+	    <servlet-name>dispatcher</servlet-name>
+	    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	    <init-param>
+	      <param-name>contextConfigLocation</param-name>
+	      <param-value>classpath*:config/spring/applicationContext-mvc.xml</param-value>
+	    </init-param>
+	    <load-on-startup>1</load-on-startup>
+    </servlet>
+	
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LoadConfig</servlet-name>
+		<servlet-class>com.baibao.core.cache.LoadSystemConfigServlet</servlet-class>
+		<init-param>
+		    <param-name>settings</param-name>
+		    <param-value>xmlproperties/settings.xml</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+
+	<!-- 验证码 -->
+	<servlet>
+		<servlet-name>ScaptchaServlet</servlet-name>
+		<servlet-class>com.baibao.web.p2p.scaptcha.ScaptchaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ScaptchaServlet</servlet-name>
+		<url-pattern>/scaptcha</url-pattern>
+	</servlet-mapping>
+<!-- 
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>       
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>   
+	</servlet>   
+	<servlet-mapping>       
+		<servlet-name>DruidStatView</servlet-name>       
+		<url-pattern>/druid/*</url-pattern> 
+	</servlet-mapping>
+ -->
+ 
+	<!-- Session过期时间 -->
+	<session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- urlRwrite过滤器 -->
+	<filter>
+       <filter-name>UrlRewriteFilter</filter-name>  
+       <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+   </filter>  
+   <filter-mapping>
+       <filter-name>UrlRewriteFilter</filter-name>
+       <url-pattern>/*</url-pattern>
+       <dispatcher>REQUEST</dispatcher>
+	   <dispatcher>FORWARD</dispatcher>
+   </filter-mapping>
+</web-app>

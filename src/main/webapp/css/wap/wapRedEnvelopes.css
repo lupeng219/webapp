@@ -1,0 +1,17 @@
+@charset "utf-8";
+/********************** 投标详情页 *********************/
+.content{ margin:0 0.5rem 0 0.5rem; }
+.tabList{ height:2rem; position:relative; margin-top:1rem; border:1px solid #fa7937;}
+.tabList .tab{display:inline-block;width:33.33%;height:2rem;line-height: 2rem;text-align:center;cursor: pointer;color:#E43F3F;}
+.tabList .active{color:#fff;background:#fa7937;}
+.couponList{margin-top:0.7rem;}
+.couponList .couponMode{width:100%;}
+.couponList .couponMode .couponSub{width:96%;margin:0.5% 2%;position:relative;}
+.couponList .couponMode .couponSub img{width:100%;}
+.couponList .couponMode .couponSub .couponTitle{display:inline-block; width:13%;position:absolute;left:0;top:50%;z-index:1;color:#fff;text-align:center;}
+.couponList .couponMode .couponSub .couponTime{display:inline-block; width:83%;position:absolute;right:0;bottom:6%;z-index:1;color:#fff;text-align:left;font-size:0.9rem;}
+.couponList .couponMode .couponSub .couponMoney{display:inline-block;position:absolute;right:6%;top:12.5%;color:#fff;font-size:1.9rem;line-height:1.9rem;}
+.couponList .couponMode .couponSub .couponMoney span{font-size:1rem;line-height:1rem;margin-left:0.3rem;}
+.couponList .couponMode .couponSub p{line-height:160%;font-size:0.8rem;margin-top:-20px;}
+.yellowColor{color:#fcdd37;}
+.redColor{color:#d96a7b;}

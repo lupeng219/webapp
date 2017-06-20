@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_user_warehouseMapper">
+<resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_user_warehouse" >
+    <id column="puw_whNo" property="puwWhno" jdbcType="VARCHAR" />
+    <result column="puw_custNo" property="puwCustno" jdbcType="VARCHAR" />
+    <result column="puw_code" property="puwCode" jdbcType="VARCHAR" />
+    <result column="puw_parvalue" property="puwParvalue" jdbcType="VARCHAR" />
+    <result column="puw_getTime" property="puwGettime" jdbcType="VARCHAR" />
+    <result column="puw_effectTime" property="puwEffecttime" jdbcType="VARCHAR" />
+    <result column="puw_activeId" property="puwActiveid" jdbcType="INTEGER" />
+    <result column="puw_state" property="puwState" jdbcType="VARCHAR" />
+    <!--临时字段  -->
+    <result column="puf_friend_custName" property="friendCustName" jdbcType="VARCHAR" />
+    <result column="pui_registration_time" property="registrationTime" jdbcType="TIMESTAMP" />
+    <result column="paraName" property="paraName" jdbcType="VARCHAR"/>
+  </resultMap>
+
+<!-- 插入仓库表 -->
+<insert id="addPrize" parameterType="map">
+	INSERT INTO p2p_user_warehouse (puw_whNo,puw_custNo,puw_code,puw_parvalue,puw_getTime,puw_effectTime,puw_activeId,puw_state)
+			 values (#{puw_whNo},#{puw_custNo},#{puw_code},#{puw_parvalue},#{puw_getTime},#{puw_effectTime},#{puw_activeId},#{puw_state});
+</insert>
+<update id="updateByPuw_whNo" parameterType="map">
+	UPDATE p2p_user_warehouse SET puw_state = #{state} where puw_whNo =#{puw_whNo}
+</update>
+<!-- 根据客户号查询优惠券信息 -->
+<!-- <select id="queryWarehouseBycustNo" parameterType="String" resultMap="BaseResultMap">
+	select puw.puw_whNo,puw.puw_custNo,puw.puw_code,puw.puw_parvalue,puw.puw_getTime,puw.puw_effectTime,puw.puw_activeId,puw.puw_state 
+	from  p2p_user_warehouse puw 
+	where   puw_custNo=#{custNo}
+	and puw_state =#{status} and puw_code='1000'
+</select> -->
+<!-- 待收跑批 -->
+<select id="selectBytransFlowNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+select puw_whNo from   p2p_user_warehouse puw 
+left join p2p_user_warehouse_flow  puwf on  puw.puw_whNo = puwf.puwf_whNo 
+left join p2p_active_b2c_trans_aid pabt ON pabt.part_orderFlowNo  = puwf.puwf_flowNo
+WHERE    pabt.part_transFlowNo =#{flowNo}
+</select>
+
+<!-- 待付跑批 -->
+<select id="selectBytransFlowNoPay" parameterType="java.lang.String" resultMap="BaseResultMap">
+select puw_whNo from   p2p_user_warehouse puw 
+left join p2p_user_warehouse_flow  puwf on  puw.puw_whNo = puwf.puwf_whNo 
+left join p2p_active_b2c_trans_aid pbta ON pbta.part_orderFlowNo = puwf.puwf_flowNo
+left join p2p_active_b2c_trans pbt ON pbta.part_transFlowNo = pbt.part_original_transFlowNo
+WHERE  pbt.part_transFlowNo=#{flowNo}
+
+</select>
+<select id="queryPrizeById" parameterType="string" resultMap="BaseResultMap">
+	select puw_whNo,puw_custNo,puw_code,puw_parvalue,puw_getTime,puw_effectTime,puw_activeId,puw_state from p2p_user_warehouse where puw_whNo = #{id} limit 0,1
+</select>
+
+<select id="inspectWarehouse" parameterType="java.util.Map" resultMap="BaseResultMap">
+	select puw_whNo,puw_custNo,puw_code,puw_parvalue,puw_getTime,puw_effectTime,puw_activeId,
+	puw_state from p2p_user_warehouse
+	where puw_activeId = #{puw_activeId} and puw_custNo=#{puw_custNo} and puw_activeId=#{puw_activeId}
+	limit 0,1
+</select>
+
+</mapper>

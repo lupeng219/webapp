@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_tender_recordMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_tender_record" >
+    <result column="ptr_tenderFlowNo" property="ptrTenderflowno" jdbcType="VARCHAR" />
+    <result column="ptr_accountNo" property="ptrAccountno" jdbcType="VARCHAR" />
+    <result column="ptr_productNo" property="ptrProductno" jdbcType="VARCHAR" />
+    <result column="ptr_custNo" property="ptrCustno" jdbcType="CHAR" />
+    <result column="ptr_amount" property="ptrAmount" jdbcType="DECIMAL" />
+    <result column="ptr_transTime" property="ptrTranstime" jdbcType="TIMESTAMP" />
+    <result column="ptr_status" property="ptrStatus" jdbcType="CHAR" />
+    <result column="ptr_channel" property="ptrChannel" jdbcType="CHAR" />
+    <result column="ptr_tradeStatus" property="ptrTradestatus" jdbcType="CHAR" />
+    <result column="ptr_payStatusCode" property="ptrPaystatuscode" jdbcType="CHAR" />
+    <result column="ptr_host_response_time" property="ptrHostResponseTime" jdbcType="TIMESTAMP" />
+    <result column="ptr_host_response_flowNo" property="ptrHostResponseFlowno" jdbcType="VARCHAR" />
+    <result column="ptr_host_return_code" property="ptrHostReturnCode" jdbcType="VARCHAR" />
+    <result column="ptr_host_return_message" property="ptrHostReturnMessage" jdbcType="VARCHAR" />
+    <result column="ptr_dealStatus" property="ptrDealstatus" jdbcType="CHAR" />
+    <result column="ptr_backStatus" property="ptrBackstatus" jdbcType="CHAR" />
+    <result column="ptr_remark" property="ptrRemark" jdbcType="VARCHAR" />
+    <result column="pu_mobile" property="pu_mobile" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ptr_tenderFlowNo, ptr_accountNo, ptr_productNo, ptr_custNo, ptr_amount, ptr_transTime, 
+    ptr_status, ptr_channel, ptr_tradeStatus, ptr_payStatusCode, ptr_host_response_time, 
+    ptr_host_response_flowNo, ptr_host_return_code, ptr_host_return_message, ptr_dealStatus, 
+    ptr_backStatus, ptr_remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_recordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from p2p_tender_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from p2p_tender_record
+    where ptr_tenderFlowNo = #{tenderFlowNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from p2p_tender_record
+    where ptr_id = #{ptrId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_recordExample" >
+    delete from p2p_tender_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_record" >
+    insert into p2p_tender_record (ptr_id, ptr_tenderFlowNo, ptr_accountNo, 
+      ptr_productNo, ptr_custNo, ptr_amount, 
+      ptr_transTime, ptr_status, ptr_channel,
+      ptr_tradeStatus, ptr_payStatusCode, 
+      ptr_host_response_time, ptr_host_response_flowNo, 
+      ptr_host_return_code, ptr_host_return_message, 
+      ptr_dealStatus, ptr_backStatus, ptr_remark
+      )
+    values (#{ptrId,jdbcType=BIGINT}, #{ptrTenderflowno,jdbcType=VARCHAR}, #{ptrAccountno,jdbcType=VARCHAR}, 
+      #{ptrProductno,jdbcType=VARCHAR}, #{ptrCustno,jdbcType=CHAR}, #{ptrAmount,jdbcType=DECIMAL}, 
+      #{ptrTranstime,jdbcType=TIMESTAMP}, #{ptrStatus,jdbcType=CHAR}, #{ptrChannel,jdbcType=CHAR}, 
+      #{ptrTradestatus,jdbcType=CHAR}, #{ptrPaystatuscode,jdbcType=CHAR}, 
+      #{ptrHostResponseTime,jdbcType=TIMESTAMP}, #{ptrHostResponseFlowno,jdbcType=VARCHAR}, 
+      #{ptrHostReturnCode,jdbcType=VARCHAR}, #{ptrHostReturnMessage,jdbcType=VARCHAR}, 
+      #{ptrDealstatus,jdbcType=CHAR}, #{ptrBackstatus,jdbcType=CHAR}, #{ptrRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_record" >
+    insert into p2p_tender_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ptrId != null" >
+        ptr_id,
+      </if>
+      <if test="ptrTenderflowno != null" >
+        ptr_tenderFlowNo,
+      </if>
+      <if test="ptrAccountno != null" >
+        ptr_accountNo,
+      </if>
+      <if test="ptrProductno != null" >
+        ptr_productNo,
+      </if>
+      <if test="ptrCustno != null" >
+        ptr_custNo,
+      </if>
+      <if test="ptrAmount != null" >
+        ptr_amount,
+      </if>
+      <if test="ptrTranstime != null" >
+        ptr_transTime,
+      </if>
+      <if test="ptrStatus != null" >
+        ptr_status,
+      </if>
+      <if test="ptrChannel != null" >
+        ptr_channel,
+      </if>
+      <if test="ptrTradestatus != null" >
+        ptr_tradeStatus,
+      </if>
+      <if test="ptrPaystatuscode != null" >
+        ptr_payStatusCode,
+      </if>
+      <if test="ptrHostResponseTime != null" >
+        ptr_host_response_time,
+      </if>
+      <if test="ptrHostResponseFlowno != null" >
+        ptr_host_response_flowNo,
+      </if>
+      <if test="ptrHostReturnCode != null" >
+        ptr_host_return_code,
+      </if>
+      <if test="ptrHostReturnMessage != null" >
+        ptr_host_return_message,
+      </if>
+      <if test="ptrDealstatus != null" >
+        ptr_dealStatus,
+      </if>
+      <if test="ptrBackstatus != null" >
+        ptr_backStatus,
+      </if>
+      <if test="ptrRemark != null" >
+        ptr_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ptrId != null" >
+        #{ptrId,jdbcType=BIGINT},
+      </if>
+      <if test="ptrTenderflowno != null" >
+        #{ptrTenderflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrAccountno != null" >
+        #{ptrAccountno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrProductno != null" >
+        #{ptrProductno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrCustno != null" >
+        #{ptrCustno,jdbcType=CHAR},
+      </if>
+      <if test="ptrAmount != null" >
+        #{ptrAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="ptrTranstime != null" >
+        #{ptrTranstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptrStatus != null" >
+        #{ptrStatus,jdbcType=CHAR},
+      </if>
+      <if test="ptrChannel != null" >
+        #{ptrChannel,jdbcType=CHAR},
+      </if>
+      <if test="ptrTradestatus != null" >
+        #{ptrTradestatus,jdbcType=CHAR},
+      </if>
+      <if test="ptrPaystatuscode != null" >
+        #{ptrPaystatuscode,jdbcType=CHAR},
+      </if>
+      <if test="ptrHostResponseTime != null" >
+        #{ptrHostResponseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptrHostResponseFlowno != null" >
+        #{ptrHostResponseFlowno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrHostReturnCode != null" >
+        #{ptrHostReturnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrHostReturnMessage != null" >
+        #{ptrHostReturnMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrDealstatus != null" >
+        #{ptrDealstatus,jdbcType=CHAR},
+      </if>
+      <if test="ptrBackstatus != null" >
+        #{ptrBackstatus,jdbcType=CHAR},
+      </if>
+      <if test="ptrRemark != null" >
+        #{ptrRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_recordExample" resultType="java.lang.Integer" >
+    select count(1) from p2p_tender_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p2p_tender_record
+    <set >
+      <if test="record.ptrId != null" >
+        ptr_id = #{record.ptrId,jdbcType=BIGINT},
+      </if>
+      <if test="record.ptrTenderflowno != null" >
+        ptr_tenderFlowNo = #{record.ptrTenderflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ptrAccountno != null" >
+        ptr_accountNo = #{record.ptrAccountno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ptrProductno != null" >
+        ptr_productNo = #{record.ptrProductno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ptrCustno != null" >
+        ptr_custNo = #{record.ptrCustno,jdbcType=CHAR},
+      </if>
+      <if test="record.ptrAmount != null" >
+        ptr_amount = #{record.ptrAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ptrTranstime != null" >
+        ptr_transTime = #{record.ptrTranstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ptrStatus != null" >
+        ptr_status = #{record.ptrStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.ptrChannel != null" >
+        ptr_channel = #{record.ptrChannel,jdbcType=CHAR},
+      </if>
+      <if test="record.ptrTradestatus != null" >
+        ptr_tradeStatus = #{record.ptrTradestatus,jdbcType=CHAR},
+      </if>
+      <if test="record.ptrPaystatuscode != null" >
+        ptr_payStatusCode = #{record.ptrPaystatuscode,jdbcType=CHAR},
+      </if>
+      <if test="record.ptrHostResponseTime != null" >
+        ptr_host_response_time = #{record.ptrHostResponseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ptrHostResponseFlowno != null" >
+        ptr_host_response_flowNo = #{record.ptrHostResponseFlowno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ptrHostReturnCode != null" >
+        ptr_host_return_code = #{record.ptrHostReturnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ptrHostReturnMessage != null" >
+        ptr_host_return_message = #{record.ptrHostReturnMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ptrDealstatus != null" >
+        ptr_dealStatus = #{record.ptrDealstatus,jdbcType=CHAR},
+      </if>
+      <if test="record.ptrBackstatus != null" >
+        ptr_backStatus = #{record.ptrBackstatus,jdbcType=CHAR},
+      </if>
+      <if test="record.ptrRemark != null" >
+        ptr_remark = #{record.ptrRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p2p_tender_record
+    set ptr_id = #{record.ptrId,jdbcType=BIGINT},
+      ptr_tenderFlowNo = #{record.ptrTenderflowno,jdbcType=VARCHAR},
+      ptr_accountNo = #{record.ptrAccountno,jdbcType=VARCHAR},
+      ptr_productNo = #{record.ptrProductno,jdbcType=VARCHAR},
+      ptr_custNo = #{record.ptrCustno,jdbcType=CHAR},
+      ptr_amount = #{record.ptrAmount,jdbcType=DECIMAL},
+      ptr_transTime = #{record.ptrTranstime,jdbcType=TIMESTAMP},
+      ptr_status = #{record.ptrStatus,jdbcType=CHAR},
+      ptr_channel = #{record.ptrChannel,jdbcType=CHAR},
+      ptr_tradeStatus = #{record.ptrTradestatus,jdbcType=CHAR},
+      ptr_payStatusCode = #{record.ptrPaystatuscode,jdbcType=CHAR},
+      ptr_host_response_time = #{record.ptrHostResponseTime,jdbcType=TIMESTAMP},
+      ptr_host_response_flowNo = #{record.ptrHostResponseFlowno,jdbcType=VARCHAR},
+      ptr_host_return_code = #{record.ptrHostReturnCode,jdbcType=VARCHAR},
+      ptr_host_return_message = #{record.ptrHostReturnMessage,jdbcType=VARCHAR},
+      ptr_dealStatus = #{record.ptrDealstatus,jdbcType=CHAR},
+      ptr_backStatus = #{record.ptrBackstatus,jdbcType=CHAR},
+      ptr_remark = #{record.ptrRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_record" >
+    update p2p_tender_record
+    <set >
+      <if test="ptrTenderflowno != null" >
+        ptr_tenderFlowNo = #{ptrTenderflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrAccountno != null" >
+        ptr_accountNo = #{ptrAccountno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrProductno != null" >
+        ptr_productNo = #{ptrProductno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrCustno != null" >
+        ptr_custNo = #{ptrCustno,jdbcType=CHAR},
+      </if>
+      <if test="ptrAmount != null" >
+        ptr_amount = #{ptrAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="ptrTranstime != null" >
+        ptr_transTime = #{ptrTranstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptrStatus != null" >
+        ptr_status = #{ptrStatus,jdbcType=CHAR},
+      </if>
+      <if test="ptrChannel != null" >
+        ptr_channel = #{ptrChannel,jdbcType=CHAR},
+      </if>
+      <if test="ptrTradestatus != null" >
+        ptr_tradeStatus = #{ptrTradestatus,jdbcType=CHAR},
+      </if>
+      <if test="ptrPaystatuscode != null" >
+        ptr_payStatusCode = #{ptrPaystatuscode,jdbcType=CHAR},
+      </if>
+      <if test="ptrHostResponseTime != null" >
+        ptr_host_response_time = #{ptrHostResponseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptrHostResponseFlowno != null" >
+        ptr_host_response_flowNo = #{ptrHostResponseFlowno,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrHostReturnCode != null" >
+        ptr_host_return_code = #{ptrHostReturnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrHostReturnMessage != null" >
+        ptr_host_return_message = #{ptrHostReturnMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="ptrDealstatus != null" >
+        ptr_dealStatus = #{ptrDealstatus,jdbcType=CHAR},
+      </if>
+      <if test="ptrBackstatus != null" >
+        ptr_backStatus = #{ptrBackstatus,jdbcType=CHAR},
+      </if>
+      <if test="ptrRemark != null" >
+        ptr_remark = #{ptrRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ptr_id = #{ptrId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baibao.web.p2p.generator.bean.P2p_tender_record" >
+    update p2p_tender_record
+    set ptr_tenderFlowNo = #{ptrTenderflowno,jdbcType=VARCHAR},
+      ptr_accountNo = #{ptrAccountno,jdbcType=VARCHAR},
+      ptr_productNo = #{ptrProductno,jdbcType=VARCHAR},
+      ptr_custNo = #{ptrCustno,jdbcType=CHAR},
+      ptr_amount = #{ptrAmount,jdbcType=DECIMAL},
+      ptr_transTime = #{ptrTranstime,jdbcType=TIMESTAMP},
+      ptr_status = #{ptrStatus,jdbcType=CHAR},
+      ptr_channel = #{ptrChannel,jdbcType=CHAR},
+      ptr_tradeStatus = #{ptrTradestatus,jdbcType=CHAR},
+      ptr_payStatusCode = #{ptrPaystatuscode,jdbcType=CHAR},
+      ptr_host_response_time = #{ptrHostResponseTime,jdbcType=TIMESTAMP},
+      ptr_host_response_flowNo = #{ptrHostResponseFlowno,jdbcType=VARCHAR},
+      ptr_host_return_code = #{ptrHostReturnCode,jdbcType=VARCHAR},
+      ptr_host_return_message = #{ptrHostReturnMessage,jdbcType=VARCHAR},
+      ptr_dealStatus = #{ptrDealstatus,jdbcType=CHAR},
+      ptr_backStatus = #{ptrBackstatus,jdbcType=CHAR},
+      ptr_remark = #{ptrRemark,jdbcType=VARCHAR}
+    where ptr_id = #{ptrId,jdbcType=BIGINT}
+  </update>
+  <!-- 根据流水号修改投资表流水信息 -->
+    <update id="updateByTenderFlowNo" parameterType="java.util.HashMap" >
+    update p2p_tender_record
+    set ptr_tradeStatus = #{ptrTradeStatus,jdbcType=CHAR},
+      ptr_payStatusCode = #{ptrPayStatusCode,jdbcType=CHAR},
+      ptr_host_response_time = #{ptrHostResponseTime,jdbcType=TIMESTAMP},
+      ptr_host_response_flowNo = #{ptrHostResponseFlowno,jdbcType=VARCHAR},
+      ptr_host_return_code = #{ptrHostReturnCode,jdbcType=VARCHAR},
+      ptr_host_return_message = #{ptrHostReturnMessage,jdbcType=VARCHAR}
+      where ptr_tenderFlowNo = #{ptrTenderFlowNo,jdbcType=VARCHAR}
+  </update>
+  <!--查询投资总额  -->
+  <select id="getAmountBycustNo" parameterType="java.util.Map" resultType="java.math.BigDecimal">
+  	SELECT SUM(tr.ptr_amount) FROM
+  	     p2p_tender_record tr
+  	LEFT JOIN 
+  	     p2p_loan_product_aid lpa ON
+  	         tr.ptr_productNo = lpa.pp_productNo  
+	WHERE
+	   tr.ptr_custNo = #{custNo} AND
+	   (tr.ptr_tradeStatus = #{tradeStatusSuccess} OR
+	    tr.ptr_tradeStatus = #{tradeStatusProcessing}) 
+	AND (lpa.pp_bulkLoanStatus = 2 or lpa.pp_bulkLoanStatus = 1)
+  </select> 
+   <select id="queryTenderRecordByPorductNo" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    SELECT u.pu_mobile as pu_mobile,p.ptr_amount,p.ptr_transTime from p2p_tender_record p left join p2p_users u on
+    p.ptr_custNo =u.pu_custNo where p.ptr_productNo=#{productNo} and p.ptr_tradeStatus != '01' ORDER BY p.ptr_transTime desc limit #{beginWith},#{count}
+  </select>
+  <select id="tenderRecordByCustNo" resultType="java.util.Map" parameterType="java.util.Map">
+  	SELECT p.pp_loanTitle, p.pp_comprehensiveRate, p.pp_loanTerm, p.pp_loanRepayment, p.pp_investmentType, ptr.ptr_tenderFlowNo, ptr.ptr_amount, ptr.ptr_productNo, ptr.ptr_transTime, ptr.ptr_status, p.pp_bulkLoanStatus as bulkLoanStatus, p.plp_lockAssignationSeq as lockAssignationSeq, pla.pla_assignationFeeRate as assignationFeeRate
+   		FROM p2p_tender_record ptr LEFT JOIN p2p_loan_product_aid p ON ptr.ptr_productNo = p.pp_ProductNo 
+   		left join p2p_loan_apply pla on ptr.ptr_productNo = pla.pp_productNo
+   		where 1=1
+   		<choose>
+            <when test="bulkLoanStatus == 1">  
+                and  (pp_bulkLoanStatus = '1' or pp_bulkLoanStatus ='2')
+            </when>
+            <when test="bulkLoanStatus == 4">  
+                and pp_bulkLoanStatus='4' and (ptr_status is null or ptr_status='10' or ptr_status='11')
+            </when>
+            <when test="bulkLoanStatus == 5">  
+                and (pp_bulkLoanStatus='5' or ptr_status='12')
+            </when>
+            <otherwise>
+                and pp_bulkLoanStatus=#{bulkLoanStatus} 
+            </otherwise> 
+        </choose>
+   		and ptr_custNo=#{custNo} and ptr_tradeStatus='00'
+   		ORDER BY ptr_transTime desc limit #{beginWith},#{count}
+  </select>
+  <select id="tenderRecordByCustNoCount" resultType="int" parameterType="java.util.Map">
+  	SELECT count(1)
+   		FROM p2p_tender_record  LEFT JOIN p2p_loan_product_aid  ON  ptr_productNo = pp_ProductNo 
+   		where 1=1
+   		<choose>
+            <when test="bulkLoanStatus == 1">  
+                and  (pp_bulkLoanStatus = '1' or pp_bulkLoanStatus ='2')
+            </when>
+            <when test="bulkLoanStatus == 4">  
+                and pp_bulkLoanStatus='4' and (ptr_status is null or ptr_status='10' or ptr_status='11')
+            </when>
+            <when test="bulkLoanStatus == 5">  
+                and (pp_bulkLoanStatus='5' or ptr_status='12')
+            </when>
+            <otherwise>
+                and pp_bulkLoanStatus=#{bulkLoanStatus} 
+            </otherwise> 
+        </choose>
+   		and ptr_custNo=#{custNo} and ptr_tradeStatus='00'
+  </select>
+  
+   <select id="selectTotalByPorductNo" resultType="int" parameterType="java.util.HashMap" >
+   SELECT count(1) from p2p_tender_record p where p.ptr_productNo=#{productNo} and p.ptr_tradeStatus != '01'
+  </select>
+  
+  <select id="querySuspiciousTenderFlow" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+   		SELECT ptr_tenderFlowNo,ptr_productNo,ptr_custNo
+   		from p2p_tender_record 
+   		where ptr_tradeStatus='02'
+  </select>
+  <update id="updateSuspiciousTenderFlow" parameterType="java.util.Map">
+  		update p2p_tender_record
+	  	set ptr_tradeStatus = #{tradeStatus,jdbcType=VARCHAR}
+	  	where ptr_tenderFlowNo = #{tenderFlowNo,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 每月投资总额 -->
+  <select id="getInvestmentAmount" parameterType="String" resultType="java.util.Map">
+  	select sum(ptr_amount) ptr_amount,DATE_FORMAT(ptr_transTime,"%Y-%m") ptr_transTime from p2p_tender_record where ptr_custNo = #{custNo} and ptr_tradeStatus = '00' GROUP BY DATE_FORMAT(ptr_transTime,"%Y-%m")
+  </select>
+  <!--  -->
+  <select id="getPtrAmount" parameterType="String" resultType="BigDecimal">
+  	select sum(ptr_amount) from p2p_tender_record where ptr_custNo = #{custNo}
+  </select>
+  <!--投资记录  -->
+  <select id="tenderRecord" parameterType="java.util.Map" resultType="java.util.Map">
+  	SELECT	a.ptr_tenderFlowNo,a.ptr_amount,a.ptr_transTime,a.ptr_tradeStatus FROM p2p_tender_record a LEFT JOIN 
+		p2p_loan_product_aid b ON a.ptr_productNo = b.pp_productNo WHERE a.ptr_custNo = #{custNo} AND (ptr_tradeStatus='00' OR ptr_tradeStatus='02')
+		order by ptr_transTime desc
+		limit #{beginWith},#{count}
+  </select>
+  <select id="tenderRecordCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+  	SELECT	count(a.ptr_tenderFlowNo) FROM p2p_tender_record a LEFT JOIN 
+		p2p_loan_product_aid b ON a.ptr_productNo = b.pp_productNo WHERE a.ptr_custNo = #{custNo} AND (ptr_tradeStatus='00' OR ptr_tradeStatus='02')
+		order by ptr_transTime desc
+  </select>
+  
+  <!-- 根据流水号查询投资表 -->
+	<select id="findByTenderFlowNo" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+  		<![CDATA[
+  			select 
+  			ptr_tenderFlowNo, ptr_accountNo, ptr_productNo, ptr_custNo, ptr_amount, ptr_transTime, 
+    		ptr_channel,ptr_tradeStatus, ptr_payStatusCode, ptr_host_response_time, 
+    		ptr_host_response_flowNo, ptr_host_return_code, ptr_host_return_message, ptr_dealStatus, 
+   			ptr_backStatus, ptr_remark
+			from p2p_tender_record
+			where ptr_tenderFlowNo = #{ptrTenderFlowNo}
+  		]]>
+	</select>
+	
+	  <!-- 全网累计投资总额-->
+  <select id="getAllTenderAmount" parameterType="String" resultType="java.math.BigDecimal">
+   select  sum(prt_amount)  prt_amount  from  ((select sum(ptr_amount) prt_amount  from p2p_tender_record 
+   where ptr_tradeStatus = '00')) c
+  </select>
+   <!-- 全网累计投资总人数-->
+  <select id="getAllTenderPeopleCount" parameterType="String" resultType="int">
+ select sum(ptr_custNo) ptr_custNo from  ((SELECT  count(  DISTINCT  ptr_custNo ) ptr_custNo from p2p_tender_record)) c
+  </select>
+  
+  <select id="queryOldTenderRecord" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    SELECT u.pu_mobile as pu_mobile,tb.bidAmount as ptr_amount,tb.bidTime as ptr_transTime
+    from t_bulkloanrecord tb
+    left join p2p_users u on tb.custNo =u.pu_custNo
+    where tb.bulkLoanNumber=#{productNo}
+    ORDER BY tb.bidTime desc
+    limit #{beginWith},#{count}
+  </select>
+  
+  <select id="selectOldTotal" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+  	 SELECT count(1)
+     from t_bulkloanrecord tb
+     left join p2p_users u on tb.custNo =u.pu_custNo
+     where tb.bulkLoanNumber=#{productNo}
+  </select>
+  <!-- 统计时间段内的投资金额 -->
+  <select id="statisticalTendAmountPeriodOfTime" parameterType="map" resultType="map">
+  		select sum(ptr_amount) as amount from p2p_tender_record where ptr_custNo = #{custNo} and 
+  		<![CDATA[ ptr_transTime >= #{starTime} and ptr_transTime <= #{endTime} and ptr_tradeStatus = '00' ]]>
+  </select>
+  
+  <select id="getProductByTenderFlowNo" resultType="java.util.Map" parameterType="java.lang.String">
+  		select ptr.ptr_productNo,plp.pp_loanTerm,plp.pp_loanRepayment
+  		from p2p_tender_record ptr
+  		left join p2p_loan_product_aid plp on plp.pp_productNo=ptr.ptr_productNo 
+  		where ptr_tenderFlowNo=#{tenderFlowNo}
+  </select>
+  <select id="checkRecord" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+  	select count(ptr.ptr_tenderFlowNo) from p2p_tender_record  ptr 
+		left join p2p_loan_product_aid plpa ON ptr.ptr_productNo = plpa.pp_productNo 
+		where  plpa.pp_activityType =#{activityType} and  ptr.ptr_custNo = #{custNo}  and ptr.ptr_tradeStatus='00'
+  </select>
+  <!-- 查询标的投标记录(合同) -->
+  <select id="getBidRecord" parameterType="map" resultType="map">
+  	select u.pu_mobile,ui.pui_real_name,ptr.ptr_amount,ptr.ptr_productNo,ptr.ptr_tenderFlowNo,ptr.ptr_custNo,plpa.pp_productTypeNo,plpa.pp_investmentType
+  	from p2p_tender_record ptr
+  	left join p2p_loan_product_aid plpa on plpa.pp_productNo = ptr.ptr_productNo
+  	left join p2p_users u on ptr.ptr_custNo = u.pu_custNo
+  	left join p2p_user_info ui on ui.pui_custNo = ptr.ptr_custNo
+  	where ptr.ptr_tradeStatus = 00 and ptr.ptr_productNo = #{productNo}
+  	limit #{beginWith},#{count}
+  </select>
+  <!-- 查询标的投标记录count(合同) -->
+  <select id="getBidRecordCount" parameterType="map" resultType="int">
+  	select count(ptr.ptr_tenderFlowNo)
+  	from p2p_tender_record ptr
+  	left join p2p_loan_product_aid plpa on plpa.pp_productNo = ptr.ptr_productNo
+  	left join p2p_users u on ptr.ptr_custNo = u.pu_custNo
+  	left join p2p_user_info ui on ui.pui_custNo = ptr.ptr_custNo
+  	where ptr.ptr_tradeStatus = 00 and ptr.ptr_productNo = #{productNo}
+  </select>
+  
+  <!-- 根据客户号查询用户投标总额(一期+二期) -->
+  <select id="queryTenderSum" parameterType="String" resultType="BigDecimal">
+  	SELECT SUM(bidAmount) bidAmount from (
+	SELECT SUM(ptr.ptr_amount) ptr_amount FROM p2p_tender_record ptr WHERE ptr.ptr_tradeStatus =00 and ptr.ptr_custNo = #{custNo}
+	) bidAmount 
+  </select>
+  
+  
+  
+</mapper>

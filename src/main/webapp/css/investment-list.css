@@ -1,0 +1,858 @@
+@charset "utf-8";
+
+/*********************************** 投资列表 banner ***************************/
+
+.invest-banner {
+    height: 306px;
+    background: url(../images/invest-banner.jpg) center center no-repeat;
+}
+
+.banner1120 {
+    width: 1120px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.tzceng {
+    width: 192px;
+    height: 192px;
+    background: url(../images/xfceng.png) no-repeat;
+    position: absolute;
+    top: 48px;
+    right: 160px;
+}
+
+
+/*********************************** 投资列表 新人稳赚 ***************************/
+
+.invest-newpeople {
+    border: 1px solid #e1e1e1;
+    width: 1118px;
+    margin-top: 25px;
+}
+
+.newpeople-con {
+    width: 233px;
+    height: 118px;
+    background: #fd9660;
+    float: left;
+}
+
+.newpeople-con p {
+    color: #fff;
+}
+
+.people-p {
+    text-align: center;
+    margin: 0 20px;
+    border-bottom: 1px solid #fff;
+    font-size: 40px;
+    line-height: 68px;
+}
+
+.invest-biao {
+    padding: 19px 35px;
+    float: left;
+}
+
+.biao-title-con {
+    width: 240px;
+    float: left;
+}
+
+.biao-title-con1 {
+    width: 330px;
+    float: left;
+}
+
+.biao-desc-con {
+    width: 486px;
+    float: left;
+}
+
+.biao-jindu-con {
+    width: 60px;
+    height: 60px;
+    margin-top: 8px;
+    float: left;
+}
+
+.biao-tbbtn-con {
+    width: 95px;
+    float: right;
+    padding-right: 20px;
+}
+
+.biao-title {
+    font-size: 18px;
+    max-width: 220px;
+}
+
+.biao-desc-con p {
+    line-height: 28px;
+    font-size: 14px;
+    *line-height: 34px;
+}
+
+.biao-bzcon {
+    display: inline-block;
+    width: 90px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    border: 1px solid #fd8630;
+    font-size: 14px;
+    color: #fd8630;
+    margin-top: 12px;
+}
+
+
+/*********************************** 投资列表  ***************************/
+
+.invest-biaolist {
+    padding: 0px auto;
+    width: 100%;
+    /*margin-bottom: 50px;*/
+}
+
+.invest-biaolist .changeColor ul li:nth-child(2n) {
+    background: #ebfbff;
+}
+
+.invest-biaolist .changeColor ul li:nth-child(2n+1) {
+    background: #fff;
+}
+
+.invest-biaolist .changeColor ul li {
+    background: #fff\9;
+}
+
+.invest-biaolist .changeColor ul li:first-child .invest-biao-con {
+    border-top: 1px dashed #ebeaea;
+}
+
+.inverst-bor {
+    box-sizing: border-box;
+    border: 1px solid #e1e1e1;
+}
+
+.invest-biao-con {
+    box-sizing: border-box;
+    width: 100%;
+    cursor: pointer;
+    border: 1px dashed #ebeaea;
+    border-top: none;
+    height: 118px;
+    padding: 20px 2% 0;
+}
+
+.pl40 {
+    padding-left: 40px;
+}
+
+.ui-tz-bdlx {
+    display: inline-block;
+    width: 700px;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.ui-tz-bdlx li {
+    float: left;
+    margin-right: 18px;
+    height: 22px;
+    line-height: 22px;
+}
+
+.ui-tz-bdlx li a {
+    display: inline-block;
+    padding: 0 5px;
+    height: 22px;
+    line-height: 22px;
+}
+
+.ui-tz-bdlx .cut a {
+    background: #09afdf;
+    color: #fff;
+}
+
+.ui-tz-bdlx li a:hover {
+    background: #09afdf;
+    color: #fff;
+}
+
+.invest-biao-con:hover {
+    background: #e4f3f7;
+}
+
+
+/*********************************** 理财问答  ***************************/
+
+.ui-lcwd {
+    padding-bottom: 20px;
+}
+
+.ui-lcwd li {
+    border-bottom: 1px dashed #ebeaea;
+    padding-bottom: 8px;
+}
+
+.ui-lcwd li a {
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 34px;
+}
+
+.ui-lcwd li p {
+    line-height: 24px;
+    color: #868686;
+    padding-left: 30px;
+}
+
+.text-box ol li {
+    list-style: disc;
+    line-height: 30px;
+    margin-left: 25px;
+}
+
+.text-box ol li:hover {
+    color: #4993c8;
+}
+
+
+/* CSS App */
+
+.cboxewm-04 {
+    width: 277px;
+    height: 363px;
+    border: 1px solid #e1e1e1;
+    border-top: 2px solid #000;
+}
+
+.cboxewm-04 h1 {
+    font-size: 36px;
+    text-align: center;
+    color: #000;
+    line-height: 70px;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+.appewm {
+    width: 188px;
+    height: 188px;
+    margin: 20px auto 0;
+}
+
+.appewm img {
+    width: 188px;
+    height: 188px;
+}
+
+
+/*********************************** 标的详情页面  ***************************/
+
+.back-bg {
+    background: #f5f5f5;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.invest-desc-con {
+    width: 1200px;
+    border: 1px solid #e1e1e1;
+    background: #fff;
+    font-family: "microsoft yahei";
+}
+
+.invest-desc-title {
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #e1e1e1;
+    overflow: hidden;
+    background: #ebfbff;
+}
+
+.sp-desc-title {
+    font-size: 18px;
+    padding-left: 30px;
+    color: #333333;
+}
+
+.sp-desc {
+    font-size: 14px;
+    color: #666666;
+    padding-right: 40px;
+}
+
+.invest-desc-title a {
+    font-size: 14px;
+    color: #09afdf;
+    padding-right: 30px;
+}
+
+.hei {
+    color: #333333;
+}
+
+.lan {
+    color: #09afdf;
+}
+
+.investbiao-desc {
+    width: 660px;
+    height: 270px;
+    float: left;
+}
+
+.investbiao-tb {
+    float: right;
+    width: 432px;
+    border-left: 1px dashed #e1e1e1;
+    padding-top: 20px;
+    height: 250px;
+    padding-bottom: 24px;
+}
+
+.investbiao-desc .ui-biao-desc {
+    margin-top: 34px;
+}
+
+.investbiao-desc .ui-biao-desc li .biao-money,
+.investbiao-tb .tb-biao-op li .biao-money {
+    color: #666666;
+    font-size: 18px;
+}
+
+.investbiao-desc .ui-biao-desc li {
+    float: left;
+    margin-left: 30px;
+}
+
+.investbiao-desc .ui-biao-desc li span {
+    font-size: 42px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.investbiao-desc .ui-biao-desc li .biaomoney-desc {
+    font-size: 14px;
+    color: #666666;
+    line-height: 36px;
+}
+
+.investbiao-desc .ui-biao-desc .l1 {
+    width: 280px;
+}
+
+.investbiao-desc .ui-biao-desc .l2 {
+    width: 180px;
+}
+
+.ui-biao-t {
+    margin-top: 20px;
+    width: 650px;
+}
+
+.ui-biao-t li {
+    color: #333333;
+    width: 285px;
+    font-size: 14px;
+    margin-left: 30px;
+    margin-right: 10px;
+    line-height: 40px;
+    float: left;
+}
+
+.ui-biao-t li span {
+    display: inline-block;
+    width: 70px;
+    color: #777676;
+}
+
+.hui-line {
+    display: inline-block;
+    width: 170px;
+    height: 10px;
+    background: #eeeeee;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+}
+
+.lan-line {
+    display: inline-block;
+    width: 20%;
+    height: 10px;
+    background: #09afdf;
+    vertical-align: middle;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.tb-biao-op {
+    margin-left: 85px;
+}
+
+.ui-biao-t li .line-num {
+    width: 30px;
+    font-size: 12px;
+    color: #5aa6d8;
+}
+
+.investbiao-tb .tb-biao-op li .biao-money span {
+    font-size: 42px;
+}
+
+.investbiao-tb .tb-biao-op {
+    width: 300px;
+    display: inline-block;
+}
+
+.investbiao-tb .tb-biao-op li {
+    font-size: 14px;
+    width: 290px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.li-txt-con {
+    height: 62px;
+    position: relative;
+    color: #bfbfbf;
+}
+
+.li-txt-con input::-moz-placeholder {
+    color: #bfbfbf;
+}
+
+.txt-number {
+    width: 286px;
+    padding-left: 13px;
+    font-size: 14px;
+    /*line-height: 40px;
+    height: 40px;*/
+    padding: 12px 0 12px 13px;
+    border: 1px solid #d8d8d8;
+}
+
+:-moz-placeholder {
+    color: #bfbfbf;
+}
+
+::-moz-placeholder {
+    color: #bfbfbf;
+}
+
+input::-khtml-clear,
+input::-khtml-reveal {
+    display: none;
+}
+
+input::-ms-clear,
+input::-ms-reveal {
+    display: none;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #bfbfbf;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #bfbfbf;
+}
+
+input {
+    outline: none;
+}
+
+.btn-invest-tb {
+    display: inline-block;
+    width: 300px;
+    height: 40px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 42px;
+    background: #f8586a;
+}
+
+.btn-invest-tb:hover {
+    color: #fff;
+    background: #eb5264;
+}
+
+.err-tip {
+    color: #f8586a;
+    padding-left: 3px;
+    padding-top: 5px;
+}
+
+.li-txt-con em {
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    right: 1px;
+    font-style: normal;
+    color: #bfbfbf;
+    float: right
+}
+
+.investbiao-tb .tb-biao-op .li-tb {
+    margin-top: 0;
+}
+
+
+/*********************************** 标的详情  ***************************/
+
+.biaodesc-xq {
+    margin: 30px 40px;
+}
+
+.biaodesc-xq ul li .db-title {
+    font-size: 18px;
+    line-height: 50px;
+    color: #ec9362;
+}
+
+.biaodesc-xq ul li .db-desc {
+    font-size: 12px;
+    line-height: 26px;
+    color: #717070;
+}
+
+.bdms-table {
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.bdms-table tr td {
+    border: 1px solid #ddd;
+    border-top: 0;
+    border-right: 0;
+    padding: 8px;
+    line-height: 22px;
+}
+
+.td-title {
+    width: 150px;
+    text-align: center;
+    color: #ec9362;
+    font-size: 18px;
+}
+
+.td-desc {
+    color: #717070;
+    font-size: 12px;
+}
+
+
+/*********************************** 标的图片  ***************************/
+
+.biaodesc-tp {
+    margin: 30px 120px 40px 120px;
+}
+
+.ui-bdtp {
+    width: 980px;
+}
+
+.ui-bdtp li {
+    width: 400px;
+    height: 300px;
+    border: 4px solid #f4f4f4;
+    padding: 5px;
+    float: left;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+.ui-bdtp li img {
+    width: 400px;
+    height: 300px;
+}
+
+
+/*********************************** 投标记录  ***************************/
+
+.biaodesc-jl {
+    margin: 20px 38px 40px 38px;
+}
+
+.biaodesc-jl ul li {
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    color: #333333;
+}
+
+.biaodesc-jl ul li span {
+    display: inline-block;
+    width: 235px;
+    padding: 0 2%;
+    text-align: center;
+    font-weight: normal;
+    color: #333333;
+    width: 232px\9;
+}
+
+.biaodesc-jl ul .jl-title {
+    background: #eeeeee;
+}
+
+.biaodesc-jl .zshu ul li:nth-child(2n) {
+    background: #ffffff;
+}
+
+.biaodesc-jl .zshu ul li:nth-child(2n+1) {
+    background: #f4f4f4;
+}
+
+.base-info {
+    background: #f4f4f4\9;
+    height: 40px\9;
+    line-height: 40px\9;
+    padding-left: 10px\9;
+    font-size: 16px\9;
+    color: #bfbfbf\9;
+}
+
+.tzpeople-sum {
+    line-height: 50px;
+    text-align: right;
+    font-size: 14px;
+    color: #008fe1;
+}
+
+
+/*********************************** 还款表现  ***************************/
+
+.biaodesc-hk {
+    margin: 30px 38px 40px 38px;
+}
+
+.biaodesc-hk ul li {
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+}
+
+.biaodesc-hk ul li span {
+    display: inline-block;
+    width: 160px;
+    padding: 0 2%;
+    text-align: center;
+    font-weight: normal;
+    color: #333333;
+}
+
+.biaodesc-hk ul .jl-title {
+    background: #eeeeee;
+}
+
+.divtab {
+    display: none;
+}
+
+.biaodesc-hk ul li {
+    height: 50px;
+    line-height: 50px;
+}
+
+.biaodesc-hk ul li:nth-child(2n) {
+    background: #ffffff;
+}
+
+.biaodesc-hk ul li:nth-child(2n+1) {
+    background: #f4f4f4;
+}
+
+
+/*用户未登录*/
+
+.NoUser {
+    height: 420px;
+    text-align: center;
+}
+
+.NoUserCen {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    font-size: 18px;
+    color: #666666;
+}
+
+
+/*********************************** 已满标、已完成  ***************************/
+
+.invest-desc-con {
+    position: relative;
+}
+
+.tzicon {
+    width: 123px;
+    height: 114px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.ymb-icon {
+    background: url(../images/ymb.png) no-repeat;
+}
+
+.hkz-icon {
+    background: url(../images/hkz.png) no-repeat;
+}
+
+.ywc-icon {
+    background: url(../images/ywc.png) no-repeat;
+}
+
+.investbiao-desc1 {
+    height: 230px;
+    float: left;
+}
+
+.investbiao-desc1 .ui-biao-desc {
+    margin-top: 18px;
+}
+
+.investbiao-desc1 .ui-biao-desc li .biao-money,
+.investbiao-tb .tb-biao-op li .biao-money {
+    color: #666666;
+    font-size: 18px;
+}
+
+.investbiao-desc1 .ui-biao-desc li {
+    float: left;
+    margin-left: 22px;
+}
+
+.investbiao-desc1 .ui-biao-desc li span {
+    font-size: 48px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.investbiao-desc1 .ui-biao-desc li .hei-time {
+    color: #191819;
+    font-size: 34px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.investbiao-desc1 .ui-biao-desc li .biaomoney-desc {
+    font-size: 14px;
+    color: #666666;
+    line-height: 36px;
+}
+
+.investbiao-desc1 .ui-biao-desc .l1 {
+    width: 280px;
+}
+
+.investbiao-desc1 .ui-biao-desc .l2 {
+    width: 180px;
+}
+
+.investbiao-desc1 .ui-biao-desc .l4 {
+    margin-top: 12px;
+}
+
+
+/***********************我要投资****************/
+
+.investWant {
+    width: 156px;
+    height: 36px;
+    background: #09afdf;
+    text-align: center;
+    margin: 50px 0px 0px 0px;
+}
+
+.investWant p {
+    font-family: Microsoft YaHei;
+    font-size: 18px;
+    color: #ffffff;
+    padding: 5px 0px;
+}
+
+
+/*投资列表-暂无数据*/
+
+.investnorecord {
+    border: 1px dashed #ebeaea;
+    height: 220px;
+    padding-top: 140px;
+}
+
+.show-datas>h3 {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 18px;
+    color: #333333;
+}
+
+.show-datas>ul>li {
+    overflow: hidden;
+}
+
+.show-datas>ul>li:nth-child(2n) {
+    background: #f4f4f4;
+    font-size: 16px;
+    color: #bfbfbf;
+    line-height: 40px;
+    padding-left: 22px;
+}
+
+.show-datas>ul>li:nth-child(2n+1) {
+    padding-left: 22px;
+    height: 60px;
+    font-size: 14px !important;
+    color: #999999;
+}
+
+.show-datas>ul>li>p {
+    width: 340px;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px !important;
+    color: #999999;
+}
+
+.sub_info {
+    padding-left: 22px;
+    color: #333333 !important;
+}
+
+.show-datas>ul>li>span {
+    padding-left: 22px;
+    color: #333333 !important;
+}
+
+.bwMoneyUse-title {
+    padding-top: 20px;
+    border-bottom: none!important;
+    border-top: 1px solid #eeeeee;
+}
+
+.bwMoneyUse {
+    font-size: 14px;
+    color: #666666;
+}
+
+.txt_r {
+    text-align: right;
+}
+
+.txt_l {
+    text-align: left;
+}
+
+.inverst_Residual {
+    padding-top: 6px;
+}
