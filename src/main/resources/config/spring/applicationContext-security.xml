@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+            http://www.springframework.org/schema/security   
+            http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+      
+     <!-- 不需要登陆能够访问的路径 -->        
+    <http pattern="/" security="none"></http>    
+	<http pattern="/img/**" security="none" />
+	<http pattern="/js/**" security="none" />
+	<http pattern="/css/**" security="none" />
+	<http pattern="/service/picture" security="none" />
+	<http pattern="/service/index/index" security="none"/>
+	<http pattern="/service/register" security="none"/>
+	<http pattern="/service/register/**" security="none"/>
+	<http pattern="/service/aboutUs/**" security="none"/><!-- 关于我们 -->
+	<http pattern="/service/login" security="none"/>
+	<http pattern="/service/tender/showPage" security="none"/>
+	<http pattern="/service/login/backLoginPassword" security="none"/>
+	<!--<http pattern="/service/productList/productDetails" security="none"/>-->
+	<http pattern="/service/productList/toCalculator" security="none"/><!-- 理财计算器  -->
+	<http pattern="/service/productList/getProfit" security="none"/><!-- 理财计算器计算收益  -->
+	<http pattern="/service/tender/ajaxPageTenderRecord" security="none"/>
+	<http pattern="/service/productList/showProductList" security="none"/>
+	<http pattern="/service/productList/ajaxShowProductList" security="none"/>
+	<http pattern="/service/qzbCallback" security="none"/>
+	<http pattern="/service/dissertation/**" security="none"/><!-- 活动专题页  -->
+	<http pattern="/service/invite/**" security="none"/> <!--邀请人跳转地址  -->
+    <http pattern="/service/agreement/contract" security="none"/><!-- 借款协议 -->
+	<http pattern="/service/agreement/registerAgreement" security="none"/><!-- 注册协议 -->
+	<http pattern="/service/agreement/equitableAssignment" security="none"/> <!-- 债权转让协议 -->
+	<http pattern="/service/agreement/bondTransfers" security="none"/>
+	<http pattern="/service/fuiou/depositNofity.fn" security="none"/>
+    <http pattern="/service/fuiou/withdrawNofity.fn" security="none"/>
+    <http pattern="/service/file/*" security="none"/>
+    <http pattern="/service/appAccount/*" security="none"/>
+    <http pattern="/service/appBulkLoan/*" security="none"/>
+    <http pattern="/service/AppLogin/*" security="none"/>
+    <http pattern="/service/AppMsg/*" security="none"/>
+    <http pattern="/service/AppRegister/*" security="none"/>
+    <http pattern="/service/appUser/*" security="none"/>
+
+    <http pattern="/service/fuiou/*" security="none"/>
+
+	<!-- <http pattern="/service/account/inHand" security="none"/> -->
+	<!-- wap站点地址配置 start -->
+	<http pattern="/service/wapLogin/*" security="none"/>
+	<http pattern="/service/wapRegister/**" security="none"/>
+	<http pattern="/service/wapIndex/toWapIndex" security="none"/>
+	<http pattern="/service/wapIndex/download" security="none"/>
+	<http pattern="/service/wapLogin/wapFindPassWordOne" security="none"/>
+	<http pattern="/service/wapLogin/wapFindPassWordTwo" security="none"/>
+	<http pattern="/service/wapBulkLoan/showProductList" security="none"/>
+	<http pattern="/service/wapBulkLoan/wapProductDetails" security="none"/>
+	<http pattern="/service/wapBulkLoan/wapTenderRecord" security="none"/>
+	<http pattern="/service/wapAccount/wapHelpCenter" security="none"/>
+	<http pattern="/service/wapAccount/wapAboutWe" security="none"/>
+	<http pattern="/service/wapActivity/wapInviteSpecial" security="none"/><!-- 注册邀请送专题页  -->
+	<http pattern="/service/wapActivity/wapTurntable" security="none"/><!-- wap幸运大转盘页面  -->
+	<http pattern="/service/wapActivity/wapWebsitePromotion" security="none"/><!-- 佰宝金融4.0版全面升级专题页  -->
+	<http pattern="/service/wapActivity/wapInvestmentDelivery" security="none"/><!-- 投资送  -->
+	<http pattern="/service/wapActivity/wapNetGoldCommission" security="none"/><!-- 佰宝金融荣升网金委副理事长单位   -->
+	<http pattern="/service/wapActivity/wapSina" security="none"/><!-- wap新浪专题页   -->
+	<http pattern="/service/wapActivity/wapDataSecurity" security="none"/><!-- wap数据保全专题页   -->
+	
+	
+	<!-- wap站点地址配置 end -->
+	<!-- APP地址配置 start -->
+	<http pattern="/service/AppMsg/appInviteSpecial" security="none"/><!-- 注册邀请送专题页  -->
+	<http pattern="/service/AppMsg/appTurntableRules" security="none"/><!-- 幸运大转盘规则页   -->
+	<http pattern="/service/AppMsg/appLotteryDraw" security="none"/><!-- 幸运大转盘抽奖   -->
+	<http pattern="/service/AppMsg/toluckDraw" security="none"/><!-- 幸运大转盘抽奖页   -->
+	<http pattern="/service/AppMsg/appProductList" security="none"/><!-- 跳转app产品列表页  -->
+	<http pattern="/service/AppMsg/appRegister" security="none"/><!-- 跳转app注册页  -->
+	<http pattern="/service/AppMsg/appLogin" security="none"/><!-- 跳转app登录页  -->
+	<http pattern="/service/AppMsg/givePrize" security="none"/><!-- 投资送大奖页面  -->
+	<http pattern="/service/AppMsg/upgrade" security="none"/><!-- 平台升级页面  -->
+	<http pattern="/service/AppMsg/appNetGoldCommission" security="none"/><!-- 佰宝金融荣升网金委副理事长单位  -->
+	<http pattern="/service/AppMsg/appSina" security="none"/><!-- app新浪专题页  -->
+	<http pattern="/service/AppMsg/appHelpCenter" security="none"/><!-- app帮助中心  -->
+	<http pattern="/service/AppMsg/appDataSecurity" security="none"/><!-- app数据保全  -->
+	<!-- APP地址配置 end -->
+	
+	<!-- 协议文件 -->
+	<http pattern="/service/agreement/equitableAssignments" security="none"/>
+	<http pattern="/service/agreement/loanAgreements" security="none"/>
+	<http pattern="/service/agreement/loanGuaranteeAgreements" security="none"/>
+	<http pattern="/service/appUser/contactus" security="none"/>
+	<http pattern="/service/appUser/security" security="none"/>
+	<http pattern="/service/wapShare/register" security="none"/>
+	<http pattern="/service/wapShare/download" security="none"/>
+
+	<!-- 需要登陆能够访问的路径 -->   
+	<http entry-point-ref="authenticationProcessingFilterEntryPoint">
+        <csrf disabled="true"/>
+
+		<!-- 登录 start -->
+			<intercept-url pattern="/service/login/testSecerty" access="hasRole('ROLE_USER')"/>
+			<intercept-url pattern="/service/login/loginSucc" access="hasRole('ROLE_USER')"/>
+		<!-- 登录 end -->
+		<!-- 我的账户 start -->
+			<intercept-url pattern="/service/account/**" access="hasRole('ROLE_USER')"/>
+		<!-- 我的账户 end -->
+		<!-- 邦卡、解绑、交易密码start -->
+			<intercept-url pattern="/service/bankCard/**" access="hasRole('ROLE_USER')"/>
+		<!-- 邦卡、解绑、交易密码end -->
+		<!-- 我的理财 start -->
+			<intercept-url pattern="/service/personalInvestment/**" access="hasRole('ROLE_USER')"/><!-- 我的理财 -->
+		<!-- 我的理财 end -->
+		<!-- 个人借贷、企业借贷 start -->
+			<intercept-url pattern="/service/borrowMoney/**" access="hasRole('ROLE_USER')"/>
+		<!-- 个人借贷、企业借贷 end -->
+		<!-- 实名认证start -->
+			<intercept-url pattern="/service/certification/**" access="hasRole('ROLE_USER')"/>
+		<!-- 实名认证end -->
+		<!-- 投标start -->
+			<intercept-url pattern="/service/tender/checkTender" access="hasRole('ROLE_USER')"/><!--检查投标  -->
+			<intercept-url pattern="/service/tender/sureTender" access="hasRole('ROLE_USER')"/><!--投标  -->
+		<!-- 投标end -->
+		<!-- 交易记录 start -->
+			<intercept-url pattern="/service/transRecord/**" access="hasRole('ROLE_USER')"/><!--查询充值、提现、收益记录  -->
+		<!-- 交易记录 end -->
+		<!-- 资产总览 start -->
+			<intercept-url pattern="/service/asset/**" access="hasRole('ROLE_USER')"/><!-- 资产总览  -->
+		<!-- 资产总览 start -->
+		<!-- 上传start -->
+			<intercept-url pattern="/service/fileUpLoad/**" access="hasRole('ROLE_USER')"/><!-- 图片  -->
+		<!-- 上传end -->
+		<!-- 我的借款 start -->
+			<intercept-url pattern="/service/personalBorrow/**" access="hasRole('ROLE_USER')"/><!-- 我的借款  -->
+			<intercept-url pattern="/service/agreement/createagreementList" access="hasRole('ROLE_USER')"/><!-- 全部下载协议  -->
+		<!-- 我的借款 end -->
+		<!--我的活动 start -->
+			<intercept-url pattern="/service/active/toMyActive" access="hasRole('ROLE_USER')"/><!-- 个人中心-我的优惠券  -->
+			<intercept-url pattern="/service/active/inviteFriends" access="hasRole('ROLE_USER')"/><!-- 个人中心-邀请好友  -->
+			<intercept-url pattern="/service/active/ajaxShowFriendRecord" access="hasRole('ROLE_USER')"/><!-- 个人中心(分页查询邀请人记录) -->
+			<intercept-url pattern="/service/active/ajaxShowFriendTenderRecord" access="hasRole('ROLE_USER')"/><!-- 个人中心(分页查询邀请人投资记录) -->
+			<intercept-url pattern="/service/active/lotteryDraw" access="hasRole('ROLE_USER')"/><!-- 大转盘活动 -->
+			<intercept-url pattern="/service/active/physicalReward" access="hasRole('ROLE_USER')"/><!-- 实物奖励 -->
+		<!--我的活动 end -->
+		<!-- 消息中心 start -->
+			<intercept-url pattern="/service/message/**" access="hasRole('ROLE_USER')"/><!-- 消息中心  -->
+		<!-- 消息中心 end -->
+		<!-- 我的存钱罐 start -->
+			<intercept-url pattern="/service/piggyBank/**" access="hasRole('ROLE_USER')"/><!-- 我的存钱罐  -->
+		<!-- 我的存钱罐 end -->
+		<!-- 合同start -->
+			<intercept-url pattern="/service/agreement/getBorrowContractList" access="hasRole('ROLE_USER')"/><!-- 借款人合同列表  -->
+			<intercept-url pattern="/service/agreement/ajaxPagegetBorrowContractList" access="hasRole('ROLE_USER')"/><!-- 借款人合同列表(分页)  -->
+			<intercept-url pattern="/service/agreement/createagreementZip" access="hasRole('ROLE_USER')"/><!-- 合同下载  -->
+			<intercept-url pattern="/service/agreement/ajaxGetUrl" access="hasRole('ROLE_USER')"/><!-- 查询数据保全URL  -->
+		<!-- 合同end -->
+		<!--============wap start====================== -->
+		<intercept-url pattern="/service/wapIndex/toWapIndex" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapBankcard/**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapAccount/**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapRecords/**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapBulkLoan/tenderRecordByCustNo" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapBulkLoan/tenderRecovery" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapBulkLoan/tenderFinished" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapBulkLoan/ajaxGetUrl" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapAccount/wapModifyMail" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapAccount/wapAccountOldIndex" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapAccount/skipWithdrawCash" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapAccount/umpayWithdrawCash" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapAccount/wapOldTransRecord" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapActivity/wapInviteFriends" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapActivity/wapRedEnvelopes" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapMessages/wapFindmsg" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapMessages/wapMsgDetails" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/wapMessages/wapGoodsReward" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/service/account/wapOnlineBankRecharge" access="hasRole('ROLE_USER')"/><!--银联充值  -->
+		<!--============wap end====================== -->
+		<!-- 自定义loginFilter -->
+		<custom-filter ref="loginFilter" position="FORM_LOGIN_FILTER" />
+		<logout logout-url="/service/login/logout" logout-success-url="/" invalidate-session="true"
+				delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE"/>
+		<session-management invalid-session-url="/service/login" session-authentication-strategy-ref="sas"/>
+	</http>
+	
+	<!-- 登录验证器 -->
+	<beans:bean id="loginFilter" class="com.baibao.core.security.web.P2PUsernamePasswordAuthenticationFilter">
+		<!-- 处理登录的action -->
+		<beans:property name="filterProcessesUrl" value="/service/login/userLogin"/>
+		<!-- 认证管理 点击完登录后，最终实现校验的是AuthenticationProvider-->
+		<beans:property name="authenticationManager" ref="myAuthenticationManager"/>
+		<!-- 验证成功后的处理-->
+		<beans:property name="authenticationSuccessHandler" ref="loginLogAuthenticationSuccessHandler"/>
+		<!-- 验证失败后的处理-->
+		<beans:property name="authenticationFailureHandler" ref="simpleUrlAuthenticationFailureHandler"/>		
+		<!-- 实现多个帐号登录时最后一次登录的有效,目前只请允许登录一个帐号 -->
+		<beans:property name="sessionAuthenticationStrategy" ref="sas"/>
+	</beans:bean>
+		
+	<beans:bean id="loginLogAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<beans:property name="alwaysUseDefaultTargetUrl" value="true"/>
+		<beans:property name="defaultTargetUrl" value="/service/login/loginSucc"/>
+	</beans:bean>
+	
+	<beans:bean id="simpleUrlAuthenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<!-- 可以配置相应的跳转方式。属性forwardToDestination为true采用forward false为sendRedirect -->
+		<beans:property name="defaultFailureUrl" value="/service/login/loginFail"/>
+	</beans:bean>
+	
+	<beans:bean id="sas" class="org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy">  
+	    <beans:property name="maximumSessions" value="1"/>
+	    <beans:property name="exceptionIfMaximumExceeded" value="false"/>  
+	    <beans:constructor-arg name="sessionRegistry" ref="sessionRegistry"/>  
+	</beans:bean>
+	
+	<beans:bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl"/>
+	
+	<authentication-manager alias="myAuthenticationManager">
+		<authentication-provider ref="authenticationProvider"/>
+	</authentication-manager>
+	
+	<beans:bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<!-- 配置异常能被捕捉 -->
+	    <beans:property name="hideUserNotFoundExceptions" value="false" />
+	    
+	    <beans:property name="userDetailsService" ref="userDetailService" /> 
+	    <!-- <beans:property name="messageSource" ref="messageSource" /> -->
+	    <!-- <beans:property name="userCache" ref="userCache" />可使用缓存保存用户信息-->
+	    <!-- 开发过程中可以先把这两行注释掉-->
+	    <beans:property name="passwordEncoder" ref="passwordEncode" />
+	    <beans:property name="saltSource" ref="saltSource" /> 
+	</beans:bean>
+	
+	
+	<!-- 密码加密 -->
+	<beans:bean id="passwordEncode" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+	  
+	<beans:bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">  
+		<beans:property name="userPropertyToUse" value="puCustNo"/>  
+	</beans:bean>
+	
+	<beans:bean id="userDetailService" class="com.baibao.web.p2p.service.impl.UserServiceImpl" />
+	<!-- 未登录的切入点-->
+	<beans:bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<beans:constructor-arg name="loginFormUrl" value="/service/login/unSecurity" />
+	</beans:bean>
+	 
+</beans:beans>

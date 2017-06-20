@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_public_orderMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_public_order" >
+    <id column="ppo_orderFlowNo" property="ppoOrderflowno" jdbcType="VARCHAR" />
+    <result column="ppo_custNo" property="ppoCustno" jdbcType="VARCHAR" />
+    <result column="ppo_buss_type" property="ppoBussType" jdbcType="INTEGER" />
+    <result column="ppo_order_time" property="ppoOrderTime" jdbcType="TIMESTAMP" />
+    <result column="ppo_accountChannel" property="ppoAccountchannel" jdbcType="VARCHAR" />
+    <result column="ppo_status" property="ppoStatus" jdbcType="VARCHAR" />
+    <result column="ppo_params" property="ppoParams" jdbcType="VARCHAR" />
+    <result column="ppo_parentFlowNo" property="ppoParentFlowNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ppo_orderFlowNo, ppo_custNo, ppo_buss_type, ppo_order_time, ppo_accountChannel, ppo_status, 
+    ppo_params, ppo_parentFlowNo
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.baibao.web.p2p.generator.bean.P2p_public_orderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from p2p_public_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from p2p_public_order
+    where ppo_orderFlowNo = #{ppoOrderflowno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from p2p_public_order
+    where ppo_orderFlowNo = #{ppoOrderflowno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_public_orderExample" >
+    delete from p2p_public_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baibao.web.p2p.generator.bean.P2p_public_order" >
+    insert into p2p_public_order (ppo_orderFlowNo, ppo_custNo, ppo_buss_type, 
+      ppo_order_time, ppo_accountChannel, ppo_status, 
+      ppo_params, ppo_parentFlowNo)
+    values (#{ppoOrderflowno,jdbcType=VARCHAR}, #{ppoCustno,jdbcType=VARCHAR}, #{ppoBussType,jdbcType=INTEGER}, 
+      #{ppoOrderTime,jdbcType=TIMESTAMP}, #{ppoAccountchannel,jdbcType=VARCHAR}, #{ppoStatus,jdbcType=VARCHAR}, 
+      #{ppoParams,jdbcType=VARCHAR}, #{ppoParentFlowNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_public_order" >
+    insert into p2p_public_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ppoOrderflowno != null" >
+        ppo_orderFlowNo,
+      </if>
+      <if test="ppoCustno != null" >
+        ppo_custNo,
+      </if>
+      <if test="ppoBussType != null" >
+        ppo_buss_type,
+      </if>
+      <if test="ppoOrderTime != null" >
+        ppo_order_time,
+      </if>
+      <if test="ppoAccountchannel != null" >
+        ppo_accountChannel,
+      </if>
+      <if test="ppoStatus != null" >
+        ppo_status,
+      </if>
+      <if test="ppoParams != null" >
+        ppo_params,
+      </if>
+      <if test="ppoParentFlowNo != null" >
+        ppo_parentFlowNo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ppoOrderflowno != null" >
+        #{ppoOrderflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="ppoCustno != null" >
+        #{ppoCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="ppoBussType != null" >
+        #{ppoBussType,jdbcType=INTEGER},
+      </if>
+      <if test="ppoOrderTime != null" >
+        #{ppoOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ppoAccountchannel != null" >
+        #{ppoAccountchannel,jdbcType=VARCHAR},
+      </if>
+      <if test="ppoStatus != null" >
+        #{ppoStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ppoParams != null" >
+        #{ppoParams,jdbcType=VARCHAR},
+      </if>
+      <if test="ppoParentFlowNo != null" >
+        #{ppoParentFlowNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_public_orderExample" resultType="java.lang.Integer" >
+    select count(1) from p2p_public_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p2p_public_order
+    <set >
+      <if test="record.ppoOrderflowno != null" >
+        ppo_orderFlowNo = #{record.ppoOrderflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppoCustno != null" >
+        ppo_custNo = #{record.ppoCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppoBussType != null" >
+        ppo_buss_type = #{record.ppoBussType,jdbcType=INTEGER},
+      </if>
+      <if test="record.ppoOrderTime != null" >
+        ppo_order_time = #{record.ppoOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ppoAccountchannel != null" >
+        ppo_accountChannel = #{record.ppoAccountchannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppoStatus != null" >
+        ppo_status = #{record.ppoStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppoParams != null" >
+        ppo_params = #{record.ppoParams,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppoParentFlowNo != null" >
+        ppo_parentFlowNo = #{record.ppoParentFlowNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p2p_public_order
+    set ppo_orderFlowNo = #{record.ppoOrderflowno,jdbcType=VARCHAR},
+      ppo_custNo = #{record.ppoCustno,jdbcType=VARCHAR},
+      ppo_buss_type = #{record.ppoBussType,jdbcType=INTEGER},
+      ppo_order_time = #{record.ppoOrderTime,jdbcType=TIMESTAMP},
+      ppo_accountChannel = #{record.ppoAccountchannel,jdbcType=VARCHAR},
+      ppo_status = #{record.ppoStatus,jdbcType=VARCHAR},
+      ppo_params = #{record.ppoParams,jdbcType=VARCHAR},
+      ppo_parentFlowNo = #{record.ppoParentFlowNo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_public_order" >
+    update p2p_public_order
+    <set >
+      <if test="ppoCustno != null" >
+        ppo_custNo = #{ppoCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="ppoBussType != null" >
+        ppo_buss_type = #{ppoBussType,jdbcType=INTEGER},
+      </if>
+      <if test="ppoOrderTime != null" >
+        ppo_order_time = #{ppoOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ppoAccountchannel != null" >
+        ppo_accountChannel = #{ppoAccountchannel,jdbcType=VARCHAR},
+      </if>
+      <if test="ppoStatus != null" >
+        ppo_status = #{ppoStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ppoParams != null" >
+        ppo_params = #{ppoParams,jdbcType=VARCHAR},
+      </if>
+      <if test="ppoParentFlowNo != null" >
+        ppo_parentFlowNo = #{ppoParentFlowNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ppo_orderFlowNo = #{ppoOrderflowno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baibao.web.p2p.generator.bean.P2p_public_order" >
+    update p2p_public_order
+    set ppo_custNo = #{ppoCustno,jdbcType=VARCHAR},
+      ppo_buss_type = #{ppoBussType,jdbcType=INTEGER},
+      ppo_order_time = #{ppoOrderTime,jdbcType=TIMESTAMP},
+      ppo_accountChannel = #{ppoAccountchannel,jdbcType=VARCHAR},
+      ppo_status = #{ppoStatus,jdbcType=VARCHAR},
+      ppo_params = #{ppoParams,jdbcType=VARCHAR},
+      ppo_parentFlowNo = #{ppoParentFlowNo,jdbcType=VARCHAR}
+    where ppo_orderFlowNo = #{ppoOrderflowno,jdbcType=VARCHAR}
+  </update>
+  
+   <update id="updateByOrderFlowNo" parameterType="String" >
+    update p2p_public_order
+    set 
+    ppo_status = #{ppoStatus}
+    where ppo_orderFlowNo = #{orderFlowNo}
+  </update>
+  
+  
+  <insert id="insert2" parameterType="java.util.Map" >
+    INSERT INTO p2p_public_order(
+      ppo_orderFlowNo,
+      ppo_custNo,
+      ppo_targetNo,
+      ppo_buss_type,
+      ppo_buss_desc,
+      ppo_order_time,
+      ppo_accountChannel,
+      ppo_status, 
+      ppo_params,
+      ppo_response,
+      ppo_parentFlowNo)
+    VALUES(
+      #{ppoOrderflowno, jdbcType=VARCHAR},
+      #{ppoCustno, jdbcType=VARCHAR},
+      #{ppoTargetno, jdbcType=VARCHAR},
+      #{ppoBussType, jdbcType=INTEGER}, 
+      #{ppoBussDesc, jdbcType=VARCHAR},
+      #{ppoOrderTime, jdbcType=TIMESTAMP},
+      #{ppoAccountchannel, jdbcType=VARCHAR},
+      #{ppoStatus, jdbcType=VARCHAR}, 
+      #{ppoParams, jdbcType=VARCHAR},
+      #{ppoResponse, jdbcType=VARCHAR},
+      #{ppoParentFlowNo, jdbcType=VARCHAR})
+  </insert>
+  
+  <update id="updateByOrderFlowNo2" parameterType="java.util.Map" >
+    UPDATE p2p_public_order
+       <set>
+         <if test="ppoStatus != null" >
+           ppo_status = #{ppoStatus, jdbcType=VARCHAR},
+         </if>
+         <if test="ppoOrderTime != null" >
+           ppo_order_time = #{ppoOrderTime, jdbcType=TIMESTAMP},
+         </if>
+         <if test="ppoParams != null" >
+           ppo_params = #{ppoParams, jdbcType=VARCHAR},
+         </if>
+         <if test="ppoResponse != null" >
+           ppo_response = #{ppoResponse, jdbcType=VARCHAR}
+         </if>
+       </set>        
+    WHERE ppo_orderFlowNo = #{orderFlowNo}
+  </update>
+</mapper>

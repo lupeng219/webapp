@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_userMapper">
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_user">
+   <!--  <id column="pu_id" jdbcType="BIGINT" property="puId" /> -->
+    <!-- <result column="pu_nickname" jdbcType="VARCHAR" property="puNickname" /> -->
+    <id column="pu_custNo" jdbcType="CHAR" property="puCustNo" />
+    <result column="pu_mobile" jdbcType="CHAR" property="puMobile" />
+    <result column="pu_password" jdbcType="VARCHAR" property="puPassword" />
+    <result column="pu_mail" jdbcType="VARCHAR" property="puMail" />
+    <result column="pu_head_url" jdbcType="VARCHAR" property="puHeadUrl" />
+    <result column="pu_enabled" jdbcType="TINYINT" property="puEnabled" />
+    <result column="pu_accountNonExpired" jdbcType="TINYINT" property="puAccountNonExpired" />
+    <result column="pu_accountNonLocked" jdbcType="TINYINT" property="puAccountNonLocked" />
+    <result column="pu_credentialsNonExpired" jdbcType="TIMESTAMP" property="puCredentialsNonExpired" />
+    <result column="pu_inviteCode" jdbcType="VARCHAR" property="puInviteCode"/>
+    <result column="pca_accountNo" jdbcType="VARCHAR" property="pca_accountNo"/>
+    <result column="pui_registration_time" jdbcType="TIMESTAMP" property="pui_registration_time"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+  	pu_id,pu_password,pu_enabled,pu_accountNonExpired,pu_accountNonLocked,pu_credentialsNonExpired,pu_mobile,pu_mail,pu_head_url,pu_custNo,pu_inviteCode
+  </sql>
+  
+  <!-- 根据手机号查询用户是否开户信息 -->
+  <select id="findUserByMobile" parameterType="java.lang.String"  resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List"/>,ca.pca_accountNo
+		FROM p2p_users u LEFT JOIN p2p_cust_account ca
+		ON u.pu_custNo=ca.pca_cust_no
+		WHERE u.pu_mobile = #{mobile} or u.pu_custNo = #{mobile}
+  </select>
+  
+  <!-- 根据邀请码查询用户 -->
+  <select id="findUserByInviteCode" parameterType="java.lang.String"  resultMap="BaseResultMap">
+	select pu_password, pu_enabled,
+      pu_accountNonExpired,pu_accountNonLocked,pu_credentialsNonExpired, pu_mobile, pu_mail, 
+      pu_head_url, pu_custNo,pu_inviteCode from p2p_users where pu_inviteCode =#{inviteCode}
+  </select>
+
+  <select id="checkUserByMobileOrCustNoOrEmail" parameterType="java.lang.String" resultType="int">
+  	  SELECT count(1) FROM p2p_users WHERE pu_mobile=#{custno} <!--  or pu_nickname=#{custno} --> or pu_mail=#{email}
+  </select>
+  
+   <select id="checkUserByInviteCode" parameterType="java.lang.String" resultType="int">
+  	  SELECT count(1) FROM p2p_users WHERE pu_inviteCode=#{inviteCode}
+  </select>
+  
+  <insert id="saveUser" parameterType="com.baibao.web.p2p.generator.bean.P2p_user">
+  	insert into p2p_users ( <!--pu_id, pu_nickname, --> pu_password, pu_enabled,
+      pu_accountNonExpired,pu_accountNonLocked,pu_credentialsNonExpired, pu_mobile, pu_mail, 
+      pu_head_url, pu_custNo,pu_inviteCode
+      )
+    values (<!--#{puId,jdbcType=BIGINT} , #{puNickname,jdbcType=VARCHAR}, --> #{puPassword,jdbcType=VARCHAR}, 
+      #{puEnabled,jdbcType=TINYINT}, #{puAccountNonExpired,jdbcType=TINYINT}, #{puAccountNonLocked,jdbcType=TINYINT}, 
+      #{puCredentialsNonExpired,jdbcType=TINYINT}, #{puMobile,jdbcType=CHAR}, #{puMail,jdbcType=VARCHAR}, 
+      #{puHeadUrl,jdbcType=VARCHAR}, #{puCustNo,jdbcType=CHAR}, #{puInviteCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <!-- 通过登陆名进行登陆  -->
+   <select id="getByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+   		<!-- select u.* from p2p_users u where (pu_nickname=#{loginName} or pu_mobile=#{loginName} or pu_mail=#{loginName}) -->
+   		SELECT <include refid="Base_Column_List"/> FROM p2p_users u where u.pu_mobile=#{puMobile}
+   </select>
+   
+  <!-- 通过客户号进行登陆  -->
+   <select id="findUserByCustNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+   		<!-- select u.* from p2p_users u where (pu_nickname=#{loginName} or pu_mobile=#{loginName} or pu_mail=#{loginName}) -->
+  		SELECT <include refid="Base_Column_List"/> ,pui.pui_registration_time FROM p2p_users u LEFT JOIN p2p_user_info pui ON u.pu_custNo = pui.pui_custNo where u.pu_custNo=#{custNo} 
+   </select>
+    
+   <update id="updateLoginPassword" parameterType="java.util.Map">
+   		update p2p_users u set u.pu_password = #{password} where u.pu_custNo = #{custNo}
+   </update>
+   
+   <update id="updateHeadUrlByCustNo" parameterType="java.util.Map">
+   		update p2p_users u set u.pu_head_url=#{url} where u.pu_custNo = #{custNo}
+   </update>
+   
+   <update id="updateUser" parameterType="com.baibao.web.p2p.generator.bean.P2p_user" >
+    update p2p_users
+    <set >
+      <!-- <if test="puId != null" >
+        pu_id = #{puId,jdbcType=BIGINT},
+      </if> -->
+      <!-- <if test="puNickname != null" >
+        pu_nickname = #{puNickname,jdbcType=VARCHAR},
+      </if> -->
+      <if test="puPassword != null" >
+        pu_password = #{puPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="puEnabled != null" >
+        pu_enabled = #{puEnabled,jdbcType=TINYINT},
+      </if>
+      <if test="puAccountNonExpired != null" >
+        pu_accountNonExpired = #{puAccountNonExpired,jdbcType=TINYINT},
+      </if>
+      <if test="puAccountNonLocked != null" >
+        pu_accountNonLocked = #{puAccountNonLocked,jdbcType=TINYINT},
+      </if>
+      <if test="puCredentialsNonExpired != null" >
+        pu_credentialsNonExpired = #{puCredentialsNonExpired,jdbcType=TINYINT},
+      </if>
+      <if test="puMobile != null" >
+        pu_mobile = #{puMobile,jdbcType=CHAR},
+      </if>
+      <if test="puMail != null" >
+        pu_mail = #{puMail,jdbcType=VARCHAR},
+      </if>
+      <if test="puHeadUrl != null" >
+        pu_head_url = #{puHeadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="puCustNo != null" >
+        pu_custNo = #{puCustNo,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where pu_mobile = #{puMobile,jdbcType=CHAR}
+  </update>
+  
+  <!-- 更新用户邮箱 -->
+  <update id="updateUserEmail" parameterType="java.util.Map">
+   		update p2p_users u set u.pu_mail = #{mail} where u.pu_custNo = #{custNo}
+  </update>
+  
+  <!-- 统计平台总人数 -->
+  <select id="getRegisterAllTotal" resultType="long">
+  	select count(1) FROM p2p_users a,p2p_user_info b,p2p_cust_account c WHERE a.pu_custNo = b.pui_custNo 
+  		AND b.pui_custNo = c.pca_cust_no
+  </select>
+  
+  <select id="getUserFriends" parameterType="java.lang.String" resultType="java.lang.String">
+	select puf_custNo from p2p_users pus
+	left join p2p_users_friends puf on puf.puf_friend_custNo=pus.pu_custNo
+	where pus.pu_custNo=#{custNo}
+  </select>
+</mapper>

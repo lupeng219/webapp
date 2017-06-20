@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_credit_tenderMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_credit_tender" >
+    <id column="pct_id" property="pctId" jdbcType="BIGINT" />
+    <result column="pct_creditFlowNo" property="pctCreditflowno" jdbcType="VARCHAR" />
+    <result column="pct_buyCreditCustNo" property="pctBuycreditcustno" jdbcType="CHAR" />
+    <result column="pct_buyCreditAccount" property="pctBuycreditaccount" jdbcType="VARCHAR" />
+    <result column="pct_buyAmount" property="pctBuyamount" jdbcType="DECIMAL" />
+    <result column="pct_buyCustType" property="pctBuycusttype" jdbcType="CHAR" />
+    <result column="pct_loanCreditCustNo" property="pctLoancreditcustno" jdbcType="CHAR" />
+    <result column="pct_loanCreditAccount" property="pctLoancreditaccount" jdbcType="VARCHAR" />
+    <result column="pct_loanCustType" property="pctLoancusttype" jdbcType="CHAR" />
+    <result column="pct_crediteFlowNo" property="pctCrediteflowno" jdbcType="VARCHAR" />
+    <result column="pct_channel" property="pctChannel" jdbcType="CHAR" />
+    <result column="pct_payStatus" property="pctPaystatus" jdbcType="VARCHAR" />
+    <result column="pct_tradeStatus" property="pctTradestatus" jdbcType="VARCHAR" />
+    <result column="pct_payStatusCode" property="pctPaystatuscode" jdbcType="VARCHAR" />
+    <result column="pct_host_response_time" property="pctHostResponseTime" jdbcType="TIMESTAMP" />
+    <result column="pct_host_response_flowNo" property="pctHostResponseFlowno" jdbcType="VARCHAR" />
+    <result column="pct_host_return_code" property="pctHostReturnCode" jdbcType="VARCHAR" />
+    <result column="pct_host_return_message" property="pctHostReturnMessage" jdbcType="VARCHAR" />
+    <result column="pct_dealStatus" property="pctDealstatus" jdbcType="VARCHAR" />
+    <result column="pct_backStatus" property="pctBackstatus" jdbcType="VARCHAR" />
+    <result column="pct_remark" property="pctRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pct_id, pct_creditFlowNo, pct_buyCreditCustNo, pct_buyCreditAccount, pct_buyAmount, 
+    pct_buyCustType, pct_loanCreditCustNo, pct_loanCreditAccount, pct_loanCustType, pct_crediteFlowNo, 
+    pct_channel, pct_payStatus, pct_tradeStatus, pct_payStatusCode, pct_host_response_time, 
+    pct_host_response_flowNo, pct_host_return_code, pct_host_return_message, pct_dealStatus, 
+    pct_backStatus, pct_remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.baibao.web.p2p.generator.bean.P2p_credit_tenderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from p2p_credit_tender
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from p2p_credit_tender
+    where pct_id = #{pctId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from p2p_credit_tender
+    where pct_id = #{pctId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_credit_tenderExample" >
+    delete from p2p_credit_tender
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baibao.web.p2p.generator.bean.P2p_credit_tender" >
+    insert into p2p_credit_tender (pct_id, pct_creditFlowNo, pct_buyCreditCustNo, 
+      pct_buyCreditAccount, pct_buyAmount, pct_buyCustType, 
+      pct_loanCreditCustNo, pct_loanCreditAccount, 
+      pct_loanCustType, pct_crediteFlowNo, pct_channel, 
+      pct_payStatus, pct_tradeStatus, pct_payStatusCode, 
+      pct_host_response_time, pct_host_response_flowNo, 
+      pct_host_return_code, pct_host_return_message, 
+      pct_dealStatus, pct_backStatus, pct_remark
+      )
+    values (#{pctId,jdbcType=BIGINT}, #{pctCreditflowno,jdbcType=VARCHAR}, #{pctBuycreditcustno,jdbcType=CHAR}, 
+      #{pctBuycreditaccount,jdbcType=VARCHAR}, #{pctBuyamount,jdbcType=DECIMAL}, #{pctBuycusttype,jdbcType=CHAR}, 
+      #{pctLoancreditcustno,jdbcType=CHAR}, #{pctLoancreditaccount,jdbcType=VARCHAR}, 
+      #{pctLoancusttype,jdbcType=CHAR}, #{pctCrediteflowno,jdbcType=VARCHAR}, #{pctChannel,jdbcType=CHAR}, 
+      #{pctPaystatus,jdbcType=VARCHAR}, #{pctTradestatus,jdbcType=VARCHAR}, #{pctPaystatuscode,jdbcType=VARCHAR}, 
+      #{pctHostResponseTime,jdbcType=TIMESTAMP}, #{pctHostResponseFlowno,jdbcType=VARCHAR}, 
+      #{pctHostReturnCode,jdbcType=VARCHAR}, #{pctHostReturnMessage,jdbcType=VARCHAR}, 
+      #{pctDealstatus,jdbcType=VARCHAR}, #{pctBackstatus,jdbcType=VARCHAR}, #{pctRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_credit_tender" >
+    insert into p2p_credit_tender
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pctId != null" >
+        pct_id,
+      </if>
+      <if test="pctCreditflowno != null" >
+        pct_creditFlowNo,
+      </if>
+      <if test="pctBuycreditcustno != null" >
+        pct_buyCreditCustNo,
+      </if>
+      <if test="pctBuycreditaccount != null" >
+        pct_buyCreditAccount,
+      </if>
+      <if test="pctBuyamount != null" >
+        pct_buyAmount,
+      </if>
+      <if test="pctBuycusttype != null" >
+        pct_buyCustType,
+      </if>
+      <if test="pctLoancreditcustno != null" >
+        pct_loanCreditCustNo,
+      </if>
+      <if test="pctLoancreditaccount != null" >
+        pct_loanCreditAccount,
+      </if>
+      <if test="pctLoancusttype != null" >
+        pct_loanCustType,
+      </if>
+      <if test="pctCrediteflowno != null" >
+        pct_crediteFlowNo,
+      </if>
+      <if test="pctChannel != null" >
+        pct_channel,
+      </if>
+      <if test="pctPaystatus != null" >
+        pct_payStatus,
+      </if>
+      <if test="pctTradestatus != null" >
+        pct_tradeStatus,
+      </if>
+      <if test="pctPaystatuscode != null" >
+        pct_payStatusCode,
+      </if>
+      <if test="pctHostResponseTime != null" >
+        pct_host_response_time,
+      </if>
+      <if test="pctHostResponseFlowno != null" >
+        pct_host_response_flowNo,
+      </if>
+      <if test="pctHostReturnCode != null" >
+        pct_host_return_code,
+      </if>
+      <if test="pctHostReturnMessage != null" >
+        pct_host_return_message,
+      </if>
+      <if test="pctDealstatus != null" >
+        pct_dealStatus,
+      </if>
+      <if test="pctBackstatus != null" >
+        pct_backStatus,
+      </if>
+      <if test="pctRemark != null" >
+        pct_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pctId != null" >
+        #{pctId,jdbcType=BIGINT},
+      </if>
+      <if test="pctCreditflowno != null" >
+        #{pctCreditflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="pctBuycreditcustno != null" >
+        #{pctBuycreditcustno,jdbcType=CHAR},
+      </if>
+      <if test="pctBuycreditaccount != null" >
+        #{pctBuycreditaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="pctBuyamount != null" >
+        #{pctBuyamount,jdbcType=DECIMAL},
+      </if>
+      <if test="pctBuycusttype != null" >
+        #{pctBuycusttype,jdbcType=CHAR},
+      </if>
+      <if test="pctLoancreditcustno != null" >
+        #{pctLoancreditcustno,jdbcType=CHAR},
+      </if>
+      <if test="pctLoancreditaccount != null" >
+        #{pctLoancreditaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="pctLoancusttype != null" >
+        #{pctLoancusttype,jdbcType=CHAR},
+      </if>
+      <if test="pctCrediteflowno != null" >
+        #{pctCrediteflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="pctChannel != null" >
+        #{pctChannel,jdbcType=CHAR},
+      </if>
+      <if test="pctPaystatus != null" >
+        #{pctPaystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pctTradestatus != null" >
+        #{pctTradestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pctPaystatuscode != null" >
+        #{pctPaystatuscode,jdbcType=VARCHAR},
+      </if>
+      <if test="pctHostResponseTime != null" >
+        #{pctHostResponseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pctHostResponseFlowno != null" >
+        #{pctHostResponseFlowno,jdbcType=VARCHAR},
+      </if>
+      <if test="pctHostReturnCode != null" >
+        #{pctHostReturnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pctHostReturnMessage != null" >
+        #{pctHostReturnMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="pctDealstatus != null" >
+        #{pctDealstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pctBackstatus != null" >
+        #{pctBackstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pctRemark != null" >
+        #{pctRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_credit_tenderExample" resultType="java.lang.Integer" >
+    select count(1) from p2p_credit_tender
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p2p_credit_tender
+    <set >
+      <if test="record.pctId != null" >
+        pct_id = #{record.pctId,jdbcType=BIGINT},
+      </if>
+      <if test="record.pctCreditflowno != null" >
+        pct_creditFlowNo = #{record.pctCreditflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctBuycreditcustno != null" >
+        pct_buyCreditCustNo = #{record.pctBuycreditcustno,jdbcType=CHAR},
+      </if>
+      <if test="record.pctBuycreditaccount != null" >
+        pct_buyCreditAccount = #{record.pctBuycreditaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctBuyamount != null" >
+        pct_buyAmount = #{record.pctBuyamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pctBuycusttype != null" >
+        pct_buyCustType = #{record.pctBuycusttype,jdbcType=CHAR},
+      </if>
+      <if test="record.pctLoancreditcustno != null" >
+        pct_loanCreditCustNo = #{record.pctLoancreditcustno,jdbcType=CHAR},
+      </if>
+      <if test="record.pctLoancreditaccount != null" >
+        pct_loanCreditAccount = #{record.pctLoancreditaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctLoancusttype != null" >
+        pct_loanCustType = #{record.pctLoancusttype,jdbcType=CHAR},
+      </if>
+      <if test="record.pctCrediteflowno != null" >
+        pct_crediteFlowNo = #{record.pctCrediteflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctChannel != null" >
+        pct_channel = #{record.pctChannel,jdbcType=CHAR},
+      </if>
+      <if test="record.pctPaystatus != null" >
+        pct_payStatus = #{record.pctPaystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctTradestatus != null" >
+        pct_tradeStatus = #{record.pctTradestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctPaystatuscode != null" >
+        pct_payStatusCode = #{record.pctPaystatuscode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctHostResponseTime != null" >
+        pct_host_response_time = #{record.pctHostResponseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pctHostResponseFlowno != null" >
+        pct_host_response_flowNo = #{record.pctHostResponseFlowno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctHostReturnCode != null" >
+        pct_host_return_code = #{record.pctHostReturnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctHostReturnMessage != null" >
+        pct_host_return_message = #{record.pctHostReturnMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctDealstatus != null" >
+        pct_dealStatus = #{record.pctDealstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctBackstatus != null" >
+        pct_backStatus = #{record.pctBackstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pctRemark != null" >
+        pct_remark = #{record.pctRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p2p_credit_tender
+    set pct_id = #{record.pctId,jdbcType=BIGINT},
+      pct_creditFlowNo = #{record.pctCreditflowno,jdbcType=VARCHAR},
+      pct_buyCreditCustNo = #{record.pctBuycreditcustno,jdbcType=CHAR},
+      pct_buyCreditAccount = #{record.pctBuycreditaccount,jdbcType=VARCHAR},
+      pct_buyAmount = #{record.pctBuyamount,jdbcType=DECIMAL},
+      pct_buyCustType = #{record.pctBuycusttype,jdbcType=CHAR},
+      pct_loanCreditCustNo = #{record.pctLoancreditcustno,jdbcType=CHAR},
+      pct_loanCreditAccount = #{record.pctLoancreditaccount,jdbcType=VARCHAR},
+      pct_loanCustType = #{record.pctLoancusttype,jdbcType=CHAR},
+      pct_crediteFlowNo = #{record.pctCrediteflowno,jdbcType=VARCHAR},
+      pct_channel = #{record.pctChannel,jdbcType=CHAR},
+      pct_payStatus = #{record.pctPaystatus,jdbcType=VARCHAR},
+      pct_tradeStatus = #{record.pctTradestatus,jdbcType=VARCHAR},
+      pct_payStatusCode = #{record.pctPaystatuscode,jdbcType=VARCHAR},
+      pct_host_response_time = #{record.pctHostResponseTime,jdbcType=TIMESTAMP},
+      pct_host_response_flowNo = #{record.pctHostResponseFlowno,jdbcType=VARCHAR},
+      pct_host_return_code = #{record.pctHostReturnCode,jdbcType=VARCHAR},
+      pct_host_return_message = #{record.pctHostReturnMessage,jdbcType=VARCHAR},
+      pct_dealStatus = #{record.pctDealstatus,jdbcType=VARCHAR},
+      pct_backStatus = #{record.pctBackstatus,jdbcType=VARCHAR},
+      pct_remark = #{record.pctRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_credit_tender" >
+    update p2p_credit_tender
+    <set >
+      <if test="pctCreditflowno != null" >
+        pct_creditFlowNo = #{pctCreditflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="pctBuycreditcustno != null" >
+        pct_buyCreditCustNo = #{pctBuycreditcustno,jdbcType=CHAR},
+      </if>
+      <if test="pctBuycreditaccount != null" >
+        pct_buyCreditAccount = #{pctBuycreditaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="pctBuyamount != null" >
+        pct_buyAmount = #{pctBuyamount,jdbcType=DECIMAL},
+      </if>
+      <if test="pctBuycusttype != null" >
+        pct_buyCustType = #{pctBuycusttype,jdbcType=CHAR},
+      </if>
+      <if test="pctLoancreditcustno != null" >
+        pct_loanCreditCustNo = #{pctLoancreditcustno,jdbcType=CHAR},
+      </if>
+      <if test="pctLoancreditaccount != null" >
+        pct_loanCreditAccount = #{pctLoancreditaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="pctLoancusttype != null" >
+        pct_loanCustType = #{pctLoancusttype,jdbcType=CHAR},
+      </if>
+      <if test="pctCrediteflowno != null" >
+        pct_crediteFlowNo = #{pctCrediteflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="pctChannel != null" >
+        pct_channel = #{pctChannel,jdbcType=CHAR},
+      </if>
+      <if test="pctPaystatus != null" >
+        pct_payStatus = #{pctPaystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pctTradestatus != null" >
+        pct_tradeStatus = #{pctTradestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pctPaystatuscode != null" >
+        pct_payStatusCode = #{pctPaystatuscode,jdbcType=VARCHAR},
+      </if>
+      <if test="pctHostResponseTime != null" >
+        pct_host_response_time = #{pctHostResponseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pctHostResponseFlowno != null" >
+        pct_host_response_flowNo = #{pctHostResponseFlowno,jdbcType=VARCHAR},
+      </if>
+      <if test="pctHostReturnCode != null" >
+        pct_host_return_code = #{pctHostReturnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pctHostReturnMessage != null" >
+        pct_host_return_message = #{pctHostReturnMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="pctDealstatus != null" >
+        pct_dealStatus = #{pctDealstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pctBackstatus != null" >
+        pct_backStatus = #{pctBackstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pctRemark != null" >
+        pct_remark = #{pctRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pct_id = #{pctId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baibao.web.p2p.generator.bean.P2p_credit_tender" >
+    update p2p_credit_tender
+    set pct_creditFlowNo = #{pctCreditflowno,jdbcType=VARCHAR},
+      pct_buyCreditCustNo = #{pctBuycreditcustno,jdbcType=CHAR},
+      pct_buyCreditAccount = #{pctBuycreditaccount,jdbcType=VARCHAR},
+      pct_buyAmount = #{pctBuyamount,jdbcType=DECIMAL},
+      pct_buyCustType = #{pctBuycusttype,jdbcType=CHAR},
+      pct_loanCreditCustNo = #{pctLoancreditcustno,jdbcType=CHAR},
+      pct_loanCreditAccount = #{pctLoancreditaccount,jdbcType=VARCHAR},
+      pct_loanCustType = #{pctLoancusttype,jdbcType=CHAR},
+      pct_crediteFlowNo = #{pctCrediteflowno,jdbcType=VARCHAR},
+      pct_channel = #{pctChannel,jdbcType=CHAR},
+      pct_payStatus = #{pctPaystatus,jdbcType=VARCHAR},
+      pct_tradeStatus = #{pctTradestatus,jdbcType=VARCHAR},
+      pct_payStatusCode = #{pctPaystatuscode,jdbcType=VARCHAR},
+      pct_host_response_time = #{pctHostResponseTime,jdbcType=TIMESTAMP},
+      pct_host_response_flowNo = #{pctHostResponseFlowno,jdbcType=VARCHAR},
+      pct_host_return_code = #{pctHostReturnCode,jdbcType=VARCHAR},
+      pct_host_return_message = #{pctHostReturnMessage,jdbcType=VARCHAR},
+      pct_dealStatus = #{pctDealstatus,jdbcType=VARCHAR},
+      pct_backStatus = #{pctBackstatus,jdbcType=VARCHAR},
+      pct_remark = #{pctRemark,jdbcType=VARCHAR}
+    where pct_id = #{pctId,jdbcType=BIGINT}
+  </update>
+</mapper>

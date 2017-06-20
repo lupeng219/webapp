@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_creditor_packMapper">
+	<resultMap id="CreditorPackMap" type="com.baibao.web.p2p.generator.bean.P2p_creditor_pack" >
+	    <id column="pcp_id" property="pcpId" jdbcType="BIGINT" />
+	    <result column="pcp_product_no" property="pcpProductNo" jdbcType="VARCHAR" />
+	    <result column="pcp_cust_no" property="pcpCustNo" jdbcType="CHAR" />
+	    <result column="pcp_real_name" property="pcpRealName" jdbcType="VARCHAR" />
+	    <result column="pcp_amount" property="pcpAmount" jdbcType="DECIMAL" />
+	    <result column="pcp_cert_type" property="pcpCertType" jdbcType="CHAR" />
+	    <result column="pcp_cert_no" property="pcpCertNo" jdbcType="VARCHAR" />
+	    <result column="pcp_age" property="pcpAge" jdbcType="CHAR" />
+	    <result column="pcp_materia" property="pcpMateria" jdbcType="VARCHAR" />
+	    <result column="pcp_address" property="pcpAddress" jdbcType="VARCHAR" />
+	    <result column="pcp_native_place" property="pcpNativePlace" jdbcType="VARCHAR" />
+	    <result column="pcp_work_city" property="pcpWorkCity" jdbcType="VARCHAR" />
+	    <result column="pcp_work_address" property="pcpWorkAddress" jdbcType="VARCHAR" />
+	    <result column="pcp_education" property="pcpEducation" jdbcType="VARCHAR" />
+	    <result column="pcp_work_age" property="pcpWorkAge" jdbcType="VARCHAR" />
+	    <result column="pcp_work_position" property="pcpWorkPosition" jdbcType="VARCHAR" />
+	    <result column="pcp_month_salary" property="pcpMonthSalary" jdbcType="VARCHAR" />
+	    <result column="pcp_remark" property="pcpRemark" jdbcType="VARCHAR" />
+  	</resultMap>
+
+    <select id="findByProductNo" resultMap="CreditorPackMap" parameterType="java.util.HashMap">
+	SELECT
+	    *
+	FROM
+	    p2p_creditor_pack
+	WHERE
+	    pcp_productNo = #{productNo}
+	    limit #{beginWith},#{count}
+    </select>
+    
+    <select id="selectByProductNo" resultMap="CreditorPackMap" parameterType="java.util.HashMap">
+    SELECT
+        *
+    FROM
+        p2p_creditor_pack
+    WHERE
+        pcp_productNo = #{productNo}
+    </select>
+    
+    <select id="selectCountByProductNo" resultType="int" parameterType="java.util.HashMap" >
+   	SELECT 
+   		count(1) 
+   	FROM 
+   		p2p_creditor_pack
+   	WHERE 
+   		pcp_productNo=#{productNo}
+  	</select>
+</mapper>

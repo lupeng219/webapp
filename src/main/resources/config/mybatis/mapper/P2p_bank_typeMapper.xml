@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_bank_typeMapper" >
+  <resultMap id="bank_type_map" type="com.baibao.web.p2p.generator.bean.P2p_bank_type" >
+    <result column="code" property="bankCode" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="bank_type_list" >
+      id,
+	  code,
+	  bankDesc,
+	  supportPerson,
+	  supportCompany,
+	  supportQuickPay,
+	  firstBindLimit,
+	  singleLimit,
+	  singleDayLimit,
+	  singleMinimum
+  </sql>
+  
+  <select id="getAll" resultMap="bank_type_map">
+       SELECT
+           <include refid="bank_type_list"/>
+       FROM p2p_bank_type;
+  </select>
+  
+    
+  <select id="getBankType" parameterType="String" resultMap="bank_type_map">
+       SELECT
+           <include refid="bank_type_list"/>
+       FROM p2p_bank_type
+       WHERE code = #{bankCode};
+  </select>
+
+  <select id="getPersonalHhortcut" resultMap="bank_type_map">
+       SELECT
+           <include refid="bank_type_list"/>
+       FROM p2p_bank_type
+       WHERE supportPerson = 1;
+  </select>  
+
+  <select id="getPersonalEbank" resultMap="bank_type_map">
+       SELECT
+           <include refid="bank_type_list"/>
+       FROM p2p_bank_type
+       WHERE supportQuickPay = 1;
+  </select>  
+
+  <select id="getEnterpriseNetSilver" resultMap="bank_type_map">
+       SELECT
+           <include refid="bank_type_list"/>
+       FROM p2p_bank_type
+       WHERE supportCompany = 1;
+  </select>  
+</mapper>

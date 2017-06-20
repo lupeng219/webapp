@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_users_practicalityMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_users_practicality" >
+    <id column="pup_practicalityNo" property="pupPracticalityno" jdbcType="VARCHAR" />
+    <result column="pup_custNo" property="pupCustno" jdbcType="VARCHAR" />
+    <result column="pup_testimonialNo" property="pupTestimonialno" jdbcType="VARCHAR" />
+    <result column="pup_getTime" property="pupGettime" jdbcType="TIMESTAMP" />
+    <result column="pup_lotteryDrawNo" property="pupLotterydrawno" jdbcType="VARCHAR" />
+    <result column="pup_activeId" property="pupActiveid" jdbcType="INTEGER" />
+    <result column="pup_status" property="pupStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pup_practicalityNo, pup_custNo, pup_testimonialNo, pup_getTime, pup_lotteryDrawNo, 
+    pup_activeId, pup_status
+  </sql>
+  
+  <!-- 查询是否已经使用抽奖机会得到实物 -->
+  <select id="getPracticalityLotteryDrawNo" parameterType="String" resultType="int">
+  SELECT COUNT(1) FROM p2p_users_practicality WHERE pup_lotteryDrawNo = #{pulLotterydrawno}
+  </select>
+  <!-- 查询该用户是否已经得到某一实物 -->
+  <select id="getPracticalityByCustNo" parameterType="String" resultType="int">
+  SELECT COUNT(1) FROM p2p_users_practicality WHERE pup_custNo=#{custNo} and pup_testimonialNo = #{puptestimonialNo}
+  </select>
+  
+  <!-- 保存用户实物 -->
+  <insert id="savePracticality" parameterType="map">
+  	INSERT INTO p2p_users_practicality(pup_practicalityNo,pup_custNo,pup_testimonialNo,pup_getTime,pup_lotteryDrawNo,pup_activeId,pup_status)
+  	VALUES(#{pup_practicalityNo},#{pup_custNo},#{pup_testimonialNo},#{pup_getTime},#{pup_lotteryDrawNo},#{pup_activeId},#{pup_status})
+  </insert>
+  <!--查询用户获得实物列表  -->
+   <select id="goodsReward" parameterType="java.util.Map" resultType="java.util.Map">
+ 	 SELECT pae_activeName,pup_getTime,put_name,pup_status,pup_practicalityNo FROM p2p_users_practicality  pup 
+	LEFT JOIN  p2p_users_testimonial put  ON pup.pup_testimonialNo = put.put_testimonialNo
+	LEFT JOIN  p2p_activity_elements pae  ON pae.pae_activeId = pup.pup_activeId 
+	WHERE pup_custNo =#{custNo} 
+	ORDER BY pup_getTime desc
+	limit #{beginWith},#{count} 
+  </select>
+  <select id="goodsRewardCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+   SELECT COUNT(pup_practicalityNo) FROM p2p_users_practicality  pup 
+	LEFT JOIN  p2p_users_testimonial put  ON pup.pup_testimonialNo = put.put_testimonialNo
+	LEFT JOIN  p2p_activity_elements pae  ON pae.pae_activeId = pup.pup_activeId 
+	WHERE pup_custNo =#{custNo} 
+  </select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_user_reg_channelMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_user_reg_channel" >
+    <result column="puc_custNo" property="pucCustno" jdbcType="VARCHAR" />
+    <result column="puc_channel" property="pucChannel" jdbcType="CHAR" />
+    <result column="puc_wxOpenid" property="pucWxopenid" jdbcType="VARCHAR" />
+    <!-- <result column="puc_channelCode" property="pucChannelCode" jdbcType="VARCHAR"/> -->
+  </resultMap>
+  <insert id="saveRegChannel" parameterType="com.baibao.web.p2p.generator.bean.P2p_user_reg_channel" >
+    insert into p2p_user_reg_channel (puc_custNo, puc_channel, puc_wxOpenid)<!-- ,puc_channelCode -->
+    values (#{pucCustno,jdbcType=VARCHAR}, #{pucChannel,jdbcType=CHAR}, #{pucWxopenid,jdbcType=VARCHAR}<!-- ,#{pucChannelCode,jdbcType=VARCHAR} -->
+      )
+  </insert>
+</mapper>

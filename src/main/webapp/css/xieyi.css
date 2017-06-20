@@ -1,0 +1,329 @@
+@charset "utf-8";
+html {
+    background: none repeat scroll 0 0 #fff;
+    color: #666;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+audio,
+canvas,
+video {
+    display: inline-block;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font: 14px/1.5 "微软雅黑", YaHei, tahoma, arial, "Hiragino Sans GB", 宋体;
+}
+
+input,
+select,
+textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    text-align: inherit;
+}
+
+.table-tr-color {
+    background: none repeat scroll 0 0 #f0f0f0;
+}
+
+fieldset,
+img {
+    border: 0 none;
+}
+
+iframe {
+    display: block;
+}
+
+abbr,
+acronym {
+    border: 0 none;
+    font-variant: normal;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+    font-style: normal;
+    font-weight: 500;
+}
+
+ol,
+ul {
+    list-style: outside none none;
+}
+
+caption,
+th {
+    text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+q:before,
+q:after {
+    content: "";
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+a:link {}
+
+a:hover {
+    color: #08c;
+    text-decoration: underline;
+}
+
+ins,
+a {
+    text-decoration: none;
+}
+
+body {
+    min-width: 960px;
+}
+
+.fn-clear:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.fn-clear {}
+
+body .fn-hide {
+    display: none;
+}
+
+.fn-left,
+.fn-right {
+    display: inline;
+}
+
+.fn-left {
+    float: left;
+}
+
+.fn-right {
+    float: right;
+}
+
+.fn-text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.container_12 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 62.5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.clearfix:after,
+.container_12:after {
+    clear: both;
+}
+
+.clearfix,
+.container_12 {}
+
+a {
+    outline: 0 none;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+html,
+body {
+    background: none repeat scroll 0 0 #f2f2f2;
+    height: 100%;
+}
+
+h1,
+.h1 {
+    font-size: 35px;
+}
+
+h2,
+.h2 {
+    font-size: 30px;
+}
+
+h3,
+.h3 {
+    font-size: 24px;
+}
+
+h4,
+.h4 {
+    font-size: 18px;
+}
+
+h5,
+.h5 {
+    font-size: 14px;
+}
+
+h6,
+.h6 {
+    font-size: 12px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.pg-webservice-content {
+    background: none repeat scroll 0 0 #fff;
+    color: #555;
+    width: 100%;
+    padding: 20px;
+}
+
+.pg-webservice-content > div,
+.pg-webservice-content .attach > div {
+    margin-top: 30px;
+    line-height: 30px;
+    width: 100%;
+}
+
+.pg-webservice-content h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.pg-webservice-content li {
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+
+.pg-webservice-content li span {
+    display: block;
+    width: 40px;
+}
+
+.pg-webservice-content li p {
+    width: 96%;
+}
+
+.pl60 {
+    padding-left: 60px;
+}

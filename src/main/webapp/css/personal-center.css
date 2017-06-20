@@ -1,0 +1,254 @@
+@charset "utf-8";
+.personal-table {
+    width: 100%;
+}
+
+.personal-table td {
+    width: 20%;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.personal-table td:not(:last-child) {
+    border-right: 1px dashed #bebebe;
+}
+
+.personal-btns {
+    margin-top: 20px;
+}
+
+.personal-btns a {
+    padding: 5px 15px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.personal-btns a:not(:first-child) {
+    margin-left: 15px;
+}
+
+.personal-btns .red-btn {
+    background-color: #f8586a;
+    color: white;
+}
+
+.personal-btns .blue-btn {
+    background-color: #09afdf;
+    color: white;
+}
+
+.personal-btns .gray-btn {
+    background-color: #a5d1de;
+    color: white;
+}
+
+.zichan-con h1 {
+    color: #494848;
+}
+
+.zichan-con {
+    width: 460px;
+    height: 248px;
+    float: left;
+    padding: 20px 30px;
+}
+
+.zichan-con .zichan-tel {
+    font-size: 18px;
+    line-height: 40px;
+    font-family: 微软雅黑;
+    color: #474e5d;
+    font-weight: 700;
+}
+
+.zichan-con .zichan-number {
+    font-size: 18px;
+    color: #fc7a2d;
+}
+
+.zichan-con .zichan-number span {
+    font-size: 32px;
+}
+
+.zichan-ui,
+.operation-ui {
+    float: left;
+    display: inline-block;
+}
+
+.zichan-ui {
+    margin-left: 5px;
+}
+
+.ui-dian {
+    width: 5px;
+    height: 5px;
+    background: url(../images/dian.png) center center no-repeat;
+    float: left;
+    margin-right: 10px;
+    margin-top: 16px;
+}
+
+.zichan-ui li {
+    line-height: 36px;
+    height: 36px;
+    clear: both;
+}
+
+.zichan-ui li span {
+    font-size: 18px;
+}
+
+.zichan-ui li p {
+    display: inline-block;
+    width: 150px;
+    float: left;
+}
+
+.zichan-ui li .ui-title {
+    font-size: 14px;
+    display: inline-block;
+    float: left;
+    width: 80px;
+}
+
+.zichan-ui li a {
+    display: inline-block;
+    margin-right: 15px;
+    float: left;
+}
+
+.chongz-btn {
+    padding: 6px 28px;
+    background: #fc9c66;
+    color: #fff;
+    line-height: 18px;
+    margin-top: 3px;
+}
+
+.zichan-ui li a:hover {
+    color: #ed8144;
+}
+
+.zichan-ui .chongz-btn:hover {
+    color: #fff;
+    background: #ed8144;
+}
+
+.per-licai-ui {
+    display: inline-block;
+    width: 380px;
+    float: left;
+}
+
+.per-licai-ui li {
+    padding-left: 45px;
+    font-size: 14px;
+    line-height: 34px;
+}
+
+.per-licai-ui .lc-num {
+    color: #fd8745;
+}
+
+.per-tuijian-ui {
+    display: inline-block;
+    width: 420px;
+    float: left
+}
+
+.per-tuijian-ui li {
+    height: 34px;
+    line-height: 34px;
+}
+
+.per-tuijian-ui li span {
+    display: inline-block;
+    float: left;
+}
+
+.per-tuijian-ui li a {
+    display: inline-block;
+    float: right;
+}
+
+.licai-btn {
+    display: inline-block;
+    width: 102px;
+    height: 23px;
+    border: 1px solid #6aa8d5;
+    text-align: center;
+    line-height: 22px;
+    color: #6aa8d5;
+    margin-top: 4px;
+}
+
+.licai-btn:hover {
+    background: #6aa8d5;
+    color: #fff;
+}
+
+.zhongchou-btn {
+    display: inline-block;
+    width: 102px;
+    height: 23px;
+    border: 1px solid #fdad81;
+    text-align: center;
+    line-height: 22px;
+    color: #fdad81;
+    margin-top: 4px;
+}
+
+.zhongchou-btn:hover {
+    background: #fdad81;
+    color: #fff;
+}
+
+.find-more-ui {
+    display: inline-block;
+    float: right;
+    padding-top: 55px;
+}
+
+.per-txtcon {
+    position: relative;
+}
+
+.left-lun,
+.right-lun {
+    width: 12px;
+    height: 22px;
+    position: absolute;
+    top: 140px;
+}
+
+.left-lun {
+    background: url(../images/right.png) no-repeat;
+    left: 15px;
+}
+
+.right-lun {
+    background: url(../images/left.png) no-repeat;
+    right: 15px;
+}
+
+.tabCt-subnav {
+    position: absolute;
+    bottom: 24px;
+    left: 518px;
+    color: #666666;
+    font-size: 12px;
+}
+
+.tabCt-subnav>.InvestAmount {
+    background: url(../pictures/icon/icon-Investment-amount.png) no-repeat left center;
+    padding-left: 28px;
+}
+
+.tabCt-subnav>.IncomeAmount {
+    background: url(../pictures/icon/icon-Income-amount.png) no-repeat left center;
+    margin-left: 16px;
+    padding-left: 28px;
+}

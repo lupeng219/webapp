@@ -1,0 +1,573 @@
+@charset "utf-8";
+input {
+    outline: none;
+}
+
+.zichan-con h1 {
+    color: #494848;
+}
+
+.zichan-con {
+    width: 560px;
+    padding-left: 50px;
+}
+
+.zichan-con .zichan-tel {
+    font-size: 18px;
+    width: 100%;
+    padding-left: 5px;
+    line-height: 40px;
+    padding-top: 15px;
+    font-family: 微软雅黑;
+    color: #474e5d;
+}
+
+.zichan-con .zichan-number {
+    font-size: 18px;
+    color: #f8586a;
+}
+
+.zichan-con .zichan-number span {
+    font-size: 32px;
+}
+
+.zichan-ui,
+.operation-ui {
+    float: left;
+    display: inline-block;
+}
+
+.zichan-ui {
+    margin-left: 5px;
+    padding-bottom: 10px;
+}
+
+.zichan-ui li {
+    line-height: 36px;
+    height: 36px;
+    clear: both;
+}
+
+.ui-dian {
+    width: 7px;
+    height: 7px;
+    background: url(../pictures/icon/dian.png) no-repeat left center;
+    float: left;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+.ui-dian-red {
+    background: url(../pictures/icon/tip.png) no-repeat left center;
+}
+
+.zichan-ui li span {
+    font-size: 18px;
+}
+
+.zichan-ui li p {
+    display: inline-block;
+    padding-right: 10px;
+    float: left;
+}
+
+.zichan-ui li .ui-title {
+    font-size: 14px;
+    display: inline-block;
+    float: left;
+    width: 100px;
+}
+
+.zichan-ui li a {
+    display: inline-block;
+    margin-right: 15px;
+    float: left;
+}
+
+.chongz-btn {
+    padding: 3px 10px;
+    background: #fc9c66;
+    color: #fff;
+    line-height: 18px;
+    margin-top: 7px;
+}
+
+.zichan-ui li a:hover {
+    color: #ed8144;
+}
+
+.zichan-ui .chongz-btn:hover {
+    color: #fff;
+    background: #ed8144;
+}
+
+.op-conduct {
+    background: #ffffff;
+    height: 70px;
+    padding-left: 10px;
+}
+
+.op-title {
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 70px;
+    float: left;
+}
+
+.biao-state {
+    margin-top: 17px;
+    width: 200px;
+    height: 36px;
+    float: left;
+    position: relative;
+    z-index: 10 !important;
+}
+
+.biao-state-sel,
+.biao-time {
+    width: 138px;
+    padding-left: 10px;
+    height: 34px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background: #fff;
+    height: 26px\9;
+    padding-top: 8px\9;
+}
+
+#biao-state-sel {
+    width: 188px;
+}
+
+.down-card {
+    cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    height: 35px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    text-align: center;
+    background: url(../images/select2.png) 7px 5px no-repeat;
+}
+
+.downcard-click {
+    background: url(../images/select2.png) -11px 7px no-repeat;
+}
+
+.biaostate-list {
+    width: 198px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background: #fff;
+    margin-top: 3px;
+}
+
+.biaostate-list li {
+    cursor: pointer;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.biaostate-list li:hover {
+    background: #09afdf;
+    color: #fff;
+}
+
+.biao-time {
+    margin-top: 17px;
+    float: left;
+    background: url(../pictures/ICON-calendar.png) no-repeat 18px center;
+    padding-left: 46px;
+}
+
+:root .biao-time,
+:root .biao-state-sel {
+    height: 34px\9;
+    padding-top: 0px\9;
+}
+
+.find-btn {
+    display: inline-block;
+    padding: 0 15px;
+    height: 36px;
+    color: #fff;
+    background: #f8586a;
+    line-height: 36px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 17px;
+}
+
+.find-btn:hover {
+    color: #fff;
+}
+
+.conduct-project {}
+
+.conduct-project li {
+    font-size: 14px;
+}
+
+.conduct-project li span,
+.conduct-project li a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 9.5%;
+    float: left;
+    padding-left: 2%;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.conduct-project .project-title {
+    color: #333333;
+    background: #eeeeee;
+}
+
+.conduct-project li span .loanTitle,
+.conduct-project li a .loanTitle {
+    padding: 0;
+    width: 100%;
+}
+
+.conduct-project .profitList {
+    width: 100%;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+}
+
+.conduct-project .profitList .profitList-title {
+    font-weight: bold;
+    border-bottom: 1px dashed #f4f4f4;
+}
+
+.conduct-project .profitList span {
+    width: 14.2%;
+    float: left;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
+    text-align: center;
+    border-bottom: 1px dashed #f4f4f4;
+}
+
+.conduct-project .investmentList a.active,
+.conduct-project .investmentList span.active {
+    background: #FDE6E2;
+}
+
+li.investmentList:nth-child(2n) > * {
+    background-color: #fffff;
+}
+
+li.investmentList:nth-child(2n + 1) > * {
+    background-color: #f0f7ff;
+}
+
+
+/*遮罩层*/
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#coverMask {
+    background: gray;
+    position: absolute;
+    display: none;
+    z-index: 20;
+    filter: alpha(opacity=70);
+    opacity: 0.7 !important;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+#transConfirm,
+#transCompt {
+    width: 500px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
+    background: #fff;
+    display: none;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.transConfirmHeaher {
+    width: 100%;
+    height: 50px;
+    background: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+    line-height: 50px;
+}
+
+.transConfirmTitle {
+    font-size: 14px;
+    color: #666;
+    padding-left: 16px;
+    float: left;
+    font-weight: normal;
+}
+
+.transConfirmCancel,
+.transComptCancel {
+    float: right;
+    padding-right: 16px;
+    color: #666;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.transConfirmInfo {
+    height: 54px;
+    padding-left: 16px;
+    color: #666666;
+    font-size: 14px;
+    line-height: 54px;
+    font-weight: normal;
+}
+
+.transConfirmTable {
+    height: 64px;
+    padding: 0 20px;
+    width: 100%;
+    font-size: 14px;
+    color: #666;
+    background: #f2f2f2;
+}
+
+.td-center {
+    padding-right: 80px;
+}
+
+.td-last,
+.td-center {
+    text-align: right;
+}
+
+.transConfirmCont {
+    background: #fff;
+}
+
+.transConfirmCont p {
+    padding: 20px 20px;
+    font-size: 14px;
+    color: #666;
+    height: 50px;
+}
+
+.remain-pic {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    padding-left: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.remainCo {
+    display: none;
+    position: absolute;
+    top: 28px;
+    left: -67px;
+    line-height: 36px;
+    padding-left: 16px;
+    width: 349px;
+    height: 36px;
+    border: 1px solid #ccc;
+    font-style: normal;
+    background: #f5f5f5;
+}
+
+.remainCo .kong {
+    display: block;
+    position: absolute;
+    top: -20px;
+    left: 72px;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: dashed dashed solid;
+    border-color: transparent transparent #ccc;
+    font-size: 0;
+    line-height: 0;
+}
+
+.remainCo .shi {
+    display: block;
+    border-width: 10px;
+    position: absolute;
+    top: -19px;
+    left: 72px;
+    border-style: dashed dashed solid;
+    border-color: transparent transparent #f5f5f5;
+    font-size: 0;
+    line-height: 0;
+}
+
+.transConfirmBtn {
+    width: 100%;
+    height: 54px;
+    background: #f2f2f2;
+    line-height: 54px;
+}
+
+.transConfirmBtn button {
+    width: 70px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#transConfirmSure {
+    background: #09afdf;
+    color: #fff;
+    margin-left: 160px;
+}
+
+#transConfirmCancel {
+    color: #333;
+    background: #e6e6e6;
+    margin-left: 30px;
+}
+
+.fr {
+    float: right;
+}
+
+.transConfirmAgree {
+    text-align: center;
+    height: 40px;
+    font-size: 14px;
+    color: #666;
+}
+
+.agreeBox {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    border: none;
+    margin-right: 6px;
+}
+
+.agreeBox:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    z-index: 10;
+    background: url(../pictures/icon/Marquee.png) no-repeat;
+    background-size: contain;
+}
+
+.agreeBox:checked:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background: url(../pictures/icon/Marquee-Already-choose.png) no-repeat;
+    background-size: contain;
+}
+
+.fben {
+    color: #09afdf;
+    padding-left: 4px;
+}
+
+.transComptPic {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.transComptPic img {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+#transCompt:not(.error) img.fail {
+    display: none;
+}
+
+#transCompt.error img.done {
+    display: none;
+}
+
+#transCompt:not(.error) .transComptW {
+    color: #09afdf;
+}
+
+#transCompt.error .transComptW {
+    color: #d97462;
+}
+
+.transComptW {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 24px;
+}
+
+.transCompts {
+    text-align: center;
+    line-height: 24px;
+    font-size: 12px;
+    color: #666;
+}
+
+.transComptBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#transComptSure {
+    display: inline-block;
+    width: 70px;
+    height: 28px;
+    background: #09afdf;
+    text-align: center;
+    line-height: 28px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.transPsd {
+    text-align: center;
+}
+
+.font18 {
+    font-size: 18px;
+}
+
+#tran-password {
+    height: 30px;
+    border: 1px solid #ccc;
+    padding-left: 14px;
+}

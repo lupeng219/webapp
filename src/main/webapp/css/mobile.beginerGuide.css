@@ -1,0 +1,237 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+html,
+body {
+	background: #fff;
+	background-size: 100%;
+}
+
+.page1 {
+	width: 100%;
+	height: 100%;
+	background: url(../../images/bgGdBackground1.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.page2 {
+	width: 100%;
+	height: 100%;
+	background: url(../../images/bgGdBackground2.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.page3 {
+	width: 100%;
+	height: 100%;
+	background: url(../../images/bgGdBackground3.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.page4 {
+	width: 100%;
+	height: 100%;
+	background: url(../../images/bgGdBackground4.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.page5 {
+	width: 100%;
+	height: 100%;
+	background: url(../../images/bgGdBackground5.png) no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+
+.goRegister {
+	position: absolute;
+	width: 2.11rem;
+	height: .75rem;
+	font-size: .26rem;
+	color: #333;
+	line-height: .75rem;
+	text-align: center;
+	display: block;
+	bottom: .6rem;
+	right: .4rem;
+	background: url(../../images/goRegis.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+@keyframes icon-rt {
+	25% {
+		bottom: 1rem;
+	}
+	50% {
+		bottom: .6rem;
+	}
+	75% {
+		bottom: 1rem;
+	}
+	100% {
+		bottom: .6rem;
+	}
+}
+
+@-moz-keyframes icon-rt {
+	25% {
+		bottom: 1rem;
+	}
+	50% {
+		bottom: .6rem;
+	}
+	75% {
+		bottom: 1rem;
+	}
+	100% {
+		bottom: .6rem;
+	}
+}
+
+@-webkit-keyframes icon-rt {
+	25% {
+		bottom: 1rem;
+	}
+	50% {
+		bottom: .6rem;
+	}
+	75% {
+		bottom: 1rem;
+	}
+	100% {
+		bottom: .6rem;
+	}
+}
+
+@-o-keyframes icon-rt {
+	25% {
+		bottom: 1rem;
+	}
+	50% {
+		bottom: .6rem;
+	}
+	75% {
+		bottom: 1rem;
+	}
+	100% {
+		bottom: .6rem;
+	}
+}
+
+@keyframes sense {
+	0% {
+		left: 0%;
+	}
+	100% {
+		left: -100%;
+	}
+}
+
+.icon-rt {
+	position: absolute;
+	bottom: .6rem;
+	left: 50%;
+	width: .50rem;
+	height: .25rem;
+	margin-left: -.25rem;
+	-webkit-animation-timing-function: linear;
+	-o-animation-timing-function: linear;
+	animation-timing-function: linear;
+	-webkit-animation-name: icon-rt;
+	-o-animation-name: icon-rt;
+	animation-name: icon-rt;
+	-webkit-animation-iteration-count: infinite;
+	-o-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-duration: 2s;
+	-o-animation-duration: 2s;
+	animation-duration: 2s;
+}
+
+.icon-rt >img {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.wp {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+
+.page {
+	position: relative;
+}
+
+
+/* 箭头 */
+
+@-webkit-keyframes start {
+	0%,
+	30% {
+		opacity: 0.2;
+		-webkit-transform: translate(0, -5px);
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: translate(0, 0);
+	}
+	100% {
+		opacity: 0.2;
+		-webkit-transform: translate(0, 10px);
+	}
+}
+
+@keyframes start {
+	0%,
+	30% {
+		opacity: 0.2;
+		transform: translate(0, -5px);
+	}
+	60% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+	100% {
+		opacity: 0.2;
+		transform: translate(0, 10px);
+	}
+}
+
+.start {
+	position: absolute;
+	left: 50%;
+	margin-left: -17px;
+	top: 97%;
+	margin-top: -34px;
+	width: 34px;
+	height: 34px;
+}
+
+.start b {
+	position: absolute;
+	left: 50%;
+	top: 10px;
+	margin-left: -9px;
+	width: 19px;
+	height: 12px;
+	background: url(../../images/icon-rotate.png) no-repeat;
+	background-size: 100% 100%;
+	-webkit-animation: start 1.5s infinite ease-in-out;
+	animation: start 1.5s infinite ease-in-out;
+}

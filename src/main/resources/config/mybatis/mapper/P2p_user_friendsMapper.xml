@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_user_friendsMapper">
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.p2p_user_friends">
+    <id column="puf_custNo" jdbcType="CHAR" property="pufCustNo" />
+    <result column="puf_custName" jdbcType="VARCHAR" property="pufCustName" />
+    <result column="puf_friend_custNo" jdbcType="CHAR" property="pufFriendCustNo" />
+    <result column="puf_friend_custName" jdbcType="VARCHAR" property="pufFriendCustName" />
+    <result column="puf_userType" jdbcType="CHAR" property="pufUserType" />
+  
+  </resultMap>
+  
+  <insert id="saveUserFriends" parameterType="com.baibao.web.p2p.generator.bean.p2p_user_friends">
+  	insert into p2p_users_friends(puf_custNo,puf_custName,puf_friend_custNo,puf_friend_custName,puf_userType)
+  	values(#{pufCustNo},#{pufCustName},#{pufFriendCustNo},#{pufFriendCustName},#{pufUserType})
+  </insert>
+  
+  <!-- 根据客户号查询邀请人记录 -->
+<select id="queryFriendRecordBycustNo" parameterType="map" resultType="map">
+SELECT pu.pu_custNo,pu.pu_mobile,ui.pui_registration_time,ui.pui_real_name,uws.puw_parvalue 
+FROM p2p_users_friends uf 
+INNER JOIN p2p_user_info ui ON uf.puf_friend_custNo = ui.pui_custNo 
+INNER JOIN p2p_users pu on uf.puf_friend_custNo = pu.pu_custNo
+LEFT JOIN  
+(SELECT puef.puwa_friendCustNo,uw.puw_parvalue from p2p_user_warehouse uw 
+	inner JOIN p2p_user_warehouse_friendtender puef on puef.puwa_whNo =uw.puw_whNo and uw.puw_state='3' and puw_activeId = 5) uws
+on uws.puwa_friendCustNo = uf.puf_friend_custNo
+WHERE uf.puf_custNo = #{custNo}
+<if test="null!=startTime and startTime !=''">
+		<![CDATA[and ui.pui_registration_time>=#{startTime}]]>
+	</if>
+	<if test="null!=endTime and endTime !=''">
+		<![CDATA[and ui.pui_registration_time<=#{endTime}]]>
+	</if>
+	<if test="null!=userMobile and userMobile !=''">
+		 and pu.pu_mobile=#{userMobile}
+	</if>
+ORDER BY ui.pui_registration_time DESC
+limit #{beginWith},#{count}
+</select>
+
+<!-- 根据客户号查询邀请人记录总数 -->
+<select id="getFriendRecordTotalBycustNo" parameterType="map" resultType="int">
+select count(1) from p2p_users_friends uf 
+INNER JOIN p2p_user_info ui ON uf.puf_friend_custNo = ui.pui_custNo INNER JOIN p2p_users pu on pu.pu_custNo =uf.puf_friend_custNo
+where uf.puf_custNo =#{custNo}
+<if test="null!=startTime and startTime !=''">
+		<![CDATA[and ui.pui_registration_time>=#{startTime}]]>
+	</if>
+	<if test="null!=endTime and endTime !=''">
+		<![CDATA[and ui.pui_registration_time<=#{endTime}]]>
+	</if>
+	<if test="null!=userMobile and userMobile !=''">
+		 and pu.pu_mobile=#{userMobile}
+	</if>
+</select>
+<!-- 根据客户号查询邀请好友投资记录 -->
+<select id="getFriendTenderRecordBycustNo" parameterType="map" resultType="map">
+select ppqq.puwa_whNo, ppqq.pu_mobile ,ppqq.pp_loanTitle,ppqq.pp_productNo,ppqq.puwa_project_term,uw.puw_parvalue,uw.puw_getTime,ppqq.ptp_interest,8 as rewardRatio
+,uw.puw_state from p2p_user_warehouse uw 
+inner join (select uwf.puwa_whNo, u.pu_mobile ,lpa.pp_loanTitle,lpa.pp_productNo,uwf.puwa_project_term,ptp.ptp_interest from p2p_user_warehouse_friendtender uwf inner join p2p_users u on uwf.puwa_friendCustNo = u.pu_custNo 
+            INNER join p2p_loan_product_aid lpa on uwf.puwa_projectNo = lpa.pp_productNo
+           inner join p2p_tender_profit ptp on ptp.ptp_tenderFlowNo =  uwf.puwa_tenderFlowNo where uwf.puwa_project_term = ptp.ptp_loanSeq) ppqq
+on ppqq.puwa_whNo = uw.puw_whNo
+where uw.puw_custNo =#{custNo} 
+ <if test="null!=startTime and startTime !=''">
+		<![CDATA[and uw.puw_getTime>=#{startTime}]]>
+	</if>
+	<if test="null!=endTime and endTime !=''">
+		<![CDATA[and uw.puw_getTime<=#{endTime}]]>
+	</if>
+	<if test="null!=userMobile and userMobile !=''">
+		 and ppqq.pu_mobile=#{userMobile}
+	</if>
+ORDER BY uw.puw_getTime
+limit #{beginWith},#{count} 
+</select>
+<!-- 根据客户号查询邀请好友投资记录 -->
+<select id="getFriendTenderRecordTotalBycustNo" parameterType="map" resultType="int">
+SELECT  count(1) FROM (
+SELECT u.pu_mobile
+      	FROM p2p_user_warehouse_friendtender uwf,p2p_users u,p2p_loan_product_aid lpa,p2p_tender_profit ptp,p2p_user_warehouse uw
+			 WHERE uwf.puwa_friendCustNo = u.pu_custNo 
+			 		AND uwf.puwa_projectNo = lpa.pp_productNo 
+			 			AND uwf.puwa_tenderFlowNo = ptp.ptp_tenderFlowNo 
+			 				AND uwf.puwa_whNo = uw.puw_whNo
+			 					AND uw.puw_custNo = #{custNo}
+ <if test="null!=startTime and startTime !=''">
+		<![CDATA[and uw.puw_getTime>=#{startTime}]]>
+	</if>
+	<if test="null!=endTime and endTime !=''">
+		<![CDATA[and uw.puw_getTime<=#{endTime}]]>
+	</if>
+  GROUP BY uwf.puwa_whNo ) t
+</select>
+</mapper>

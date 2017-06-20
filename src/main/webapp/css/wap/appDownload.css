@@ -1,0 +1,13 @@
+.wrap{background:#1B6DEB;}
+.hide{ display:none;}
+.fl{ float:left;}
+.fr{ float:right;}
+.appbg{  width:100%; margin:0 auto; position: relative;}
+.appbg img{ display: block;border: 0;margin: 0 auto;width: 100%;}
+.appbg #back{display: block;border: 0;margin: 0;width: 36%;position:absolute;top: 10px;left: 10px;}
+.appbg ul{display: table;border-collapse: separate;border-spacing: 15px;width: 90%;position: absolute;bottom: 0;left: 50%;margin-left: -45%;}
+.appbg ul li{display: table-cell;width: 40%;}
+.appbg ul li img{display: block;border: 0;margin: 0 auto;width: 100%;cursor:pointer;}
+
+.page{ background:#ededed;display:none;}
+.page img{ display:none;width:100%;}

@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baibao.web.p2p.generator.dao.P2p_credite_loanMapper" >
+  <resultMap id="BaseResultMap" type="com.baibao.web.p2p.generator.bean.P2p_credite_loan" >
+    <id column="pcl_id" property="pclId" jdbcType="BIGINT" />
+    <result column="pcl_crediteFlowNo" property="pclCrediteflowno" jdbcType="VARCHAR" />
+    <result column="pcl_oldFlowNum" property="pclOldflownum" jdbcType="VARCHAR" />
+    <result column="pcl_loanNum" property="pclLoannum" jdbcType="VARCHAR" />
+    <result column="pcl_custNo" property="pclCustno" jdbcType="VARCHAR" />
+    <result column="pcl_transferTime" property="pclTransfertime" jdbcType="TIMESTAMP" />
+    <result column="pcl_tenderdatetime" property="pclTenderdatetime" jdbcType="INTEGER" />
+    <result column="pcl_crediteRate" property="pclCrediterate" jdbcType="DECIMAL" />
+    <result column="pcl_crediteAmt" property="pclCrediteamt" jdbcType="DECIMAL" />
+    <result column="pcl_transferAmt" property="pclTransferamt" jdbcType="DECIMAL" />
+    <result column="pcl_creditePeriods" property="pclCrediteperiods" jdbcType="INTEGER" />
+    <result column="pcl_channel" property="pclChannel" jdbcType="CHAR" />
+    <result column="pcl_crediteStatus" property="pclCreditestatus" jdbcType="VARCHAR" />
+    <result column="pcl_description" property="pclDescription" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pcl_id, pcl_crediteFlowNo, pcl_oldFlowNum, pcl_loanNum, pcl_custNo, pcl_transferTime, 
+    pcl_tenderdatetime, pcl_crediteRate, pcl_crediteAmt, pcl_transferAmt, pcl_creditePeriods, 
+    pcl_channel, pcl_crediteStatus, pcl_description
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.baibao.web.p2p.generator.bean.P2p_credite_loanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from p2p_credite_loan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from p2p_credite_loan
+    where pcl_id = #{pclId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from p2p_credite_loan
+    where pcl_id = #{pclId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_credite_loanExample" >
+    delete from p2p_credite_loan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baibao.web.p2p.generator.bean.P2p_credite_loan" >
+    insert into p2p_credite_loan (pcl_id, pcl_crediteFlowNo, pcl_oldFlowNum, 
+      pcl_loanNum, pcl_custNo, pcl_transferTime, 
+      pcl_tenderdatetime, pcl_crediteRate, pcl_crediteAmt, 
+      pcl_transferAmt, pcl_creditePeriods, pcl_channel, 
+      pcl_crediteStatus, pcl_description)
+    values (#{pclId,jdbcType=BIGINT}, #{pclCrediteflowno,jdbcType=VARCHAR}, #{pclOldflownum,jdbcType=VARCHAR}, 
+      #{pclLoannum,jdbcType=VARCHAR}, #{pclCustno,jdbcType=VARCHAR}, #{pclTransfertime,jdbcType=TIMESTAMP}, 
+      #{pclTenderdatetime,jdbcType=INTEGER}, #{pclCrediterate,jdbcType=DECIMAL}, #{pclCrediteamt,jdbcType=DECIMAL}, 
+      #{pclTransferamt,jdbcType=DECIMAL}, #{pclCrediteperiods,jdbcType=INTEGER}, #{pclChannel,jdbcType=CHAR}, 
+      #{pclCreditestatus,jdbcType=VARCHAR}, #{pclDescription,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_credite_loan" >
+    insert into p2p_credite_loan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pclId != null" >
+        pcl_id,
+      </if>
+      <if test="pclCrediteflowno != null" >
+        pcl_crediteFlowNo,
+      </if>
+      <if test="pclOldflownum != null" >
+        pcl_oldFlowNum,
+      </if>
+      <if test="pclLoannum != null" >
+        pcl_loanNum,
+      </if>
+      <if test="pclCustno != null" >
+        pcl_custNo,
+      </if>
+      <if test="pclTransfertime != null" >
+        pcl_transferTime,
+      </if>
+      <if test="pclTenderdatetime != null" >
+        pcl_tenderdatetime,
+      </if>
+      <if test="pclCrediterate != null" >
+        pcl_crediteRate,
+      </if>
+      <if test="pclCrediteamt != null" >
+        pcl_crediteAmt,
+      </if>
+      <if test="pclTransferamt != null" >
+        pcl_transferAmt,
+      </if>
+      <if test="pclCrediteperiods != null" >
+        pcl_creditePeriods,
+      </if>
+      <if test="pclChannel != null" >
+        pcl_channel,
+      </if>
+      <if test="pclCreditestatus != null" >
+        pcl_crediteStatus,
+      </if>
+      <if test="pclDescription != null" >
+        pcl_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pclId != null" >
+        #{pclId,jdbcType=BIGINT},
+      </if>
+      <if test="pclCrediteflowno != null" >
+        #{pclCrediteflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="pclOldflownum != null" >
+        #{pclOldflownum,jdbcType=VARCHAR},
+      </if>
+      <if test="pclLoannum != null" >
+        #{pclLoannum,jdbcType=VARCHAR},
+      </if>
+      <if test="pclCustno != null" >
+        #{pclCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="pclTransfertime != null" >
+        #{pclTransfertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pclTenderdatetime != null" >
+        #{pclTenderdatetime,jdbcType=INTEGER},
+      </if>
+      <if test="pclCrediterate != null" >
+        #{pclCrediterate,jdbcType=DECIMAL},
+      </if>
+      <if test="pclCrediteamt != null" >
+        #{pclCrediteamt,jdbcType=DECIMAL},
+      </if>
+      <if test="pclTransferamt != null" >
+        #{pclTransferamt,jdbcType=DECIMAL},
+      </if>
+      <if test="pclCrediteperiods != null" >
+        #{pclCrediteperiods,jdbcType=INTEGER},
+      </if>
+      <if test="pclChannel != null" >
+        #{pclChannel,jdbcType=CHAR},
+      </if>
+      <if test="pclCreditestatus != null" >
+        #{pclCreditestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pclDescription != null" >
+        #{pclDescription,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baibao.web.p2p.generator.bean.P2p_credite_loanExample" resultType="java.lang.Integer" >
+    select count(1) from p2p_credite_loan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p2p_credite_loan
+    <set >
+      <if test="record.pclId != null" >
+        pcl_id = #{record.pclId,jdbcType=BIGINT},
+      </if>
+      <if test="record.pclCrediteflowno != null" >
+        pcl_crediteFlowNo = #{record.pclCrediteflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pclOldflownum != null" >
+        pcl_oldFlowNum = #{record.pclOldflownum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pclLoannum != null" >
+        pcl_loanNum = #{record.pclLoannum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pclCustno != null" >
+        pcl_custNo = #{record.pclCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pclTransfertime != null" >
+        pcl_transferTime = #{record.pclTransfertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pclTenderdatetime != null" >
+        pcl_tenderdatetime = #{record.pclTenderdatetime,jdbcType=INTEGER},
+      </if>
+      <if test="record.pclCrediterate != null" >
+        pcl_crediteRate = #{record.pclCrediterate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pclCrediteamt != null" >
+        pcl_crediteAmt = #{record.pclCrediteamt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pclTransferamt != null" >
+        pcl_transferAmt = #{record.pclTransferamt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pclCrediteperiods != null" >
+        pcl_creditePeriods = #{record.pclCrediteperiods,jdbcType=INTEGER},
+      </if>
+      <if test="record.pclChannel != null" >
+        pcl_channel = #{record.pclChannel,jdbcType=CHAR},
+      </if>
+      <if test="record.pclCreditestatus != null" >
+        pcl_crediteStatus = #{record.pclCreditestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pclDescription != null" >
+        pcl_description = #{record.pclDescription,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p2p_credite_loan
+    set pcl_id = #{record.pclId,jdbcType=BIGINT},
+      pcl_crediteFlowNo = #{record.pclCrediteflowno,jdbcType=VARCHAR},
+      pcl_oldFlowNum = #{record.pclOldflownum,jdbcType=VARCHAR},
+      pcl_loanNum = #{record.pclLoannum,jdbcType=VARCHAR},
+      pcl_custNo = #{record.pclCustno,jdbcType=VARCHAR},
+      pcl_transferTime = #{record.pclTransfertime,jdbcType=TIMESTAMP},
+      pcl_tenderdatetime = #{record.pclTenderdatetime,jdbcType=INTEGER},
+      pcl_crediteRate = #{record.pclCrediterate,jdbcType=DECIMAL},
+      pcl_crediteAmt = #{record.pclCrediteamt,jdbcType=DECIMAL},
+      pcl_transferAmt = #{record.pclTransferamt,jdbcType=DECIMAL},
+      pcl_creditePeriods = #{record.pclCrediteperiods,jdbcType=INTEGER},
+      pcl_channel = #{record.pclChannel,jdbcType=CHAR},
+      pcl_crediteStatus = #{record.pclCreditestatus,jdbcType=VARCHAR},
+      pcl_description = #{record.pclDescription,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baibao.web.p2p.generator.bean.P2p_credite_loan" >
+    update p2p_credite_loan
+    <set >
+      <if test="pclCrediteflowno != null" >
+        pcl_crediteFlowNo = #{pclCrediteflowno,jdbcType=VARCHAR},
+      </if>
+      <if test="pclOldflownum != null" >
+        pcl_oldFlowNum = #{pclOldflownum,jdbcType=VARCHAR},
+      </if>
+      <if test="pclLoannum != null" >
+        pcl_loanNum = #{pclLoannum,jdbcType=VARCHAR},
+      </if>
+      <if test="pclCustno != null" >
+        pcl_custNo = #{pclCustno,jdbcType=VARCHAR},
+      </if>
+      <if test="pclTransfertime != null" >
+        pcl_transferTime = #{pclTransfertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pclTenderdatetime != null" >
+        pcl_tenderdatetime = #{pclTenderdatetime,jdbcType=INTEGER},
+      </if>
+      <if test="pclCrediterate != null" >
+        pcl_crediteRate = #{pclCrediterate,jdbcType=DECIMAL},
+      </if>
+      <if test="pclCrediteamt != null" >
+        pcl_crediteAmt = #{pclCrediteamt,jdbcType=DECIMAL},
+      </if>
+      <if test="pclTransferamt != null" >
+        pcl_transferAmt = #{pclTransferamt,jdbcType=DECIMAL},
+      </if>
+      <if test="pclCrediteperiods != null" >
+        pcl_creditePeriods = #{pclCrediteperiods,jdbcType=INTEGER},
+      </if>
+      <if test="pclChannel != null" >
+        pcl_channel = #{pclChannel,jdbcType=CHAR},
+      </if>
+      <if test="pclCreditestatus != null" >
+        pcl_crediteStatus = #{pclCreditestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pclDescription != null" >
+        pcl_description = #{pclDescription,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pcl_id = #{pclId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baibao.web.p2p.generator.bean.P2p_credite_loan" >
+    update p2p_credite_loan
+    set pcl_crediteFlowNo = #{pclCrediteflowno,jdbcType=VARCHAR},
+      pcl_oldFlowNum = #{pclOldflownum,jdbcType=VARCHAR},
+      pcl_loanNum = #{pclLoannum,jdbcType=VARCHAR},
+      pcl_custNo = #{pclCustno,jdbcType=VARCHAR},
+      pcl_transferTime = #{pclTransfertime,jdbcType=TIMESTAMP},
+      pcl_tenderdatetime = #{pclTenderdatetime,jdbcType=INTEGER},
+      pcl_crediteRate = #{pclCrediterate,jdbcType=DECIMAL},
+      pcl_crediteAmt = #{pclCrediteamt,jdbcType=DECIMAL},
+      pcl_transferAmt = #{pclTransferamt,jdbcType=DECIMAL},
+      pcl_creditePeriods = #{pclCrediteperiods,jdbcType=INTEGER},
+      pcl_channel = #{pclChannel,jdbcType=CHAR},
+      pcl_crediteStatus = #{pclCreditestatus,jdbcType=VARCHAR},
+      pcl_description = #{pclDescription,jdbcType=VARCHAR}
+    where pcl_id = #{pclId,jdbcType=BIGINT}
+  </update>
+</mapper>
